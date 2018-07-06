@@ -1,0 +1,1 @@
+Foi usado o tipo booelan para representar o estado da lampada, assim caso estadoLampada = true a mesma estaria acesa e caso estadoLampada = false iria está apagada.
