@@ -3255,6 +3255,7 @@ return array(
     'Symfony\\Component\\VarDumper\\Dumper\\HtmlDumper' => $vendorDir . '/symfony/var-dumper/Dumper/HtmlDumper.php',
     'Symfony\\Component\\VarDumper\\Dumper\\ServerDumper' => $vendorDir . '/symfony/var-dumper/Dumper/ServerDumper.php',
     'Symfony\\Component\\VarDumper\\Exception\\ThrowingCasterException' => $vendorDir . '/symfony/var-dumper/Exception/ThrowingCasterException.php',
+    'Symfony\\Component\\VarDumper\\Server\\Connection' => $vendorDir . '/symfony/var-dumper/Server/Connection.php',
     'Symfony\\Component\\VarDumper\\Server\\DumpServer' => $vendorDir . '/symfony/var-dumper/Server/DumpServer.php',
     'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => $vendorDir . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
     'Symfony\\Component\\VarDumper\\VarDumper' => $vendorDir . '/symfony/var-dumper/VarDumper.php',
