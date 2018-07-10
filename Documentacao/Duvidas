@@ -1,3 +1,3 @@
 1 - No relacionamento disciplina com curso, uma disciplina so esta atrelada a um curso?
-
+2 - Seguir o mesmo padrão do .env o nome do owner deve ser postgres
 
