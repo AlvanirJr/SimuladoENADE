@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSimuladosTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateSimuladosTable extends Migration
      */
     public function up()
     {
-        Schema::create('simulados', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao_simulado');
-            ##Saber quando se foi realizado o simulado
+            $table->string('nome');
+            $table->string('cpf');
+            $table->string('senha');
+            $table->string('email');
+            $table->increments('tipo_usuario_id');
+            $table->increments('id_curso');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateSimuladosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('simulados');
+        Schema::dropIfExists('usuarios');
     }
 }
