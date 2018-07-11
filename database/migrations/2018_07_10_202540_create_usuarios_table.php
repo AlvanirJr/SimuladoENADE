@@ -19,9 +19,8 @@ class CreateUsuariosTable extends Migration
             $table->string('cpf');
             $table->string('senha');
             $table->string('email');
-            $table->increments('tipo_usuario_id');
-            $table->increments('curso_id');
-            
+            $table->foreign('tipo_usuario_id')->reference('id')->on('tipo_usuarios');
+            $table->foreign('curso_id')->reference('id')->on('cursos');
             $table->timestamps();
         });
     }

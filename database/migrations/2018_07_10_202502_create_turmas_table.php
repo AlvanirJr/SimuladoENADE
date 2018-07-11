@@ -15,11 +15,10 @@ class CreateTurmasTable extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('ciclo_id');
-            $table->increments('aluno_id');
             ##DATA_CICLO
-            
-            $table->date_date_set(DateTime $object, $year, $month, $day);('');
+             $table->foreign('aluno_id')->reference('id')->on('alunos')
+             $table->foreign('ciclo_id')->reference('id')->on('ciclos');
+            $table->timestamp();
         });
     }
 

@@ -15,8 +15,8 @@ class CreateSimuladoAlunosTable extends Migration
     {
         Schema::create('simulado_alunos', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('simulado_id');
-            $table->increments('aluno_id');
+            $table->foreign('aluno_id')->reference('id')->on('alunos');
+            $table->foreign('simulado_id')->reference('id')->on('simulados');
             
             $table->timestamps();
         });
