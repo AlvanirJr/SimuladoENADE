@@ -22,7 +22,7 @@ class CreateQuestaosTable extends Migration
 				$table->string('alternativa_d');
 				$table->string('alternativa_e');
 				$table->string('alternativa_correta');
-				$table->increments('disciplina_id');
+				$table->foreign('disciplina_id')->reference('id')->on('disciplinas');
 				
             $table->timestamps();
         });
