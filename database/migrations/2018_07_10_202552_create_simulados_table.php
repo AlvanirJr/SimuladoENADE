@@ -15,6 +15,9 @@ class CreateSimuladosTable extends Migration
     {
         Schema::create('simulados', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao_simulado');
+            
+            ##Saber quando se foi realizado o simulado
             $table->timestamps();
         });
     }

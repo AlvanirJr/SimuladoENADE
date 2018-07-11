@@ -15,6 +15,10 @@ class CreateRespostasTable extends Migration
     {
         Schema::create('respostas', function (Blueprint $table) {
             $table->increments('id');
+            $table->increments('questao_id');
+            $table->increments('aluno_id');
+            $table->string('alternativa_questao');
+            
             $table->timestamps();
         });
     }

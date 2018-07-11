@@ -15,7 +15,11 @@ class CreateQuestaoSimuladosTable extends Migration
     {
         Schema::create('questao_simulados', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->increments('questao_id');
+            $table->increments('simulado_id');
+            
+            $table->date_date_set(DateTime $object, $year, $month, $day);
+            
         });
     }
 
