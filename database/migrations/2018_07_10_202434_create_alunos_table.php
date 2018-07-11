@@ -19,7 +19,8 @@ class CreateAlunosTable extends Migration
 				$table->string('cpf');
 				$table->string('senha');
 				$table->string('email');
-				$table->increments('curso_id');       
+				$table->increments('curso_id');
+				       
             $table->timestamps();
         });
     }

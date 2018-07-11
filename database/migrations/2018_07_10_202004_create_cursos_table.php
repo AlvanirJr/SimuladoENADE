@@ -17,6 +17,7 @@ class CreateCursosTable extends Migration
             $table->increments('id');
             $table->string('curso_nome');
             $table->increments('ciclo_id');
+            
             $table->timestamps();
         });
     }

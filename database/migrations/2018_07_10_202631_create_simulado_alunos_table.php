@@ -17,6 +17,7 @@ class CreateSimuladoAlunosTable extends Migration
             $table->increments('id');
             $table->increments('simulado_id');
             $table->increments('aluno_id');
+            
             $table->timestamps();
         });
     }

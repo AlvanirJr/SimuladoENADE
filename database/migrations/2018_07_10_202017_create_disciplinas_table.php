@@ -17,6 +17,7 @@ class CreateDisciplinasTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->increments('curso_id');
+            
             $table->timestamps();
         });
     }

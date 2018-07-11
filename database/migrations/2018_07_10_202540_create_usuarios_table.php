@@ -21,6 +21,7 @@ class CreateUsuariosTable extends Migration
             $table->string('email');
             $table->increments('tipo_usuario_id');
             $table->increments('curso_id');
+            
             $table->timestamps();
         });
     }

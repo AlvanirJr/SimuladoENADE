@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('senha');
             $table->string('email');
             $table->increments('tipo_usuario_id');
-            $table->increments('id_curso');
+            $table->increments('curso_id');
             $table->timestamps();
         });
     }

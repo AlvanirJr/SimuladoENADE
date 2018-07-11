@@ -15,12 +15,7 @@ class CreateTipoUsuariosTable extends Migration
     {
         Schema::create('tipo_usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('cpf');
-            $table->string('senha');
-            $table->string('email');
-            $table->increments('id_tipo_usuario');
-            $table->increments('id_curso');
+				$table->string('tipo');
            #$table->string('tipo');
            #$table->timestamps();
         });

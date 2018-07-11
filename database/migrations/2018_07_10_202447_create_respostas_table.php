@@ -18,6 +18,7 @@ class CreateRespostasTable extends Migration
             $table->increments('questao_id');
             $table->increments('aluno_id');
             $table->string('alternativa_questao');
+            
             $table->timestamps();
         });
     }

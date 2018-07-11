@@ -18,6 +18,7 @@ class CreateTurmasTable extends Migration
             $table->increments('ciclo_id');
             $table->increments('aluno_id');
             ##DATA_CICLO
+            
             $table->date_date_set(DateTime $object, $year, $month, $day);('');
         });
     }

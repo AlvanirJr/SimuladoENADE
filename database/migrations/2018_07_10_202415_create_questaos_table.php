@@ -23,6 +23,7 @@ class CreateQuestaosTable extends Migration
 				$table->string('alternativa_e');
 				$table->string('alternativa_correta');
 				$table->increments('disciplina_id');
+				
             $table->timestamps();
         });
     }

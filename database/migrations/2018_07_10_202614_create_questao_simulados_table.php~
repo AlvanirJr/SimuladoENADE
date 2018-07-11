@@ -18,7 +18,7 @@ class CreateQuestaoSimuladosTable extends Migration
             $table->increments('questao_id');
             $table->increments('simulado_id');
             $table->date_date_set(DateTime $object, $year, $month, $day);
-            $table->timestamps();
+            
         });
     }
 
