@@ -17,3 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('/listar/Cursos','Cursocontroller@listar');
+Route::get('/adicionar/Cursos','Cursocontroller@adicionar');
+Route::get('/editar/Cursos', 'Cursocontroller@editar');
+Route::get('/remover/Cursos', 'Cursocontroller@remover');
+Route::get('/atualizar/Cursos','Cursocontroller@atualizar');

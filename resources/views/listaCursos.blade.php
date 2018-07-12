@@ -7,13 +7,13 @@
 		<table border='1' >
 			@foreach ($cursos as $curso)
 				<tr>				
-					<td>{{$curso->nome_curso}}</td>
-					<td>{{$curso->curso_id}}</td>
-					<td> <a href="/editar/Curso/{{$curso->id}}">Editar</a> 
-					<td> <a href="/remover/Curso/{{$curso->id}}">Remover</a></td>
+					<td>{{$curso->curso_nome}}</td>
+					<td>{{$curso->ciclo_id}}</td>
+					<td> <a href="/editar/Cursos/{{$curso->id}}">Editar</a> 
+					<td> <a href="/remover/Cursos/{{$curso->id}}">Remover</a></td>
 				</tr>			
 			@endforeach		
 		</table>
-		<a href="/cadastrar/Curso"> Adicionar um Curso</a>
+		<a href="/cadastrar/Cursos"> Adicionar um Curso</a>
 	</body>
 </html> 

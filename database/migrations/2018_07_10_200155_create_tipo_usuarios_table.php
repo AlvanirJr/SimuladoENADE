@@ -19,7 +19,7 @@ class CreateTipoUsuariosTable extends Migration
 				$table->string('tipo');
 				
            #$table->string('tipo');
-            $table->timestamps('data');
+            #$table->timestamps('data');
         });
     }
 
