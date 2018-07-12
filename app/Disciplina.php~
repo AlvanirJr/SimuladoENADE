@@ -8,6 +8,6 @@ class Disciplina extends Model
 {
     //
     public function curso(){
-    	return $this->hasOne('App\Curso');
+    	return $this->hasOne('site\SimuladoENADE\Curso');
     }
 }

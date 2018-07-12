@@ -8,10 +8,10 @@ class SimuladoAluno extends Model
 {
     //
     public function simulado(){
-    	return $this->hasOne('App\Simulado');
+    	return $this->hasOne('site\SimuladoENADE\Simulado');
     }
     public function aluno(){
-    	return $this->hasOne('App\Aluno');
+    	return $this->hasOne('site\SimuladoENADE\Aluno');
     }
 
 }
