@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::get('/listar/Disciplinas','DisciplinaController@listar');
 Route::get('/cadastrar/Disciplina','DisciplinaController@cadastrar');
 Route::post('/adicionar/Disciplina','DisciplinaController@adicionar');
-Route::get('/editar/Disciplina/{id}','DisciplinaController@editar');
+Route::post('/editar/Disciplina/{id}','DisciplinaController@editar');
 Route::post('/atualizar/Disciplina','DisciplinaController@atualizar');
 Route::get('/remover/Disciplina/{id}','DisciplinaController@remover');

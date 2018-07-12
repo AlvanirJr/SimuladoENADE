@@ -1,0 +1,21 @@
+<!doctype html>
+
+<html lang= "{{ app()->getLocale() }}">
+	<head>
+		<title> Lista de Disciplinas </title>
+	</head>
+	<body>
+		<table border='1' >
+			@foreach ($disciplinas as $disciplina)
+				<tr>				
+					<td>{{$disciplina->nome}}</td>
+					<td>{{$disciplina->id}}</td>
+					<td>{{$disciplina->curso_id}}</td>
+					<td> <a href="/editar/Disciplina/{{$disciplina->id}}">Editar</a> 
+					<td> <a href="/remover/Disciplina/{{$disciplina->id}}">Remover</a></td>
+				</tr>			
+			@endforeach		
+		</table>
+		<a href="/cadastrar/Disciplina"> Adicionar uma Disciplina</a>
+	</body>
+</html>

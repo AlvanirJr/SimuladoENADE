@@ -19,7 +19,7 @@ class CreateCursosTable extends Migration
             $table->string('curso_nome');
             
             $table->foreign('ciclo_id')->references('id')->on('ciclos');
-        #    $table->timestamps('data');
+            $table->timestamps();
         });
     }
 
