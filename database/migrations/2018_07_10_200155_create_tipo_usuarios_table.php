@@ -15,11 +15,11 @@ class CreateTipoUsuariosTable extends Migration
     {
         Schema::create('tipo_usuarios', function (Blueprint $table) {
             $table->increments('id');
-            #$table->foreing('')
 				$table->string('tipo');
-				
-           #$table->string('tipo');
-            $table->timestamps('data');
+			/*	
+           $table->string('tipo');
+           $table->timestamps('data');
+			*/        
         });
     }
 
