@@ -8,6 +8,6 @@ class Questao extends Model
 {
     //
     public function disciplina(){
-    	return $this->hasOne('App\Disciplina');
+    	return $this->hasOne('site\SimuladoENADE\Disciplina');
     }
 }

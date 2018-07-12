@@ -8,9 +8,9 @@ class Turma extends Model
 {
     //
     public function aluno(){
-    	return $this->hasOne('App\Aluno');
+    	return $this->hasOne('site\SimuladoENADE\Aluno');
     }
     public function ciclo(){
-    	return $this->hasOne('App\Ciclo');
+    	return $this->hasOne('site\SimuladoENADE\Ciclo');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCiclosTable extends Migration
+class CreateCursosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateCiclosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ciclos', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_ciclo');
-           # $table->timestamps('data');
+            $table->integer('ciclo_id')->unsigned();
+            $table->string('curso_nome');
+            
+            $table->foreign('ciclo_id')->references('id')->on('ciclos');
+            $table->timestamps('data');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateCiclosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ciclos');
+        Schema::dropIfExists('cursos');
     }
 }
