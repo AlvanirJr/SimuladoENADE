@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Curso;
 use App\Usuario;
+use App\Disciplina;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,6 @@ use App\Usuario;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use Illuminate\Http\Request;
-use App\Disciplina;
 
 Route::get('/', function () {
     return view('welcome');
