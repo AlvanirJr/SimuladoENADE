@@ -14,7 +14,7 @@ class Ciclocontroller extends Controller
 		return redirect("listar/ciclo");
 	}
 	public function cadastrar(){
-		return view('cadastrarCiclo');
+    	return view('cadastrarCiclo');
 	}
 	public function listar(){
 		$ciclos = \App\Ciclo::all();

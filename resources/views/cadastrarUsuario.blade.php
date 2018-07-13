@@ -11,13 +11,19 @@
 			Cpf: <input type="text" name="cpf"                       />
 			Senha:<input type="text" name="senha"/>
 			Email:<input type="text" name="email"/>
-			Curso:<input type="integer" name="curso_id">
-			TipoUsuario<input type="integer" name="tipo_usuario_id">
+			Curso:
+			<select name="curso_id" >
+				@foreach ($cursos as $curso)
+				<option value="{{$curso->id}}">{{$curso->curso_nome}}</option>
+				@endforeach
+			</select>
 
-
-			
-
-
+			TipoUsuario: 
+			<select name="tipo_usuario_id" >
+				@foreach ($tipos_usuario as $tipo_usuario)
+				<option value="{{$tipo_usuario->id}}">{{$tipo_usuario->tipo}}</option>
+				@endforeach
+			</select>
 
 			<input type="submit" name="cadastrar"/>
 			</form>

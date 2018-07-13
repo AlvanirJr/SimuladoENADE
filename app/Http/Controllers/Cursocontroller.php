@@ -17,8 +17,8 @@ class Cursocontroller extends Controller
     }
 
 	 public function cadastrar() {
-    	return view('cadastrarCursos');
-
+    	$ciclos = \App\Ciclo::all();
+        return view('cadastrarCursos', ['ciclos' => $ciclos]);
     }
 
 	public function listar(){
@@ -26,12 +26,11 @@ class Cursocontroller extends Controller
 		return view('listaCursos', ['cursos' => $cursos]);
 
  	}
- 	public function editar(Request $request){ 		
+ 	public function editar(Request $request){ 	
+        $ciclos = \App\Ciclo::all();	
  		$curso = \App\Curso::find($request->id);
- 		return view('editarCursos', ['curso' => $curso]);
- 
+ 		return view('editarCursos', ['ciclos' => $ciclos,'curso' => $curso]);
  	}	
-
     
     public function atualizar(Request $request) {
     	$curso = \App\Curso::find($request->id);
