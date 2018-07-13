@@ -11,11 +11,11 @@ class CicloSeeder extends Seeder
      */
     public function run()
     {
-         for($i = 0; $i < 5; $i++){
+        for($i = 0; $i < 4; $i++){
         	DB::table('ciclos')->insert(['tipo_ciclo'=> str_random(10)]);	
         }
-	for($i = 1; $i < 6; $i++) {
-		DB::table('ciclos')->insert(['tipo_ciclo' => str_random(8)]);
-	}
+	   for($i = 1; $i < 4; $i++) {
+		  DB::table('ciclos')->insert(['tipo_ciclo' => str_random(8)]);
+	   }
     }
 }

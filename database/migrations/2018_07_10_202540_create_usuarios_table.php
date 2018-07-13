@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration
             $table->integer('curso_id')->unsigned();
             $table->foreign('tipo_usuario_id')->references('id')->on('tipo_usuarios');
             $table->foreign('curso_id')->references('id')->on('cursos');
-         #   $table->timestamps();
+            $table->timestamps();
         });
     }
 
