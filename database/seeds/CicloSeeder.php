@@ -14,5 +14,8 @@ class CicloSeeder extends Seeder
          for($i = 0; $i < 5; $i++){
         	DB::table('ciclos')->insert(['tipo_ciclo'=> str_random(10)]);	
         }
+	for($i = 1; $i < 6; $i++) {
+		DB::table('ciclos')->insert(['tipo_ciclo' => str_random(8)]);
+	}
     }
 }
