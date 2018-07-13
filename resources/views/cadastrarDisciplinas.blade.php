@@ -9,8 +9,14 @@
 		<form action = "/adicionar/Disciplina" method = "post">
 			<input type = "hidden" name="_token" value="{{csrf_token()}}">
 			Nome: <input type="text" name="nome" />	
-			Curso: <input type="integer" name="curso_id"/>
-			<input type="submit" value="cadastrar"/>
+
+			 <select name="curso_id" multiple>
+			 	@foreach ($cursos as $curso)
+			  	<option value="{{$curso->id}}"> {{$curso->curso_nome}}</option>
+			  	@endforeach
+  			</select> 
+  			
+			<input type='submit' value='cadastrar'/>
 		</form>
 	</body>
 </html>
