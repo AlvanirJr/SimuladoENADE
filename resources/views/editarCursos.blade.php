@@ -10,7 +10,11 @@
 			<input type = "hidden" name="_token" value="{{csrf_token()}}">
 			<input type="hidden" name="id" value="{{$curso->id}}">
 			Nome do Curso: <input type="text" name="curso_nome" />	
-			ciclo: <input type="integer" name="ciclo_id"/>
+			Ciclo: <select name="ciclo_id" value='{{$curso->id}}' >
+				@foreach ($ciclos as $ciclo)
+				<option value="{{$ciclo->id}}">{{$ciclo->tipo_ciclo}}</option>
+				@endforeach
+			</select>
 			<input type="submit" value="atualizar"/>
 		</form>
 	</body>
