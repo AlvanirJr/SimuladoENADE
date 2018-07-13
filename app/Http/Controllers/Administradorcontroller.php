@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 
 class Administradorcontroller extends Controller
 {
-    //
     public function adcionar(Request $request){
     	$usuarios = new \App\Usuario();
-        #$usuarios->id = $request->id;
     	$usuarios->nome = $request->nome;
     	$usuarios->cpf = $request->cpf;
     	$usuarios->senha = $request->senha;
@@ -20,9 +18,10 @@ class Administradorcontroller extends Controller
     	return redirect("/listar/usuario");
     }
 
-
     public function cadastrar(){
-		return view('cadastrarUsuario');   
+        $cursos = \App\Curso::all();
+        $tipos_usuario = \App\TipoUsuario::all();
+		return view('cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
     }
     
     public function listar () {
@@ -31,8 +30,10 @@ class Administradorcontroller extends Controller
     }
     
     public function editar(Request $request) {
+        $cursos = \App\Curso::all();
+        $tipos_usuario = \App\TipoUsuario::all();
 		$usuario = \App\Usuario::find($request->id);
-		return view('editarUsuario', ['usuario'=>$usuario]);    
+		return view('editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
     }
     
     public function atualizar(Request $request){

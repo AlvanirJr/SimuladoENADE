@@ -26,6 +26,7 @@ Route::post('/adicionar/Disciplina','DisciplinaController@adicionar');
 Route::get('/editar/Disciplina/{id}','DisciplinaController@editar');
 Route::post('/atualizar/Disciplina','DisciplinaController@atualizar');
 Route::get('/remover/Disciplina/{id}','DisciplinaController@remover');
+
 Route::get('/listar/Cursos','Cursocontroller@listar');
 Route::post('/adicionar/Cursos','Cursocontroller@adicionar');
 Route::get('/cadastrar/Cursos', 'Cursocontroller@cadastrar');
