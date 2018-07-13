@@ -40,3 +40,10 @@ Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
 Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
 Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');
 
+Route::get('/listar/ciclo', 'Ciclocontroller@listar');
+Route::get('/cadastrar/ciclo', 'Ciclocontroller@cadastrar');
+Route::post('/adicionar/ciclo', 'Ciclocontroller@adicionar');
+Route::get('/editar/ciclo/{id}', 'Ciclocontroller@editar');
+Route::post('/atualizar/ciclo', 'Ciclocontroller@atualizar');
+Route::get('/remover/ciclo/{id}', 'Ciclocontroller@remover');
+
