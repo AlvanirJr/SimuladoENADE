@@ -1,19 +1,29 @@
-<!doctype html>
-<html lang= "{{ app()->getLocale() }}">
-	<head>
-		<title> Lista de ciclo </title>
-	</head>
-	<body>
-		<table border='1' >
+@extends('layouts.default')
+@section('content')
+    
+	<h1> Lista de ciclo </h1><br><br>
+	<table class="table">
+ 		<thead>
+		
+			<tr>
+				<th>Id do ciclo</th>
+				<th>Tipo do ciclo</th>
+				<th>Funções</th>
+			</tr>
+		</thead>
+		<tbody>
 			@foreach ($ciclos as $ciclo)
-				<tr>				
-					<td>{{$ciclo->tipo_ciclo}}</td>
-					<td>{{$ciclo->id}}</td>
-					<td> <a href="/editar/ciclo/{{$ciclo->id}}">Editar</a> 
-					<td> <a href="/remover/ciclo/{{$ciclo->id}}">Remover</a></td>
-				</tr>			
-			@endforeach		
-		</table>
-		<a href="/cadastrar/ciclo"> Adicionar um ciclo</a>
-	</body>
-</html> 
+			<tr>
+				<td>{{$ciclo->id}}</td>
+				<td>{{$ciclo->tipo_ciclo}}</td>
+				<td>
+					<a href="/editar/ciclo/{{$ciclo->id}}">Editar</a> -
+					<a href="/remover/ciclo/{{$ciclo->id}}">Remover</a>
+				</td>
+			</tr>
+			@endforeach
+		</tbody>
+		
+	</table>
+	<a href="/cadastrar/ciclo"> Adicionar um ciclo</a>
+@stop

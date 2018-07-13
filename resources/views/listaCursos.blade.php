@@ -1,19 +1,29 @@
-<!doctype html>
-<html lang= "{{ app()->getLocale() }}">
-	<head>
-		<title> Lista de Cursos </title>
-	</head>
-	<body>
-		<table border='1' >
+@extends('layouts.default')
+@section('content')
+
+	<h1> Lista de Cursos </h1><br><br>
+	<table class="table">
+ 		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nome do Curso</th>
+				<th>Id do ciclo</th>
+				<th>Funções</th>
+			</tr>
+		</thead>
+		<tbody>
 			@foreach ($cursos as $curso)
-				<tr>				
-					<td>{{$curso->curso_nome}}</td>
-					<td>{{$curso->ciclo_id}}</td>
-					<td> <a href="/editar/Cursos/{{$curso->id}}">Editar</a> 
-					<td> <a href="/remover/Cursos/{{$curso->id}}">Remover</a></td>
-				</tr>			
-			@endforeach		
-		</table>
-		<a href="/cadastrar/Cursos"> Adicionar um Curso</a>
-	</body>
-</html> 
+			<tr>
+				<td>{{$curso->id}}</td>
+				<td>{{$curso->curso_nome}}</td>
+				<td>{{$curso->ciclo_id}}</td>
+				<td> 
+					<a href="/editar/Cursos/{{$curso->id}}">Editar</a> - 
+					<a href="/remover/Cursos/{{$curso->id}}">Remover</a>
+				</td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+	<a href="/cadastrar/Cursos"> Adicionar um Curso</a>
+@stop
