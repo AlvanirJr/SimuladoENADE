@@ -15,7 +15,8 @@ class DisciplinaController extends Controller
     }
     
     public function cadastrar() {
-    	return view('cadastrarDisciplinas');
+    	$cursos = \App\Curso::all();
+    	return view('cadastrarDisciplinas', ['cursos' => $cursos]);
     }
     	
     
@@ -27,7 +28,8 @@ class DisciplinaController extends Controller
  	
  	public function editar(Request $request){ 		
  		$disciplina = \App\Disciplina::find($request->id);
- 		return view('editarDisciplinas', ['disciplina' => $disciplina]);
+ 		$cursos = \App\Curso::all();
+ 		return view('editarDisciplinas', ['disciplina' => $disciplina], ['cursos' => $cursos]);
  	
  	}
 
