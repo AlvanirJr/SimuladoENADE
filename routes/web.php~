@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 
+=======
+use Illuminate\Http\Request;
+use App\Curso;
+>>>>>>> origin/CRUD_cursos
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,16 +16,27 @@
 |
 */
 
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use App\Disciplina;
 
+=======
+>>>>>>> origin/CRUD_cursos
 Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/listar/Disciplinas','DisciplinaController@listar');
 Route::get('/cadastrar/Disciplina','DisciplinaController@cadastrar');
 Route::post('/adicionar/Disciplina','DisciplinaController@adicionar');
 Route::post('/editar/Disciplina/{id}','DisciplinaController@editar');
 Route::post('/atualizar/Disciplina','DisciplinaController@atualizar');
 Route::get('/remover/Disciplina/{id}','DisciplinaController@remover');
+=======
+Route::get('/listar/Cursos','Cursocontroller@listar');
+Route::get('/adicionar/Cursos','Cursocontroller@adicionar');
+Route::get('/editar/Cursos', 'Cursocontroller@editar');
+Route::get('/remover/Cursos', 'Cursocontroller@remover');
+Route::get('/atualizar/Cursos','Cursocontroller@atualizar');
+>>>>>>> origin/CRUD_cursos

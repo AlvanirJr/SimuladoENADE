@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ app()->getLocale()}}">
+	<head>
+		<title>Adicionar</title>
+	</head>
+	<body>
+		<h1>Cadastrar Curso</h1>
+			<form action	= "/adicionar/curso">
+				<input type="hidden" name= "token" value="{{ csrf token() }}">
+				
+				Nome Curso:<input type="text" name="nome_curso" />
+				<input type="submit" value="cadastrar" />
+			</form>
+					
+	</body>
+	</html>
+	
