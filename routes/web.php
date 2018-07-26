@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Curso;
 use App\Usuario;
 use App\Disciplina;
+use App\Questao;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,11 @@ Route::post('/adicionar/ciclo', 'Ciclocontroller@adicionar');
 Route::get('/editar/ciclo/{id}', 'Ciclocontroller@editar');
 Route::post('/atualizar/ciclo', 'Ciclocontroller@atualizar');
 Route::get('/remover/ciclo/{id}', 'Ciclocontroller@remover');
+
+Route::get('/listar/questao', 'QuestaoController@listar');
+Route::get('/cadastrar/questao', 'QuestaoController@cadastrar');
+Route::post('/adicionar/questao', 'QuestaoController@adicionar');
+Route::get('/editar/questao/{id}', 'QuestaoController@editar');
+Route::post('/atualizar/questao', 'QuestaoController@atualizar');
+Route::get('/remover/questao/{id}', 'QuestaoController@remover');
 
