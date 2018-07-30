@@ -5,6 +5,7 @@ use App\Curso;
 use App\Usuario;
 use App\Disciplina;
 use App\Questao;
+use App\Aluno;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,13 @@ Route::post('/adicionar/questao', 'QuestaoController@adicionar');
 Route::get('/editar/questao/{id}', 'QuestaoController@editar');
 Route::post('/atualizar/questao', 'QuestaoController@atualizar');
 Route::get('/remover/questao/{id}', 'QuestaoController@remover');
+
+
+Route::get('/listar/aluno', 'AlunoController@listar');
+Route::get('/cadastrar/aluno', 'AlunoController@cadastrar');
+Route::post('/adicionar/aluno', 'AlunoController@adicionar');
+Route::get('/editar/aluno/{id}', 'AlunoController@editar');
+Route::post('/atualizar/aluno', 'AlunoController@atualizar');
+Route::get('/remover/aluno/{id}', 'AlunoController@remover');
+
 

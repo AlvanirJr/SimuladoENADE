@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('content')
     
-	<h1>Editar Questao</h1><br><br>
-	<form action= "/atualizar/questao" method="post">
+	<h1>Editar Usuario</h1><br><br>
+	<form action= "/atualizar/usuario" method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<input type="hidden" name="id" value="{{$usuario->id}}">
 		Email:<input type="text" name="email" value="{{$usuario->email}}"  />
