@@ -18,7 +18,7 @@ class CreateSimuladosTable extends Migration
             $table->string('descricao_simulado');
             
             ##Saber quando se foi realizado o simulado
-        #table->timestamps('data');
+            $table->timestamps();
         });
     }
 

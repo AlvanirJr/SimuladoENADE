@@ -66,3 +66,11 @@ Route::post('/atualizar/aluno', 'AlunoController@atualizar');
 Route::get('/remover/aluno/{id}', 'AlunoController@remover');
 
 
+Route::get('/listar/simulado', 'SimuladoController@listar');
+Route::get('/cadastrar/simulado', 'SimuladoController@cadastrar');
+Route::post('/adicionar/simulado', 'SimuladoController@adicionar');
+Route::get('/editar/simulado/{id}', 'SimuladoController@editar');
+Route::post('/atualizar/simulado', 'SimuladoController@atualizar');
+Route::get('/remover/simulado/{id}', 'SimuladoController@remover');
+
+
