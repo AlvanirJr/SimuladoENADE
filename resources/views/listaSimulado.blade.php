@@ -1,0 +1,29 @@
+@extends('layouts.default')
+@section('content')
+    
+	<h1> Lista de Simulado </h1><br><br>
+	<table class="table">
+ 		<thead>
+		
+			<tr>
+				<th>Id do simulado</th>
+				<th>Descricao</th>
+				<th>Funções</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ($simulados as $simulado)
+			<tr>
+				<td>{{$simulado->id}}</td>
+				<td>{{$simulado->descricao_simulado}}</td>
+				<td>
+					<a href="/editar/simulado/{{$simulado->id}}">Editar</a> -
+					<a href="/remover/simulado/{{$simulado->id}}">Remover</a>
+				</td>
+			</tr>
+			@endforeach
+		</tbody>
+		
+	</table>
+	<a href="/cadastrar/simulado"> Adicionar um simulado</a>
+@stop

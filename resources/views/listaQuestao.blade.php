@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     
-	<h1>Listar Questões</h1>
+	<h1>Lista de Questões Cadastradas</h1>
 	<table class="table">
  		<thead>
 		
@@ -10,6 +10,7 @@
 				<th>Enuciado</th>
 				<th>Nivel Questão</th>
 				<th>ID da Disciplina</th>
+				<th>Funções</th>
 			</tr>
 		</thead>
 		<tbody>
