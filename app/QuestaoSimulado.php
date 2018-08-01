@@ -13,4 +13,18 @@ class QuestaoSimulado extends Model
     public function questao(){
     	return $this->hasOne('App\Questao');
     }
+
+
+    protected $fillable = [];
+
+    public static $rules = [
+    	'questao_id' => 'required',
+    	'simulado_id' => 'required'
+
+    ];
+
+    public static $messages = [
+    	'required' => 'O campo:attribute é obrigatório '
+
+    ];
 }

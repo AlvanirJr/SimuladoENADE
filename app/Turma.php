@@ -13,4 +13,18 @@ class Turma extends Model
     public function ciclo(){
     	return $this->hasOne('App\Ciclo');
     }
+
+     protected $fillable = [];
+
+     public static $rules = [
+     	'aluno_id' => 'required',
+     	'ciclo_id' => 'required'
+     ];
+
+     public static $messages = [
+     	'required' => 'O campo:attribute é obrigatório'
+
+     ];
+
+
 }

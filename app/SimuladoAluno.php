@@ -14,4 +14,15 @@ class SimuladoAluno extends Model
     	return $this->hasOne('App\Aluno');
     }
 
+      protected $fillable = [];
+
+     public static $rules = [
+     	'aluno_id' => 'required',
+     	'simulado_id' => 'required'
+     ];
+
+     public static $messages = [
+     	'required' => 'O campo:attribute é obrigatório'
+
+     ];
 }
