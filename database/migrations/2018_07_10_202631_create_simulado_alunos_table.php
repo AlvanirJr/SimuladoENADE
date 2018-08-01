@@ -20,7 +20,7 @@ class CreateSimuladoAlunosTable extends Migration
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->foreign('simulado_id')->references('id')->on('simulados');
             
-          #  $table->timestamps('data');
+            $table->timestamps();
         });
     }
 

@@ -91,5 +91,31 @@ class UsuarioValidatorSpec extends LaravelObjectBehavior
     	}
 
 
+        function it_o_cpf_min_do_usuario_eh_obrigatorio(){
+        $usuario = new \App\Usuario();
+        $usuario->nome = "Pedro";
+        $usuario->cpf = "1234567891234";
+        $usuario->senha = "cachorro";
+        $usuario->email = "pedro_cachorrolouco@gmail.com";
+        $usuario->tipo_usuario_id = 1;
+        $usuario->curso_id = 1;
+
+        $this->shouldThrow('App\Validator\ValidationException')->duringValidate($usuario->toArray());
+        } 
+
+        function it_a_senha_min_do_usuario_eh_obrigatorio(){
+        $usuario = new \App\Usuario();
+        $usuario->nome = "Pedro";
+        $usuario->cpf = "123.456.789-50";
+        $usuario->senha = "1234567";
+        $usuario->email = "pedro_cachorrolouco@gmail.com";
+        $usuario->tipo_usuario_id = 1;
+        $usuario->curso_id = 1;
+
+        $this->shouldThrow('App\Validator\ValidationException')->duringValidate($usuario->toArray());
+        } 
+
+
+
 }
 

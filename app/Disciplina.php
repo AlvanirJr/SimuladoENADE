@@ -14,12 +14,11 @@ class Disciplina extends Model
     protected $fillable = ['nome', 'curso_id'];
     
     public static $rules = [
-    	'nome' => 'required|min:2',
+    	'nome' => 'required',
     	'curso_id' => 'required'
     ];
 
     public static $messages = [
-    	'required' => 'O campo :attribute deve ser preenchido na forma correta',
-    	'nome.min' => 'Este campo deve ter no minimo 10 caracteres'
+    	'required' => 'O campo :attribute deve ser preenchido na forma correta'
     ];
 }

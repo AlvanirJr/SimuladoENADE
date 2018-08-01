@@ -24,5 +24,14 @@ class CicloValidatorSpec extends LaravelObjectBehavior
          ->duringValidate($ciclo->toArray());
     }  
 
+      function it_o_tipo_ciclo_min_do_ciclo_eh_obrigatorio(){
+         $ciclo = new \App\Ciclo(); 
+         $ciclo->tipo_ciclo = "enad";
+        
+
+         $this->shouldThrow('App\Validator\ValidationException')
+         ->duringValidate($ciclo->toArray());
+    } 
+
     
 }

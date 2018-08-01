@@ -1,5 +1,6 @@
 <?php
 
+
 namespace spec\App\Validator;
 
 use App\Validator\CursoValidator;
@@ -33,4 +34,6 @@ class CursoValidatorSpec extends LaravelObjectBehavior
 	     $this->shouldThrow('App\Validator\ValidationException')
          ->duringValidate($curso->toArray());
     }   
+
+
 }

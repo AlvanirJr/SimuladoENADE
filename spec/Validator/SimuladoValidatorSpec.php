@@ -21,4 +21,11 @@ class SimuladoValidatorSpec extends LaravelObjectBehavior
 
     	$this->shouldThrow('App\Validator\ValidationException')->duringValidate($simulado->toArray());
     }
+
+     function it_descricao_min_eh_obrigatorio(){
+    	$simulado = new \App\Simulado();
+    	$simulado->descricao_simulado = "1234";
+
+    	$this->shouldThrow('App\Validator\ValidationException')->duringValidate($simulado->toArray());
+    }
 }
