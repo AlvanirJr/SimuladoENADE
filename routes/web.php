@@ -18,6 +18,11 @@ use App\Aluno;
 |
 */
 
+
+
+
+Route::middleware('auth')->group(function(){
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,12 +41,6 @@ Route::get('/editar/Cursos/{id}', 'Cursocontroller@editar');
 Route::get('/remover/Cursos/{id}', 'Cursocontroller@remover');
 Route::post('/atualizar/Cursos','Cursocontroller@atualizar');
 
-Route::get('/listar/usuario', 'Administradorcontroller@listar');
-Route::get('/cadastrar/usuario', 'Administradorcontroller@cadastrar');
-Route::post('/adcionar/usuario', 'Administradorcontroller@adcionar');
-Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
-Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
-Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');
 
 Route::get('/listar/ciclo', 'Ciclocontroller@listar');
 Route::get('/cadastrar/ciclo', 'Ciclocontroller@cadastrar');
@@ -57,6 +56,12 @@ Route::get('/editar/questao/{id}', 'QuestaoController@editar');
 Route::post('/atualizar/questao', 'QuestaoController@atualizar');
 Route::get('/remover/questao/{id}', 'QuestaoController@remover');
 
+Route::get('/listar/usuario', 'Administradorcontroller@listar');
+Route::get('/cadastrar/usuario', 'Administradorcontroller@cadastrar');
+Route::post('/adcionar/usuario', 'Administradorcontroller@adcionar');
+Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
+Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
+Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');
 
 Route::get('/listar/aluno', 'AlunoController@listar');
 Route::get('/cadastrar/aluno', 'AlunoController@cadastrar');
@@ -65,12 +70,16 @@ Route::get('/editar/aluno/{id}', 'AlunoController@editar');
 Route::post('/atualizar/aluno', 'AlunoController@atualizar');
 Route::get('/remover/aluno/{id}', 'AlunoController@remover');
 
-
 Route::get('/listar/simulado', 'SimuladoController@listar');
 Route::get('/cadastrar/simulado', 'SimuladoController@cadastrar');
 Route::post('/adicionar/simulado', 'SimuladoController@adicionar');
 Route::get('/editar/simulado/{id}', 'SimuladoController@editar');
 Route::post('/atualizar/simulado', 'SimuladoController@atualizar');
-Route::get('/remover/simulado/{id}', 'SimuladoController@remover');
+Route::get('/remover/simulado/{id}', 'SimuladoController@remover')
 
+
+});
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 

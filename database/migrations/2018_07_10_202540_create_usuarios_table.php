@@ -17,13 +17,14 @@ class CreateUsuariosTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('cpf');
-            $table->string('senha');
-            $table->string('email');
+            $table->string('password');
+            $table->string('email')->unique();
             $table->integer('tipo_usuario_id')->unsigned();
             $table->integer('curso_id')->unsigned();
             $table->foreign('tipo_usuario_id')->references('id')->on('tipo_usuarios');
             $table->foreign('curso_id')->references('id')->on('cursos');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

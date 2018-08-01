@@ -10,7 +10,7 @@ class Administradorcontroller extends Controller
     	$usuarios = new \App\Usuario();
     	$usuarios->nome = $request->nome;
     	$usuarios->cpf = $request->cpf;
-    	$usuarios->senha = $request->senha;
+    	$usuarios->password = $request->password;
     	$usuarios->email = $request->email;
         $usuarios->tipo_usuario_id = $request->tipo_usuario_id;
         $usuarios->curso_id = $request->curso_id;
@@ -19,6 +19,7 @@ class Administradorcontroller extends Controller
     }
 
     public function cadastrar(){
+//        $this->authorize('adcionar', \App\Usuario::class);        
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\TipoUsuario::all();
 		return view('cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   

@@ -67,9 +67,10 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Usuario::class,
+            //'model' => App\Aluno::class,
         ],
-
+       
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -96,6 +97,7 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+
         ],
     ],
 

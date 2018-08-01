@@ -5,7 +5,7 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		Nome:<input type="text" name="nome"/>
 		Cpf: <input type="text" name="cpf"                       />
-		Senha:<input type="text" name="senha"/>
+		Senha:<input type="text" name="password"/>
 		Email:<input type="text" name="email"/>
 		Curso:
 		<select name="curso_id" >
