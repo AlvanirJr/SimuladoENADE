@@ -17,10 +17,11 @@ class CreateAlunosTable extends Migration
             $table->increments('id');
             $table->string('nome');
 				$table->string('cpf');
-				$table->string('senha');
-				$table->string('email');
-            $table->integer('curso_id')->unsigned();
+				$table->string('email')->unique();
+                $table->string('password');
+                $table->integer('curso_id')->unsigned();
 				$table->foreign('curso_id')->references('id')->on('cursos');
+                $table->rememberToken();
            # $table->timestamps('data');
         });
     }

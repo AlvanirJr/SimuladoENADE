@@ -17,6 +17,11 @@ use App\Questao;
 |
 */
 
+
+
+
+Route::middleware('auth')->group(function(){
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,12 +40,6 @@ Route::get('/editar/Cursos/{id}', 'Cursocontroller@editar');
 Route::get('/remover/Cursos/{id}', 'Cursocontroller@remover');
 Route::post('/atualizar/Cursos','Cursocontroller@atualizar');
 
-Route::get('/listar/usuario', 'Administradorcontroller@listar');
-Route::get('/cadastrar/usuario', 'Administradorcontroller@cadastrar');
-Route::post('/adcionar/usuario', 'Administradorcontroller@adcionar');
-Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
-Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
-Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');
 
 Route::get('/listar/ciclo', 'Ciclocontroller@listar');
 Route::get('/cadastrar/ciclo', 'Ciclocontroller@cadastrar');
@@ -55,4 +54,16 @@ Route::post('/adicionar/questao', 'QuestaoController@adicionar');
 Route::get('/editar/questao/{id}', 'QuestaoController@editar');
 Route::post('/atualizar/questao', 'QuestaoController@atualizar');
 Route::get('/remover/questao/{id}', 'QuestaoController@remover');
+
+Route::get('/listar/usuario', 'Administradorcontroller@listar');
+Route::get('/cadastrar/usuario', 'Administradorcontroller@cadastrar');
+Route::post('/adcionar/usuario', 'Administradorcontroller@adcionar');
+Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
+Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
+Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');
+
+});
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
