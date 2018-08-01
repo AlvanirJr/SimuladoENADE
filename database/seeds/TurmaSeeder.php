@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SimuladoSeeder extends Seeder
+class TurmaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,8 @@ class SimuladoSeeder extends Seeder
      */
     public function run()
     {
-        //
-        for($i = 0; $i < 6; $i++){
-        	DB::table('simulados')->insert(['descricao_simulado'=> str_random(10)]);	
+          for($i = 0; $i < 6; $i++){
+        	DB::table('turmas')->insert(['aluno_id'=> $i, 'ciclo_id'=> $i]);	
         }
     }
 }

@@ -12,7 +12,7 @@ class AlunoSeeder extends Seeder
     public function run()
     {
         for($i = 1; $i < 4; $i++){
-    		DB::table('aluno')->insert(['nome' => str_random(10), 'cpf' => str_random(10), 'senha' => str_random(10), 'email' => , 'curso_id' => $i]);
+    		DB::table('alunos')->insert(['nome' => str_random(10), 'cpf' => str_random(10), 'senha' => str_random(10), 'email' => , 'curso_id' => $i]);
     	}
     }
 }
