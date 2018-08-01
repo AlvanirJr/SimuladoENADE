@@ -20,7 +20,7 @@ class CreateTurmasTable extends Migration
             $table->integer('ciclo_id')->unsigned();            
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->foreign('ciclo_id')->references('id')->on('ciclos');
-           # $table->timestamps('data');
+            $table->timestamps();
         });
     }
 

@@ -146,4 +146,40 @@ class QuestaoValidatorSpec extends LaravelObjectBehavior
 
     	$this->shouldThrow('App\Validator\ValidationException')->duringValidate($questao->toArray());
     }
+
+
+
+        function it_o_enuciado_min_eh_obrigatorio(){
+        $questao = new \App\Questao();
+        $questao->enuciado = "pedro1234";
+        $questao->alternativa_a = "a";
+        $questao->alternativa_b = "b";
+        $questao->alternativa_c = "c";
+        $questao->alternativa_d = "d";
+        $questao->alternativa_e = "e";
+        $questao->alternativa_correta = "a";
+        $questao->dificuldade = 1;
+        $questao->disciplina_id = 1;
+
+        $this->shouldThrow('App\Validator\ValidationException')->duringValidate($questao->toArray());
+    }
+
+     function it_a_alternativa_correta_max_eh_obrigatorio(){
+        $questao = new \App\Questao();
+        $questao->enuciado = "pedro1234s";
+        $questao->alternativa_a = "a";
+        $questao->alternativa_b = "b";
+        $questao->alternativa_c = "c";
+        $questao->alternativa_d = "d";
+        $questao->alternativa_e = "e";
+        $questao->alternativa_correta = "ac";
+        $questao->dificuldade = 1;
+        $questao->disciplina_id = 1;
+
+        $this->shouldThrow('App\Validator\ValidationException')->duringValidate($questao->toArray());
+    }
+
+
+    
+
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Questao extends Model
+
 {
     //
     public function disciplina(){
@@ -22,12 +23,12 @@ class Questao extends Model
 
     public static $rules = [
     	'enuciado' => 'required|min:10',
-    	'alternativa_a' => 'required|min:10',
-    	'alternativa_b' => 'required|min:10',
-    	'alternativa_c' => 'required|min:10',
-    	'alternativa_d' => 'required|min:10',
-    	'alternativa_e' => 'required|min:10',
-    	'alternativa_correta' => 'required|min:10',
+    	'alternativa_a' => 'required',
+    	'alternativa_b' => 'required',
+    	'alternativa_c' => 'required',
+    	'alternativa_d' => 'required',
+    	'alternativa_e' => 'required',
+    	'alternativa_correta' => 'required|max:1',
     	'dificuldade' => 'required',
     	'disciplina_id'=> 'required'
     ];
@@ -35,12 +36,7 @@ class Questao extends Model
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
     	'enuciado.min' => 'Este campo deve ter no minimo 10 caracteres',
-    	'alternativa_a.min' => 'Este campo de ter no minimo 10 caracteres',
-    	'alternativa_b.min' => 'Este campo de ter no minimo 10 caracteres',
-    	'alternativa_c.min' => 'Este campo de ter no minimo 10 caracteres',
-    	'alternativa_d.min' => 'Este campo de ter no minimo 10 caracteres',
-    	'alternativa_e.min' => 'Este campo de ter no minimo 10 caracteres',
-    	'alternativa_correta.min' => 'Este campo de ter no minimo 10 caracteres'
+    	'alternativa_correta.max' => 'Este campo de ter no minimo 10 caracteres'
     ];
 
 }

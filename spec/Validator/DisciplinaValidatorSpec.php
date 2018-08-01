@@ -30,4 +30,5 @@ class DisciplinaValidatorSpec extends LaravelObjectBehavior
 
         $this->shouldThrow('App\Validator\ValidationException')->duringValidate($disciplina->toArray());
     }
+    
 }

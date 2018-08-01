@@ -20,7 +20,7 @@ class CreateRespostasTable extends Migration
             $table->string('alternativa_questao');
             $table->foreign('questao_id')->references('id')->on('questaos');
             $table->foreign('aluno_id')->references('id')->on('alunos')            ;
-            #$table->timestamps('data');
+            $table->timestamps();
         });
     }
 

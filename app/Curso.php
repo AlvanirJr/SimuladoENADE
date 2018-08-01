@@ -15,12 +15,11 @@ class Curso extends Model
     
     public static $rules = [
     	'ciclo_id' => 'required',
-    	'curso_nome' => 'required|min:3'
+    	'curso_nome' => 'required'
     ];
 
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
     	'ciclo_id' => 'Este campo deve ter no minimo 1 caracteres',
-    	'curso_nome.min' => 'Este campo de ter no minimo 3 caracteres'
     ];
 }
