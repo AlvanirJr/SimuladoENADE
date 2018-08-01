@@ -5,7 +5,7 @@
 	<form action = "/atualizar/simulado" method = "post">
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
 		<input type="hidden" name="id" value="{{$simulado->id}}">
-		Tipo do Ciclo: <input type="text" name="descricao_simulado" value="{{$simulado->descricao_simulado}}" />	
+		Descrição Simulado: <input type="text" name="descricao_simulado" value="{{$simulado->descricao_simulado}}" />	
 		<input type="submit" value="atualizar"/>
 	</form>
 @stop
