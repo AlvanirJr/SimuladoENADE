@@ -3,19 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Validator\UsuarioValidator;
+use App\Validator\ValidationException;
+
 
 class Administradorcontroller extends Controller
 {
-    public function adcionar(Request $request){
-    	$usuarios = new \App\Usuario();
-    	$usuarios->nome = $request->nome;
-    	$usuarios->cpf = $request->cpf;
-    	$usuarios->password = $request->password;
-    	$usuarios->email = $request->email;
-        $usuarios->tipo_usuario_id = $request->tipo_usuario_id;
-        $usuarios->curso_id = $request->curso_id;
-    	$usuarios->save();
-    	return redirect("/listar/usuario");
+    public function adicionar(Request $request){
+    	try{
+            UsuarioValidator::Validate($request->all());
+
+            $ciclo = new \App\Usuario();
+            $ciclo->fill($request->all());
+            $ciclo->save();
+            return redirect("listar/usuario");
+        }
+        catch(ValidationException $ex){
+            return redirect("cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
+        }
     }
 
     public function cadastrar(){

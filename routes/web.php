@@ -59,7 +59,7 @@ Route::get('/remover/questao/{id}', 'QuestaoController@remover');
 
 Route::get('/listar/usuario', 'Administradorcontroller@listar');
 Route::get('/cadastrar/usuario', 'Administradorcontroller@cadastrar');
-Route::post('/adcionar/usuario', 'Administradorcontroller@adcionar');
+Route::post('/adicionar/usuario', 'Administradorcontroller@adicionar');
 Route::get('/editar/usuario/{id}', 'Administradorcontroller@editar');
 Route::post('/atualizar/usuario', 'Administradorcontroller@atualizar');
 Route::get('/remover/usuario/{id}', 'Administradorcontroller@remover');

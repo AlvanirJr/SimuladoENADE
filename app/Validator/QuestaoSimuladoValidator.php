@@ -5,7 +5,7 @@ use App\QuestaoSimulado;
 class QuestaoSimuladoValidator
 {
 
-		public function validate($dados)
+		public static function validate($dados)
     {
 
     	$validator = \Validator::make($dados,
