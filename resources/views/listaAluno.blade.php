@@ -2,9 +2,8 @@
 @section('content')
     
 	<h1>Listar Aluno</h1>
-	<table class="table">
+	<table class="table table-hover table-bordered">
  		<thead>
-		
 			<tr>
 				<th>Id</th>
 				<th>nome</th>
