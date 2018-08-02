@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Simulado extends Model
 {
     //
-
+	public function usuario(){
+    	return $this->hasOne('App\Usuario');
+    }
+    public function curso(){
+    	return $this->hasOne('App\Curso');
+    }
 
     protected $fillable = ['descricao_simulado'];
 
     public static $rules = [
-    	'descricao_simulado' => 'required|min:5'
+    	'descricao_simulado' => 'required|min:5',
+        'usuario_id' => 'required',
+        'simulado_id' => 'required'
     ];
 
     public static $messages = [

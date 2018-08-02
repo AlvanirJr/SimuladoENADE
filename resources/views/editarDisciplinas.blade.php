@@ -7,6 +7,7 @@
 		<input type = "hidden" name="id" value="{{$disciplina->id}}">
 		Nome: <input type="text" name="nome" value="{{$disciplina->nome}}" />	
 		
+		Curso:
 		<select name="curso_id">
 		 	@foreach ($cursos as $curso)
 		  	<option value="{{$curso->id}}"> {{$curso->curso_nome}}</option>
