@@ -15,7 +15,7 @@ class QuestaoSimulado extends Model
     }
 
 
-    protected $fillable = [];
+    protected $fillable = ['questao_id','simulado_id'];
 
     public static $rules = [
     	'questao_id' => 'required',

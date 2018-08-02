@@ -20,7 +20,7 @@ class Usuariocontroller extends Controller
 
             $usuario = new \App\Usuario();
             $usuario->fill($request->all());
-            if($usuarios->save()){
+            if($usuario->save()){
                 $usuario = $request->email;
                 Mail::to($usuario)->send(new emailConfirmacao()); 
         

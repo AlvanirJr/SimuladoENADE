@@ -15,6 +15,20 @@
 	    	</span>
 	    	@endif
 	    	</div> 
+	    	
+	    	<div class="form-group col-md-4">
+		      	<label for="ciclo_id">Ciclo</label>
+		      	<select class="form-control" name="ciclo_id" required>
+					@foreach ($ciclos as $ciclo)
+					<option value="{{$ciclo->id}}">{{$ciclo->tipo_ciclo}}</option>
+					@endforeach
+				</select>
+				@if ($errors->has('ciclo_id'))
+		    		<span class = "help-block">
+		    			<strong>{{$errors->first('ciclo_id')}}</strong>
+		    		</span>
+		    	@endif
+	    	</div>
 	   	</div>
 
 	  <button type="submit" name="cadastrar" class="btn btn-primary float-right">Cadastrar</button><br><br>

@@ -14,7 +14,7 @@ class SimuladoAluno extends Model
     	return $this->hasOne('App\Aluno');
     }
 
-      protected $fillable = [];
+      protected $fillable = ['aluno_id','simulado_id'];
 
      public static $rules = [
      	'aluno_id' => 'required',

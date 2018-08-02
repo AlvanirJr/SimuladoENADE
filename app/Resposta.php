@@ -14,7 +14,7 @@ class Resposta extends Model
     	return $this->hasOne('App\Questao');
     }
 
-    protected $fillable = ['alternativa_questao'];
+    protected $fillable = ['questao_id','aluno_id','alternativa_questao'];
 
 
     public static $rules = [
