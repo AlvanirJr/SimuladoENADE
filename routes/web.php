@@ -7,6 +7,7 @@ use App\Disciplina;
 use App\Questao;
 use App\Aluno;
 use App\Turma;
+use App\Simulado;
 
 /*
 |--------------------------------------------------------------------------
