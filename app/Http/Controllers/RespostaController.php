@@ -13,7 +13,7 @@ class RespostaController extends Controller
     	$resposta->aluno_id = $request->aluno_id;
     	$resposta->alternativa_questao =$request->alternativa_questao;
     	$resposta->save();
-    	return redirect('/listar/Respostas');
+    	return redirect('/listar/resposta');
     }
 
     public function cadastrar(){
@@ -44,13 +44,13 @@ class RespostaController extends Controller
 		$resposta->questao_id = $request->questao_id;
 		$resposta->alternativa_questao = $request->alternativa_questao;
 		$resposta->update();
-		return redirect("/listar/Respostas");
+		return redirect("/listar/resposta");
     }
 
     public function remover(Request $request){
  	$resposta = \App\Resposta::find($request->id);
  	$resposta->delete();
- 	return redirect("/listar/Respostas");
+ 	return redirect("/listar/resposta");
  		
  	}
 }

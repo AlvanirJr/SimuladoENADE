@@ -13,7 +13,7 @@ class SimuladoAlunoController extends Controller
     	$simuladoAluno->aluno_id = $request->aluno_id;
     	$simuladoAluno->simulado_id = $request->simulado_id;
     	$simuladoAluno->save();
-    	return redirect('/listar/SimuladoAlunos');
+    	return redirect('/listar/simuladoaluno');
     }
 
     public function cadastrar(){
@@ -41,14 +41,14 @@ class SimuladoAlunoController extends Controller
 		$simuladoAluno->aluno_id = $request->aluno_id;
 		$simuladoAluno->simulado_id = $request->simulado_id;
 		$simuladoAluno->update();
-		return redirect("/listar/SimuladoAlunos");
+		return redirect("/listar/simuladoaluno");
     }
 
 
     public function remover(Request $request){
  	$simuladoAluno = \App\SimuladoAluno::find($request->id);
  	$simuladoAluno->delete();
- 	return redirect("/listar/SimuladoAlunos");
+ 	return redirect("/listar/simuladoaluno");
  		
  	}
 

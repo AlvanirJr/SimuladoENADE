@@ -13,7 +13,7 @@ class QuestaoSimuladoController extends Controller
     	$questaoSimulado->questao_id = $request->questao_id;
     	$questaoSimulado->simulado_id  =$request->simulado_id;
     	$questaoSimulado->save();
-    	return redirect('listar/QuestaoSimulados');
+    	return redirect('listar/questaosimulado');
     }
 
 
@@ -42,13 +42,13 @@ class QuestaoSimuladoController extends Controller
 		$questaoSimulado->aluno_id = $request->aluno_id;
 		$simuladoAluno->questao_id = $request->questao_id;
 		$simuladoAluno->update();
-		return redirect("/listar/QuestaoSimulados");
+		return redirect("/listar/questaosimulado");
     }
 
     public function remover(Request $request){
  	$questaoSimulado = \App\QuestaoSimulado::find($request->id);
  	$questaoSimulado->delete();
- 	return redirect("/listar/QuestaoSimulados");
+ 	return redirect("/listar/questaosimulado");
  		
  	}
 }

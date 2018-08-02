@@ -2,11 +2,11 @@
 @section('content')
   
 	<h1>Editar Questao Simulado</h1><br><br>
-	<form action = "/atualizar/QuestaoSimulado" method = "post">
+	<form action = "/atualizar/questaosimulado" method = "post">
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
 		
-		ID do Aluno:
-		 <select name="questao_id">
+		ID da Questao:
+		 <select name="questao_id" value="{{questao->id}}">
 		 	@foreach ($questaos as $questao)
 		  	<option value="{{$questao->id}}"> {{$questao->id}}</option>
 		  	@endforeach

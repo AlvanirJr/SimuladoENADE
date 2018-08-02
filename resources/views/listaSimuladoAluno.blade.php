@@ -19,13 +19,13 @@
 				<td>{{$simuladoAluno->aluno_id}}</td>
 				<td>{{$simuladoAluno->simulado_id}}</td>
 				<td>
-					<a href="/editar/SimuladoAluno/{{$simuladoAluno->id}}">Editar</a> -
-					<a href="/remover/SimuladoAluno/{{$simuladoAluno->id}}">Remover</a>
+					<a href="/editar/simuladoaluno/{{$simuladoAluno->id}}">Editar</a> -
+					<a href="/remover/simuladoaluno/{{$simuladoAluno->id}}">Remover</a>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 		
 	</table>
-	<a href="/cadastrar/SimuladoAluno"> Adicionar um Simulado Aluno</a>
+	<a href="/cadastrar/simuladoaluno"> Adicionar um Simulado Aluno</a>
 @stop

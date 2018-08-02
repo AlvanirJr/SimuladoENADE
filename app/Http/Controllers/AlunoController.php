@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Validator\AlunoValidator;
+use App\Validator\ValidationException;
 
 class AlunoController extends Controller
 {
 	public function adicionar(Request $request){
-		$alunos = new \App\Aluno();
-    	$alunos->nome = $request->nome;
-    	$alunos->cpf = $request->cpf;
-    	$alunos->email = $request->email;
-    	$alunos->senha = $request->senha;
-    	$alunos->curso_id = $request->curso_id;
-    	$alunos->save();
-    	return redirect("/listar/aluno");
+		try{
+        	AlunoValidator::Validate($request->all());
 
+        	$aluno = new \App\Aluno();
+        	$aluno->fill($request->all());
+        	$aluno->save();
+        	return redirect("listar/aluno");
+    	}
+    	catch(ValidationException $ex){
+        	return redirect("cadastrar/aluno")->withErrors($ex->getValidator())->withInput();
+    	}
 
 	}
 
@@ -41,7 +45,7 @@ class AlunoController extends Controller
 		$aluno = \App\Aluno::find($request->id);
 		$aluno->nome = $request->nome;
 		$aluno->email = $request->email;
-		$aluno->senha = $request->senha;
+		$aluno->password = $request->password;
 		$aluno->curso_id = $request->curso_id;
 		$aluno->update();
 		return redirect('\listar\aluno');

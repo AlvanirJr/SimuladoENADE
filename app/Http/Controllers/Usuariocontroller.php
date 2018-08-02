@@ -7,15 +7,15 @@ use App\Validator\UsuarioValidator;
 use App\Validator\ValidationException;
 
 
-class Administradorcontroller extends Controller
+class Usuariocontroller extends Controller
 {
     public function adicionar(Request $request){
     	try{
             UsuarioValidator::Validate($request->all());
 
-            $ciclo = new \App\Usuario();
-            $ciclo->fill($request->all());
-            $ciclo->save();
+            $usuario = new \App\Usuario();
+            $usuario->fill($request->all());
+            $usuario->save();
             return redirect("listar/usuario");
         }
         catch(ValidationException $ex){

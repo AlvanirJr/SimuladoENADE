@@ -12,7 +12,7 @@ class TurmaController extends Controller
     	$turma->aluno_id = $request->aluno_id;
     	$turma->ciclo_id = $request->ciclo_id;
     	$turma->save();
-    	return redirect('/listar/Turmas');
+    	return redirect('/listar/turma');
     }
 
     public function cadastrar(){
@@ -40,13 +40,13 @@ class TurmaController extends Controller
 		#$turma->aluno_id = $request->aluno_id;
 		$turma->ciclo_id = $request->ciclo_id;
 		$turma->update();
-		return redirect("/listar/Turmas");
+		return redirect("/listar/turma");
     }
 
     public function remover(Request $request){
  	$turma = \App\Turma::find($request->id);
  	$turma->delete();
- 	return redirect("/listar/Turmas");
+ 	return redirect("/listar/turma");
  		
  	}
 }

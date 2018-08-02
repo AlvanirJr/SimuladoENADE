@@ -18,13 +18,13 @@
 				<td>{{$disciplina->nome}}</td>
 				<td>{{$disciplina->curso_id}}</td>
 				<td> 
-					<a href="/editar/Disciplina/{{$disciplina->id}}">Editar</a> -
-					<a href="/remover/Disciplina/{{$disciplina->id}}">Remover</a>
+					<a href="/editar/disciplina/{{$disciplina->id}}">Editar</a> -
+					<a href="/remover/disciplina/{{$disciplina->id}}">Remover</a>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	<a href="/cadastrar/Disciplina"> Adicionar uma Disciplina</a>
+	<a href="/cadastrar/disciplina"> Adicionar uma Disciplina</a>
 @stop

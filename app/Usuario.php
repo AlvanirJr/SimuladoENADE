@@ -9,16 +9,13 @@ class Usuario extends Authenticatable
 {
 	protected $fillable = ['nome', 'cpf', 'email', 'password'];
     protected $hidden = ['password', 'remember_token'];
-    //
+
     public function tipo_usuario(){
-    	return $this->hasOne('App\TipoUsuario');
+        return $this->hasOne('App\TipoUsuario');
     }
     public function curso(){
-    	return $this->hasOne('App\Curso');
+        return $this->hasOne('App\Curso');
     }
-
-   // protected $fillable = ['nome', 'cpf', 'senha', 'email'];
-
 
     public static $rules = [
     	'nome'  => 'required',

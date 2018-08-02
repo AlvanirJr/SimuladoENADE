@@ -67,7 +67,7 @@
 	    </div>
 	   
 	    <div class="form-group col-md-4">
-	    	<label for="tipo_usuario_id">CPF</label>
+	    	<label for="cpf">CPF</label>
 	    	<input type="text" class="form-control" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
 	    	@if ($errors->has('cpf'))
 	    		<span class = "help-block">
