@@ -48,4 +48,10 @@ class DisciplinaController extends Controller
  		return redirect("/listar/Disciplinas");
  		
  	}
+
+    public function filtro_curso(Request $request){
+        $disciplinas = \App\Disciplina::where('curso_id', '=', $request->curso_id)->get();
+
+        return json_encode($disciplinas);
+    }
 }
