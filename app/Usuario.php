@@ -17,7 +17,7 @@ class Usuario extends Authenticatable
     	return $this->hasOne('App\Curso');
     }
 
-    protected $fillable = ['nome', 'cpf', 'senha', 'email'];
+   // protected $fillable = ['nome', 'cpf', 'senha', 'email'];
 
 
     public static $rules = [

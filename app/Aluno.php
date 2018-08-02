@@ -13,7 +13,7 @@ class Aluno extends Model
     public function curso(){
     	return $this->hasOne('App\Curso');
     }
-     protected $fillable = ['nome', 'cpf', 'senha', 'email'];
+     //protected $fillable = ['nome', 'cpf', 'senha', 'email'];
 
 
     public static $rules = [
