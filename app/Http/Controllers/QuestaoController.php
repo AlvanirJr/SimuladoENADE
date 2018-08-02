@@ -51,7 +51,7 @@ class QuestaoController extends Controller
         $questaos->dificuldade = $request->dificuldade;
         $questaos->disciplina_id = $request->disciplina_id;
         $questaos->update();
-        return redirect('\listar/questao');
+        return redirect('\listar\questao');
 
     }
 
@@ -61,4 +61,12 @@ class QuestaoController extends Controller
         return redirect('\listar\questao');
     }
     
+    public function filtro_disciplina_dificuldade(Request $request){
+        $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
+                                         ['disciplina_id', '=', $request->disciplina_id]])
+                                        ->get();
+
+        return json_encode($questaos);
+    }
+
 }
