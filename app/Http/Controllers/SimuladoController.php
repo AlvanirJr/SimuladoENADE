@@ -37,7 +37,8 @@ class SimuladoController extends Controller
     }
     public function montar(Request $request){
 
-        return view('montar',['id_curso' => $request->id_curso]);
+            $disciplinas = \App\Disciplina::find($request->id);
+        return view('montar',['disciplinas' => $disciplinas]);
     }
 
     public function remover(Request $request){
