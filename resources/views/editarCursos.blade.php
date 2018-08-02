@@ -5,9 +5,9 @@
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
 		<input type="hidden" name="id" value="{{$curso->id}}">
 
-		Nome do Curso: <input type="text" name="curso_nome" value="{{$curso->curso_nome}}"/>	
+		Nome do Curso: <input type="text" name="curso_nome"/>	
 
-		Ciclo: <select name="ciclo_id" value='{{$curso->id}}' >
+		Ciclo: <select name="ciclo_id">
 			@foreach ($ciclos as $ciclo)
 			<option value="{{$ciclo->id}}">{{$ciclo->tipo_ciclo}}</option>
 			@endforeach

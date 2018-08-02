@@ -8,6 +8,8 @@
 			<tr>
 				<th>Id do simulado</th>
 				<th>Descricao</th>
+				<th>Nome Usuario</th>
+				<th>Nome Curso</th>
 				<th>Funções</th>
 			</tr>
 		</thead>
@@ -16,6 +18,8 @@
 			<tr>
 				<td>{{$simulado->id}}</td>
 				<td>{{$simulado->descricao_simulado}}</td>
+				<td>{{$simulado->usuario_id}}</td>
+				<td>{{$simulado->curso_id}}</td>
 				<td>
 					<a href="/editar/simulado/{{$simulado->id}}">Editar</a> -
 					<a href="/remover/simulado/{{$simulado->id}}">Remover</a>
