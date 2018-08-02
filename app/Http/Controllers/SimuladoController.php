@@ -29,10 +29,10 @@ class SimuladoController extends Controller
 
     public function editar(Request $request){
     	$simulado= \App\Simulado::find($request->id);
+
         $cursos = \App\Curso::all();
         $usuarios = \App\Usuario::all();
     	return view ('editarSimulado', ['simulado' => $simulado, 'cursos' => $cursos, 'usuarios' => $usuarios]);
-
     }
 
     public function atualizar(Request $request){
@@ -42,6 +42,11 @@ class SimuladoController extends Controller
         $simulado->usuario_id = $request->usuario_id;
     	$simulado->update();
     	return redirect('listar/simulado');
+    }
+    public function montar(Request $request){
+
+            $disciplinas = \App\Disciplina::find($request->id);
+        return view('montar',['disciplinas' => $disciplinas]);
     }
 
     public function remover(Request $request){
