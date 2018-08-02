@@ -19,18 +19,18 @@ class SimuladoController extends Controller
     public function cadastrar(){
     	$cursos = \App\Curso::all();
         $usuarios = \App\Usuario::all();
-    	return view('cadastrarSimulado', ['cursos' => $cursos, 'usuarios' => $usuarios]);
+    	return view('/SimuladoView/cadastrarSimulado', ['cursos' => $cursos, 'usuarios' => $usuarios]);
     }
 
     public function listar(){
     	$simulados = \App\Simulado::all();
-    	return view('listaSimulado', ['simulados' => $simulados]);
+    	return view('/SimuladoView/listaSimulado', ['simulados' => $simulados]);
     }
 
     public function editar(Request $request){
         $cursos = \App\Curso::all();
         $usuarios = \App\Usuario::all();
-    	return view ('editarSimulado', ['simulado' => $simulado, 'cursos' => $cursos, 'usuarios' => $usuarios]);
+    	return view ('/SimuladoView/editarSimulado', ['simulado' => $simulado, 'cursos' => $cursos, 'usuarios' => $usuarios]);
 
     }
 

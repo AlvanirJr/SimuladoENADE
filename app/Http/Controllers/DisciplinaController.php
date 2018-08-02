@@ -28,20 +28,20 @@ class DisciplinaController extends Controller
 
     public function cadastrar() {
     	$cursos = \App\Curso::all();
-    	return view('cadastrarDisciplinas', ['cursos' => $cursos]);
+    	return view('/DisciplinaView/cadastrarDisciplinas', ['cursos' => $cursos]);
     }
     	
     
  	public function listar(){
 		$disciplinas = \App\Disciplina::all();
-		return view('listaDisciplinas', ['disciplinas' => $disciplinas]);
+		return view('/DisciplinaView/listaDisciplinas', ['disciplinas' => $disciplinas]);
 
  	}   
  	
  	public function editar(Request $request){ 		
  		$disciplina = \App\Disciplina::find($request->id);
  		$cursos = \App\Curso::all();
- 		return view('editarDisciplinas', ['disciplina' => $disciplina], ['cursos' => $cursos]);
+ 		return view('/DisciplinaView/editarDisciplinas', ['disciplina' => $disciplina], ['cursos' => $cursos]);
  	
  	}
 

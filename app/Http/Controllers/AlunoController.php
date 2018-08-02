@@ -26,18 +26,18 @@ class AlunoController extends Controller
 	public function cadastrar(){
 		$cursos = \App\Curso::all();
 		$alunos = \App\Aluno::all();
-		return view('cadastrarAluno',['cursos' => $cursos], ['alunos' => $alunos]);
+		return view('/AlunoView/cadastrarAluno',['cursos' => $cursos], ['alunos' => $alunos]);
 	}
 
 	public function listar (){
 		$alunos = \App\Aluno::all();
-		return view('listaAluno',['alunos'=> $alunos]);
+		return view('/AlunoView/listaAluno',['alunos'=> $alunos]);
 
 	}
 	public function editar(Request $request){
 		$aluno = \App\Aluno::find($request->id);
 		$curso = \App\Curso::all();
-		return view('editarAluno', ['aluno' => $aluno], ['cursos' => $curso]);
+		return view('/AlunoView/editarAluno', ['aluno' => $aluno], ['cursos' => $curso]);
 
 	}
 

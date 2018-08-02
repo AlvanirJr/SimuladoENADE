@@ -27,19 +27,19 @@ class Usuariocontroller extends Controller
 //        $this->authorize('adcionar', \App\Usuario::class);        
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\TipoUsuario::all();
-		return view('cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
+		return view('/UsuarioView/cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
     }
     
     public function listar () {
 		$usuarios = \App\Usuario::all();
-		return view('ListaUsuario',['usuarios' => $usuarios]);   
+		return view('/UsuarioView/ListaUsuario',['usuarios' => $usuarios]);   
     }
     
     public function editar(Request $request) {
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\TipoUsuario::all();
 		$usuario = \App\Usuario::find($request->id);
-		return view('editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
+		return view('/UsuarioView/editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
     }
     
     public function atualizar(Request $request){
