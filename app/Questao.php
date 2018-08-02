@@ -36,7 +36,7 @@ class Questao extends Model
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
     	'enuciado.min' => 'Este campo deve ter no minimo 10 caracteres',
-    	'alternativa_correta.max' => 'Este campo de ter no minimo 10 caracteres'
+    	'alternativa_correta.max' => 'Este campo de ter no max 1 caracteres'
     ];
 
 }

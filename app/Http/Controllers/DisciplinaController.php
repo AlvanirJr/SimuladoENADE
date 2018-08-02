@@ -4,16 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Validator\DisciplinaValidator;
+use App\Validator\ValidationException;
+
 class DisciplinaController extends Controller
-{
-    public function adicionar (Request $request) {
-    	$disciplinas = new \App\Disciplina();
-    	$disciplinas->nome = $request->nome;
-    	$disciplinas->curso_id = $request->curso_id;
-    	$disciplinas->save();
-    	return redirect("/listar/Disciplinas");
+{   
+
+
+    public function adicionar(Request $request){
+        
+        try{
+            DisciplinaValidator::Validate($request->all());
+            $disciplina = new \App\Disciplina();
+            $disciplina->fill($request->all());
+            $disciplina->save();
+            return redirect("listar/Disciplinas");
+        }
+        catch(ValidationException $ex){
+            return redirect("cadastrar/Disciplinas")->withErrors($ex->getValidator())->withInput();
+
+        }
+
     }
-    
+
     public function cadastrar() {
     	$cursos = \App\Curso::all();
     	return view('cadastrarDisciplinas', ['cursos' => $cursos]);

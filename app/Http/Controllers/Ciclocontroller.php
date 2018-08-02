@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Validator\CicloValidator;
+use App\Validator\ValidationException;
 
 class Ciclocontroller extends Controller
 {
@@ -35,6 +37,27 @@ class Ciclocontroller extends Controller
 		$ciclo = \App\Ciclo::find($request->id);
 		$ciclo->delete();
 		return redirect("listar\ciclo");
+	}
+
+
+	public function store(Request $request){
+		
+	try{
+		CicloValidator::Validate($request->all());
+
+		$ciclo = new \App\Ciclo();
+		$ciclo->fill($request->all());
+		$ciclo->save();
+		return redirect("listar/ciclo");
+	}
+	catch(ValidationException $ex){
+		return redirect("cadastrar/ciclo")->withErrors($ex->getValidator())->withInput();
+
+	}
+
+
+
+
 	}
 
 

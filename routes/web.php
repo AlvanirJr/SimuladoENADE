@@ -45,6 +45,7 @@ Route::post('/atualizar/Cursos','Cursocontroller@atualizar');
 
 
 Route::get('/listar/ciclo', 'Ciclocontroller@listar');
+Route::post('/store/ciclo', 'Ciclocontroller@store');
 Route::get('/cadastrar/ciclo', 'Ciclocontroller@cadastrar');
 Route::post('/adicionar/ciclo', 'Ciclocontroller@adicionar');
 Route::get('/editar/ciclo/{id}', 'Ciclocontroller@editar');
