@@ -16,15 +16,15 @@ class Ciclocontroller extends Controller
 		return redirect("listar/ciclo");
 	}
 	public function cadastrar(){
-    	return view('cadastrarCiclo');
+    	return view('/CicloView/cadastrarCiclo');
 	}
 	public function listar(){
 		$ciclos = \App\Ciclo::all();
-		return view('listaCiclo', ['ciclos' => $ciclos]);
+		return view('/CicloView/listaCiclo', ['ciclos' => $ciclos]);
 	}
 	public function editar(Request $request){
 		$ciclos = \App\Ciclo::find($request->id);
-		return view('editarCiclo',['ciclo' =>$ciclos]);
+		return view('/CicloView/editarCiclo',['ciclo' =>$ciclos]);
 	}
 	public function atualizar(Request $request){
 		$ciclos = \App\Ciclo::find($request->id);

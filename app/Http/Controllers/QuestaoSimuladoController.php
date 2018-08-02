@@ -20,12 +20,12 @@ class QuestaoSimuladoController extends Controller
     public function cadastrar(){
     	$questaos = \App\Questao::all();
     	$simulados = \App\Simulado::all();
-    	return view('cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
+    	return view('/QuestaoSimuladoView/cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
     }
 
      public function listar(){
     	$questaoSimulados = \App\QuestaoSimulado::all();
-    	return view('listaQuestaoSimulado', ['questaoSimulados' => $questaoSimulados]);
+    	return view('/QuestaoSimuladoView/listaQuestaoSimulado', ['questaoSimulados' => $questaoSimulados]);
     }
 
     public function editar(Request $request){
@@ -33,7 +33,7 @@ class QuestaoSimuladoController extends Controller
     	$alunos = \App\Aluno::all();
     	$questaos = \App\Questao::all();
 
-    	return view('editarQuestaoSimulado',['questaoSimulado'=> $simuladoAluno, 'questaos'=> $questaos, 'simulados' => $simulados ]);
+    	return view('/QuestaoSimuladoView/editarQuestaoSimulado',['questaoSimulado'=> $simuladoAluno, 'questaos'=> $questaos, 'simulados' => $simulados ]);
 
     }
 

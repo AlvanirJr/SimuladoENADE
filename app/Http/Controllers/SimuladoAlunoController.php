@@ -19,12 +19,12 @@ class SimuladoAlunoController extends Controller
     public function cadastrar(){
     	$alunos = \App\Aluno::all();
     	$simulados = \App\Simulado::all();
-    	return view('cadastrarSimuladoAluno', ['alunos' => $alunos, 'simulados' => $simulados]);
+    	return view('/SimuladoAlunoView/cadastrarSimuladoAluno', ['alunos' => $alunos, 'simulados' => $simulados]);
     }
     
     public function listar(){
     	$simuladoAlunos = \App\SimuladoAluno::all();
-    	return view('listaSimuladoAluno', ['simuladoAlunos' => $simuladoAlunos]);
+    	return view('/SimuladoAlunoView/listaSimuladoAluno', ['simuladoAlunos' => $simuladoAlunos]);
     }
 
        public function editar(Request $request){
@@ -32,7 +32,7 @@ class SimuladoAlunoController extends Controller
     	$alunos = \App\Aluno::all();
     	$simulados = \App\Simulado::all();
 
-    	return view('editarSimuladoAluno',['simuladoAluno'=> $simuladoAluno, 'alunos'=> $alunos, 'simulados' => $simulados ]);
+    	return view('/SimuladoAlunoView/editarSimuladoAluno',['simuladoAluno'=> $simuladoAluno, 'alunos'=> $alunos, 'simulados' => $simulados ]);
 
     }
 

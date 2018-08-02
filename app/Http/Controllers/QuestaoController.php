@@ -26,18 +26,18 @@ class QuestaoController extends Controller
 
     public function cadastrar(){
     	$disciplinas = \App\Disciplina::all();
-    	return view('cadastrarQuestao', ['disciplinas' => $disciplinas]);
+    	return view('/QuestaoView/cadastrarQuestao', ['disciplinas' => $disciplinas]);
 
     }
     public function listar(){
     	$questao = \App\Questao::all();
-    	return view('listaQuestao', ['questaos' => $questao]);
+    	return view('/QuestaoView/listaQuestao', ['questaos' => $questao]);
     }
 
     public function editar(Request $request){
         $questao = \App\Questao::find($request->id);
         $disciplinas = \App\Disciplina::all();
-        return view('editarQuestaos', ['questao' => $questao], ['disciplinas'=>$disciplinas]);
+        return view('/QuestaoView/editarQuestaos', ['questao' => $questao], ['disciplinas'=>$disciplinas]);
     }
 
     public function atualizar(Request $request){
