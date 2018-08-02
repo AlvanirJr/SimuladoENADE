@@ -27,7 +27,7 @@ class SimuladoAlunoController extends Controller
     	return view('listaSimuladoAluno', ['simuladoAlunos' => $simuladoAlunos]);
     }
 
-       public function editar(Request $request){
+    public function editar(Request $request){
     	$simuladoAluno = \App\SimuladoAluno::find($request->id);
     	$alunos = \App\Aluno::all();
     	$simulados = \App\Simulado::all();
@@ -36,7 +36,7 @@ class SimuladoAlunoController extends Controller
 
     }
 
-      public function atualizar(Request $request){
+    public function atualizar(Request $request){
     	$simuladoAluno = \App\SimuladoAluno::find($request->id);
 		$simuladoAluno->aluno_id = $request->aluno_id;
 		$simuladoAluno->simulado_id = $request->simulado_id;

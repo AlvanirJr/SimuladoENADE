@@ -77,6 +77,7 @@ Route::post('/adicionar/simulado', 'SimuladoController@adicionar');
 Route::get('/editar/simulado/{id}', 'SimuladoController@editar');
 Route::post('/atualizar/simulado', 'SimuladoController@atualizar');
 Route::get('/remover/simulado/{id}', 'SimuladoController@remover');
+Route::get('/montar/simulado/{id}', 'SimuladoController@montar');
 
 
 });

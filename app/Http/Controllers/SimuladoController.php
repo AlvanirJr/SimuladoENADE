@@ -27,7 +27,6 @@ class SimuladoController extends Controller
     public function editar(Request $request){
     	$simulado= \App\Simulado::find($request->id);
     	return view ('editarSimulado', ['simulado' => $simulado]);
-
     }
 
     public function atualizar(Request $request){
@@ -35,6 +34,10 @@ class SimuladoController extends Controller
     	$simulado->descricao_simulado = $request->descricao_simulado;
     	$simulado->update();
     	return redirect('listar/simulado');
+    }
+    public function montar(Request $request){
+
+        return view('montar',['id_curso' => $request->id_curso]);
     }
 
     public function remover(Request $request){
