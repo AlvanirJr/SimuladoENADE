@@ -13,18 +13,18 @@ class SimuladoAlunoController extends Controller
     	$simuladoAluno->aluno_id = $request->aluno_id;
     	$simuladoAluno->simulado_id = $request->simulado_id;
     	$simuladoAluno->save();
-    	return redirect('/listar/SimuladoAlunos');
+    	return redirect('/listar/simuladoaluno');
     }
 
     public function cadastrar(){
     	$alunos = \App\Aluno::all();
     	$simulados = \App\Simulado::all();
-    	return view('cadastrarSimuladoAluno', ['alunos' => $alunos, 'simulados' => $simulados]);
+    	return view('/SimuladoAlunoView/cadastrarSimuladoAluno', ['alunos' => $alunos, 'simulados' => $simulados]);
     }
     
     public function listar(){
     	$simuladoAlunos = \App\SimuladoAluno::all();
-    	return view('listaSimuladoAluno', ['simuladoAlunos' => $simuladoAlunos]);
+    	return view('/SimuladoAlunoView/listaSimuladoAluno', ['simuladoAlunos' => $simuladoAlunos]);
     }
 
     public function editar(Request $request){
@@ -32,7 +32,7 @@ class SimuladoAlunoController extends Controller
     	$alunos = \App\Aluno::all();
     	$simulados = \App\Simulado::all();
 
-    	return view('editarSimuladoAluno',['simuladoAluno'=> $simuladoAluno, 'alunos'=> $alunos, 'simulados' => $simulados ]);
+    	return view('/SimuladoAlunoView/editarSimuladoAluno',['simuladoAluno'=> $simuladoAluno, 'alunos'=> $alunos, 'simulados' => $simulados ]);
 
     }
 
@@ -41,14 +41,14 @@ class SimuladoAlunoController extends Controller
 		$simuladoAluno->aluno_id = $request->aluno_id;
 		$simuladoAluno->simulado_id = $request->simulado_id;
 		$simuladoAluno->update();
-		return redirect("/listar/SimuladoAlunos");
+		return redirect("/listar/simuladoaluno");
     }
 
 
     public function remover(Request $request){
  	$simuladoAluno = \App\SimuladoAluno::find($request->id);
  	$simuladoAluno->delete();
- 	return redirect("/listar/SimuladoAlunos");
+ 	return redirect("/listar/simuladoaluno");
  		
  	}
 

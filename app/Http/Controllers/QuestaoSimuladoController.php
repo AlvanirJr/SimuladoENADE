@@ -13,19 +13,19 @@ class QuestaoSimuladoController extends Controller
     	$questaoSimulado->questao_id = $request->questao_id;
     	$questaoSimulado->simulado_id  =$request->simulado_id;
     	$questaoSimulado->save();
-    	return redirect('listar/QuestaoSimulados');
+    	return redirect('listar/questaosimulado');
     }
 
 
     public function cadastrar(){
     	$questaos = \App\Questao::all();
     	$simulados = \App\Simulado::all();
-    	return view('cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
+    	return view('/QuestaoSimuladoView/cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
     }
 
      public function listar(){
     	$questaoSimulados = \App\QuestaoSimulado::all();
-    	return view('listaQuestaoSimulado', ['questaoSimulados' => $questaoSimulados]);
+    	return view('/QuestaoSimuladoView/listaQuestaoSimulado', ['questaoSimulados' => $questaoSimulados]);
     }
 
     public function editar(Request $request){
@@ -33,7 +33,7 @@ class QuestaoSimuladoController extends Controller
     	$alunos = \App\Aluno::all();
     	$questaos = \App\Questao::all();
 
-    	return view('editarQuestaoSimulado',['questaoSimulado'=> $simuladoAluno, 'questaos'=> $questaos, 'simulados' => $simulados ]);
+    	return view('/QuestaoSimuladoView/editarQuestaoSimulado',['questaoSimulado'=> $simuladoAluno, 'questaos'=> $questaos, 'simulados' => $simulados ]);
 
     }
 
@@ -42,13 +42,13 @@ class QuestaoSimuladoController extends Controller
 		$questaoSimulado->aluno_id = $request->aluno_id;
 		$simuladoAluno->questao_id = $request->questao_id;
 		$simuladoAluno->update();
-		return redirect("/listar/QuestaoSimulados");
+		return redirect("/listar/questaosimulado");
     }
 
     public function remover(Request $request){
  	$questaoSimulado = \App\QuestaoSimulado::find($request->id);
  	$questaoSimulado->delete();
- 	return redirect("/listar/QuestaoSimulados");
+ 	return redirect("/listar/questaosimulado");
  		
  	}
 }

@@ -18,13 +18,13 @@
 				<td>{{$turma->aluno_id}}</td>
 				<td>{{$turma->ciclo_id}}</td>
 				<td> 
-					<a href="/editar/Turma/{{$turma->id}}">Editar</a> -
-					<a href="/remover/Turma/{{$turma->id}}">Remover</a>
+					<a href="/editar/turma/{{$turma->id}}">Editar</a> -
+					<a href="/remover/turma/{{$turma->id}}">Remover</a>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	<a href="/cadastrar/Turma"> Adicionar uma Turma</a>
+	<a href="/cadastrar/turma"> Adicionar uma Turma</a>
 @stop

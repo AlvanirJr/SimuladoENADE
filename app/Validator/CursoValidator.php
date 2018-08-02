@@ -4,7 +4,7 @@ namespace App\Validator;
 use App\Curso;
 class CursoValidator
 {
-	public function validate($dados)
+	public static function validate($dados)
     {
 
     	$validator = \Validator::make($dados,

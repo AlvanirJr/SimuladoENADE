@@ -17,8 +17,8 @@
           Disciplina
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/cadastrar/Disciplina">Cadastrar</a>
-          <a class="dropdown-item" href="/listar/Disciplinas">Listar</a>
+          <a class="dropdown-item" href="/cadastrar/disciplina">Cadastrar</a>
+          <a class="dropdown-item" href="/listar/disciplina">Listar</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -26,8 +26,8 @@
           Curso
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/cadastrar/Cursos">Cadastrar</a>
-          <a class="dropdown-item" href="/listar/Cursos">Listar</a>
+          <a class="dropdown-item" href="/cadastrar/curso">Cadastrar</a>
+          <a class="dropdown-item" href="/listar/curso">Listar</a>
         </div>
       </li>
       <li class="nav-item dropdown">

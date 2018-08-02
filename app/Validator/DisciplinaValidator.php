@@ -5,7 +5,7 @@ use App\Disciplina;
 
 class DisciplinaValidator
 {
-    public function validate($dados)
+    public static function validate($dados)
     {
 
     	$validator = \Validator::make($dados,

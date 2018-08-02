@@ -13,18 +13,18 @@ class RespostaController extends Controller
     	$resposta->aluno_id = $request->aluno_id;
     	$resposta->alternativa_questao =$request->alternativa_questao;
     	$resposta->save();
-    	return redirect('/listar/Respostas');
+    	return redirect('/listar/resposta');
     }
 
     public function cadastrar(){
     	$alunos = \App\Aluno::all();
     	$questaos = \App\Questao::all();
-    	return view('cadastrarResposta', ['alunos' => $alunos, 'questaos' => $questaos]);
+    	return view('/RespostaView/cadastrarResposta', ['alunos' => $alunos, 'questaos' => $questaos]);
     }
 
     public function listar(){
     	$respostas = \App\Resposta::all();
-    	return view ('listaResposta',['respostas' => $respostas]);
+    	return view ('/RespostaViewlistaResposta',['respostas' => $respostas]);
     }
 
     
@@ -34,7 +34,7 @@ class RespostaController extends Controller
     	$alunos = \App\Aluno::all();
     	$questaos = \App\Questao::all();
 
-    	return view('editarResposta',['resposta'=> $resposta, 'alunos'=> $alunos, 'questaos' => $questaos ]);
+    	return view('/RespostaView/editarResposta',['resposta'=> $resposta, 'alunos'=> $alunos, 'questaos' => $questaos ]);
 
     }
 
@@ -44,13 +44,13 @@ class RespostaController extends Controller
 		$resposta->questao_id = $request->questao_id;
 		$resposta->alternativa_questao = $request->alternativa_questao;
 		$resposta->update();
-		return redirect("/listar/Respostas");
+		return redirect("/listar/resposta");
     }
 
     public function remover(Request $request){
  	$resposta = \App\Resposta::find($request->id);
  	$resposta->delete();
- 	return redirect("/listar/Respostas");
+ 	return redirect("/listar/resposta");
  		
  	}
 }

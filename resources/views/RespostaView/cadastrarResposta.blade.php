@@ -1,19 +1,19 @@
 @extends('layouts.default')
 @section('content')
-	<h1>Cadastrar Simulado Aluno</h1><br><br>
-	<form action = "/adicionar/SimuladoAluno" method = "post">
+	<h1>Cadastrar Respostas</h1><br><br>
+	<form action = "/adicionar/resposta" method = "post">
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
-
+		Alternativa marcada:<input type="text" name="alternativa_questao"/>
 		ID do Aluno:
 		 <select name="aluno_id">
 		 	@foreach ($alunos as $aluno)
 		  	<option value="{{$aluno->id}}"> {{$aluno->id}}</option>
 		  	@endforeach
 			</select> 
-		Id do Simulado:
-		 <select name="simulado_id">
-		 	@foreach ($simulados as $simulado)
-		  	<option value="{{$simulado->id}}"> {{$simulado->id}}</option>
+		Id da Questao:
+		 <select name="questao_id">
+		 	@foreach ($questaos as $questao)
+		  	<option value="{{$questao->id}}"> {{$questao->id}}</option>
 		  	@endforeach
 			</select> 
 			

@@ -20,13 +20,13 @@
 				<td>{{$resposta->aluno_id}}</td>
 				<td>{{$resposta->questao_id}}</td>
 				<td> 
-					<a href="/editar/Resposta/{{$resposta->id}}">Editar</a> -
-					<a href="/remover/Resposta/{{$resposta->id}}">Remover</a>
+					<a href="/editar/resposta/{{$resposta->id}}">Editar</a> -
+					<a href="/remover/resposta/{{$resposta->id}}">Remover</a>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	<a href="/cadastrar/Resposta"> Adicionar uma Resposta</a>
+	<a href="/cadastrar/resposta"> Adicionar uma Resposta</a>
 @stop

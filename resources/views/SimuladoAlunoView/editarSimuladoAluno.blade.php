@@ -1,14 +1,14 @@
 @extends('layouts.default')
 @section('content')
   
-	<h1>Editar Questao Simulado</h1><br><br>
-	<form action = "/atualizar/QuestaoSimulado" method = "post">
+	<h1>editar Turma</h1><br><br>
+	<form action = "/atualizar/simuladoaluno" method = "post">
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
 		
-		ID da Questao:
-		 <select name="questao_id" value="{{questao->id}}">
-		 	@foreach ($questaos as $questao)
-		  	<option value="{{$questao->id}}"> {{$questao->id}}</option>
+		ID do Aluno:
+		 <select name="aluno_id" value="{{aluno->id}}">
+		 	@foreach ($alunos as $aluno)
+		  	<option value="{{$aluno->id}}"> {{$aluno->id}}</option>
 		  	@endforeach
 			</select> 
 		ID do Simulado:

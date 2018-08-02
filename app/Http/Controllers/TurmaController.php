@@ -12,18 +12,18 @@ class TurmaController extends Controller
     	$turma->aluno_id = $request->aluno_id;
     	$turma->ciclo_id = $request->ciclo_id;
     	$turma->save();
-    	return redirect('/listar/Turmas');
+    	return redirect('/listar/turma');
     }
 
     public function cadastrar(){
     	$alunos = \App\Aluno::all();
     	$ciclos = \App\Ciclo::all();
-    	return view('cadastrarTurma', ['alunos' => $alunos, 'ciclos' => $ciclos]);
+    	return view('/TurmaView/cadastrarTurma', ['alunos' => $alunos, 'ciclos' => $ciclos]);
     }
 
     public function listar(){
     	$turmas = \App\Turma::all();
-    	return view ('listaTurmas',['turmas' => $turmas]);
+    	return view ('/TurmaView/listaTurmas',['turmas' => $turmas]);
     }
 
     public function editar(Request $request){
@@ -31,7 +31,7 @@ class TurmaController extends Controller
     	$alunos = \App\Aluno::all();
     	$ciclos = \App\Ciclo::all();
 
-    	return view('editarTurmas',['turma'=> $turma, 'alunos'=> $alunos, 'ciclos' => $ciclos ]);
+    	return view('/TurmaView/editarTurmas',['turma'=> $turma, 'alunos'=> $alunos, 'ciclos' => $ciclos ]);
 
     }
 
@@ -40,13 +40,13 @@ class TurmaController extends Controller
 		#$turma->aluno_id = $request->aluno_id;
 		$turma->ciclo_id = $request->ciclo_id;
 		$turma->update();
-		return redirect("/listar/Turmas");
+		return redirect("/listar/turma");
     }
 
     public function remover(Request $request){
  	$turma = \App\Turma::find($request->id);
  	$turma->delete();
- 	return redirect("/listar/Turmas");
+ 	return redirect("/listar/turma");
  		
  	}
 }

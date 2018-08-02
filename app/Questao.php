@@ -12,7 +12,7 @@ class Questao extends Model
     	return $this->hasOne('App\Disciplina');
     }
 
-    protected $fillable = ['enuciado', 
+    protected $fillable = ['enunciado', 
 						   'alternativa_a', 
 						   'alternativa_b',
 						   'alternativa_c', 
@@ -22,7 +22,7 @@ class Questao extends Model
 						   'dificuldade'];
 
     public static $rules = [
-    	'enuciado' => 'required|min:10',
+    	'enunciado' => 'required|min:10',
     	'alternativa_a' => 'required',
     	'alternativa_b' => 'required',
     	'alternativa_c' => 'required',
@@ -30,13 +30,14 @@ class Questao extends Model
     	'alternativa_e' => 'required',
     	'alternativa_correta' => 'required|max:1',
     	'dificuldade' => 'required',
-    	'disciplina_id'=> 'required'
+    	'disciplina_id'=> 'required|integer'
     ];
 
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
-    	'enuciado.min' => 'Este campo deve ter no minimo 10 caracteres',
-    	'alternativa_correta.max' => 'Este campo de ter no minimo 10 caracteres'
+    	'enunciado.min' => 'Este campo deve ter no minimo 10 caracteres',
+    	'alternativa_correta.max' => 'Este campo de ter no max 1 caracteres',
+        'disciplina_id.integer' => 'o id deve ser inteiro'
     ];
 
 }

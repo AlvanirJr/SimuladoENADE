@@ -2,7 +2,7 @@
 @section('content')
   
 	<h1>editar Turma</h1><br><br>
-	<form action = "/atualizar/Turma" method = "post">
+	<form action = "/atualizar/turma" method = "post">
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
 		
 		ID do Aluno:

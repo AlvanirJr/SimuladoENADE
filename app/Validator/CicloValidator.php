@@ -6,7 +6,7 @@ use App\Ciclo;
 class CicloValidator
 {
 
-	public function validate($dados)
+	public static function validate($dados)
     {
 
     	$validator = \Validator::make($dados,

@@ -20,6 +20,5 @@ class Curso extends Model
 
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
-    	'ciclo_id' => 'Este campo deve ter no minimo 1 caracteres',
     ];
 }

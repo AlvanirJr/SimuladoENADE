@@ -8,49 +8,47 @@ use \App\Notifications\usuarioNotificacao;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 use \App\Mail\emailConfirmacao;
+use App\Validator\UsuarioValidator;
+use App\Validator\ValidationException;
 
 
-
-
-class Administradorcontroller extends Controller
+class Usuariocontroller extends Controller
 {
-       public function adcionar(Request $request){
-    	$usuarios = new \App\Usuario();
-    	$usuarios->nome = $request->nome;
-    	$usuarios->cpf = $request->cpf;
-    	$usuarios->password = $request->password;
-    	$usuarios->email = $request->email;
-        $usuarios->tipo_usuario_id = $request->tipo_usuario_id;
-        $usuarios->curso_id = $request->curso_id;
-    	if($usuarios->save()){
-            $usuario = $request->email;
-            Mail::to($usuario)->send(new emailConfirmacao()); 
+    public function adicionar(Request $request){
+    	try{
+            UsuarioValidator::Validate($request->all());
+
+            $usuario = new \App\Usuario();
+            $usuario->fill($request->all());
+            if($usuarios->save()){
+                $usuario = $request->email;
+                Mail::to($usuario)->send(new emailConfirmacao()); 
         
+            }
+            return redirect("listar/usuario");
         }
-
-        return redirect("/listar/usuario");
-
+        catch(ValidationException $ex){
+            return redirect("cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
+        }
     }
 
     public function cadastrar(){
 //        $this->authorize('adcionar', \App\Usuario::class);        
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\TipoUsuario::all();
-		return view('cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);
-
-
+		return view('/UsuarioView/cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
     }
     
     public function listar () {
 		$usuarios = \App\Usuario::all();
-		return view('ListaUsuario',['usuarios' => $usuarios]);   
+		return view('/UsuarioView/ListaUsuario',['usuarios' => $usuarios]);   
     }
     
     public function editar(Request $request) {
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\TipoUsuario::all();
 		$usuario = \App\Usuario::find($request->id);
-		return view('editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
+		return view('/UsuarioView/editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
     }
     
     public function atualizar(Request $request){
