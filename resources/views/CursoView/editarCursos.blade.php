@@ -12,6 +12,12 @@
 			<option value="{{$ciclo->id}}">{{$ciclo->tipo_ciclo}}</option>
 			@endforeach
 		</select>
+
+		Unidade: <select name="unidade_id">
+			@foreach($unidade_academicas as $unidade_academica)
+				<option value="{{$unidade_academica->id}}">{{$unidade_academica->nome}}</option>
+				@endforeach
+		</select>
 		<input type="submit" value="atualizar"/>
 	</form>
 @stop

@@ -10,15 +10,19 @@ class Curso extends Model
     public function ciclo(){
     	return $this->hasOne('App\Ciclo');
     }
+     public function unidadeAcademica(){
+        return $this->hasOne('App\UnidadeAcademica');
+    }
 
-    protected $fillable = ['curso_nome','ciclo_id'];
+    protected $fillable = ['curso_nome','ciclo_id', 'unidade_id'];
     
     public static $rules = [
     	'ciclo_id' => 'required',
-    	'curso_nome' => 'required'
+    	'curso_nome' => 'required',
+        'unidade_id' => 'required'
     ];
 
     public static $messages = [
-    	'required' => 'O campo :attribute deve ser preenchido na forma correta',
+    	'required' => 'O campo :attribute deve ser preenchido na forma correta' 
     ];
 }

@@ -28,7 +28,24 @@
 		    			<strong>{{$errors->first('ciclo_id')}}</strong>
 		    		</span>
 		    	@endif
+
+
 	    	</div>
+	    		<div class="form-group col-md-4">
+		      	<label for="unidade_id">Unidade</label>
+		      	<select class="form-control" name="unidade_id" required>
+					@foreach($unidade_academicas as $unidade_academica)
+					<option value="{{$unidade_academica->id}}">{{$unidade_academica->nome}}</option>
+					@endforeach
+				</select>
+				@if ($errors->has('unidade_id'))
+		    		<span class = "help-block">
+		    			<strong>{{$errors->first('unidade_id')}}</strong>
+		    		</span>
+		    	@endif
+	    	</div>
+
+
 	   	</div>
 
 	  <button type="submit" name="cadastrar" class="btn btn-primary float-right">Cadastrar</button><br><br>
