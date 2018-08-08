@@ -7,7 +7,7 @@
 
 		<input type="hidden" name="password" value="{{$usuario->password}}">
 
-		<h1 class="text-center"> Editar usuário </h1><br><br>	
+		<h1 class="text-center"> Editar Usuario </h1><br><br>	
 
 	  <div class="form-row ">
 	    <div class="form-group col-md-6">
@@ -37,7 +37,7 @@
 	      	<label for="curso_id">Curso</label>
 	      	<select name="curso_id" class="form-control{{ $errors->has('curso_id') ? ' is-invalid' : '' }}" required autofocus>
 				@foreach ($cursos as $curso)
-				<option value="{{$curso->id}}" {{old('curso') == $curso->id ? 'selected' : '' }}>{{$curso->curso_nome}} 
+				<option value="{{$curso->id}}" {{$usuario->curso_id == $curso->id ? 'selected' : '' }}>{{$curso->curso_nome}} 
 				</option>
 				@endforeach
 			</select>
@@ -52,7 +52,7 @@
 	    	<label for="tipo_usuario_id">Tipo de usuário</label>
 	      	<select name="tipo_usuario_id" class="form-control{{ $errors->has('tipo_usuario_id') ? ' is-invalid' : '' }}" required autofocus>
 				@foreach ($tipos_usuario as $tipo_usuario)
-				<option value="{{$tipo_usuario->id}}" {{old('tipo_usuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
+				<option value="{{$tipo_usuario->id}}" {{$usuario->tipo_usuario_id == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
 				@endforeach
 			</select>
 			@if ($errors->has('tipo_usuario_id'))
@@ -73,6 +73,6 @@
 	    </div>
 	    </div>
 
-	  	<button type="submit" name="editar" class="btn btn-primary float-right">Cadastrar</button><br><br>
+	  	<button type="submit" name="editar" class="btn btn-primary float-right">Editar</button><br><br>
 	</form>
 @stop

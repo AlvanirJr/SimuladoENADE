@@ -46,12 +46,17 @@ class SimuladoController extends Controller
     }
 
     public function atualizar(Request $request){
-    	$simulado = \App\Simulado::find($request->id);
-    	$simulado->descricao_simulado = $request->descricao_simulado;
-        $simulado->curso_id = $request->curso_id;
-        $simulado->usuario_id = $request->usuario_id;
-    	$simulado->update();
-    	return redirect('listar/simulado');
+        try{
+            SimuladoValidator::Validate($request->all());
+
+            $simulado = \App\Simulado::find($request->id);
+            $simulado->fill($request->all());
+            $simulado->update();
+            return redirect("listar/simulado");
+        }
+        catch(ValidationException $ex){
+            return redirect("editar/simulado")->withErrors($ex->getValidator())->withInput();
+        }
     }
 
 //Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
