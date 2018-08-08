@@ -14,13 +14,13 @@ class Simulado extends Model
     	return $this->hasOne('App\Curso');
     }
   
-    protected $fillable = ['descricao_simulado','usuario_id','simulado_id'];
+    protected $fillable = ['descricao_simulado','usuario_id','curso_id'];
 
 
     public static $rules = [
     	'descricao_simulado' => 'required|min:5',
         'usuario_id' => 'required',
-        'simulado_id' => 'required'
+        'curso_id' => 'required'
     ];
 
     public static $messages = [

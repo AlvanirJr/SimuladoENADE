@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use \App\Notifications\usuarioNotificacao;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
@@ -20,6 +21,8 @@ class Usuariocontroller extends Controller
 
             $usuario = new \App\Usuario();
             $usuario->fill($request->all());
+            $usuario->password = Hash::make($request->password);
+
             if($usuario->save()){
                 $usuario = $request->email;
                 Mail::to($usuario)->send(new emailConfirmacao()); 
@@ -52,15 +55,17 @@ class Usuariocontroller extends Controller
     }
     
     public function atualizar(Request $request){
-		$usuario = \App\Usuario::find($request->id);    
-    	$usuario->email = $request->email;
-        $usuario->nome = $request->nome;
-        $usuario->curso_id= $request->curso_id;
-        $usuario->tipo_usuario_id = $request->tipo_usuario_id;
-    	$usuario->senha = $request->senha;
-    	$usuario->update();
-    	return redirect("/listar/usuario");
-    	
+        try{
+            UsuarioValidator::Validate($request->all());
+
+            $usuario = \App\Usuario::find($request->id);    
+            $usuario->fill($request->all());
+            $usuario->update();
+            return redirect("listar/usuario");
+        }
+        catch(ValidationException $ex){
+            return redirect("editar/usuario/".$usuario->id)->withErrors($ex->getValidator())->withInput();
+        }
     }
     
     public function remover (Request $request) {

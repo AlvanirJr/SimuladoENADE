@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Validator\AlunoValidator;
+use Illuminate\Support\Facades\Hash;
 use App\Validator\ValidationException;
 
 class AlunoController extends Controller
@@ -14,6 +15,7 @@ class AlunoController extends Controller
 
         	$aluno = new \App\Aluno();
         	$aluno->fill($request->all());
+        	$aluno->password = Hash::make($request->password);
         	$aluno->save();
         	return redirect("listar/aluno");
     	}
@@ -42,13 +44,16 @@ class AlunoController extends Controller
 	}
 
 	public function atualizar(Request $request){
-		$aluno = \App\Aluno::find($request->id);
-		$aluno->nome = $request->nome;
-		$aluno->email = $request->email;
-		$aluno->password = $request->password;
-		$aluno->curso_id = $request->curso_id;
-		$aluno->update();
-		return redirect('\listar\aluno');
+		try{
+        	AlunoValidator::Validate($request->all());
+        	$aluno = \App\Aluno::find($request->id);    
+        	$aluno->fill($request->all());
+        	$aluno->update();
+        	return redirect("listar/aluno");
+    	}
+    	catch(ValidationException $ex){
+        	return redirect("editar/aluno/".$request->id)->withErrors($ex->getValidator())->withInput();
+    	}
 	}
 
 	    public function remover(Request $request){
