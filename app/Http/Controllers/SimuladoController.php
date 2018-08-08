@@ -50,9 +50,14 @@ class SimuladoController extends Controller
     public function montar(Request $request){
 
         $disciplinas = \App\Disciplina::all();
-        $questaos = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
-        $questaocertas = \App\Questao::all();
-        return view('montar',['disciplinas' => $disciplinas, 'questaos' => $questaos, 'simulado_id'=> $request->id, 'questaocertas' => $questaocertas]);
+        //$questaos = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
+        $questaos = \DB::table('questao_simulados')
+            ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
+            ->select('questaos.*', 'questao_simulados.*')
+            ->where('simulado_id', '=', $request->id)
+            ->get();
+
+        return view('montar',['disciplinas' => $disciplinas, 'questaos' => $questaos, 'simulado_id'=> $request->id]);
     }
 
     public function cadastrarQuestao(Request $request){
@@ -61,8 +66,11 @@ class SimuladoController extends Controller
          $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
                                         ->get()->toArray();
-
+       
         $num_questao = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
+        if($request->dificuldade == 1){
+            $request->dificuldade = "facil";
+        }
 
         $cachorro = count($num_questao);
 

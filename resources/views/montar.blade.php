@@ -51,10 +51,21 @@
 			<tr>
 				<td>{{$questaocerta->id}}</td>
 				<td>{{$questaocerta->enunciado}}</td>
-				<td>{{$questaocerta->dificuldade}}</td>
+				<td>
+					@if($questaocerta->dificuldade  == 1)
+						facil
+					@elseif($questaocerta->dificuldade  == 2)
+						médio
+					@else
+						difícil
+					@endif
+
+
+
+				</td>
 				<td>{{$questaocerta->disciplina_id}}</td>
 				<td> <a href='/excluir/simulado/{{$questaocerta->id}}'>Editar</a></td>
-				</tr>
+			</tr>
 			@endforeach
 			@else
 			<td colspan="4 ">Não existe questões cadastradas</td>
