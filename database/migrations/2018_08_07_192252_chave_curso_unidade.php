@@ -14,7 +14,7 @@ class ChaveCursoUnidade extends Migration
     public function up()
     {
         Schema::table('cursos', function (Blueprint $table) {
-            $table->foreign('unidade_id')->references('id')->on('unidadeAcademicas');
+            $table->foreign('unidade_id')->references('id')->on('unidade_academicas');
         });
     }
 
