@@ -1,0 +1,14 @@
+primeiro cadastra curso com unidade academica e coordenador
+depois  cadastra ciclo e associa os cursos
+1 cuso pode ter mais um coordenador
+listagem de curso, o coordenador so pode mexe nos cursos dele
+campo de confirmação de senha
+aluno com ligação ao curso importa de lista
+questao com text
+questao com seleção multi disciplinar
+
+inclusao de imagens nas questoes
+
+shuffle função para embaralhar as questao
+
+tinker para testes em banco

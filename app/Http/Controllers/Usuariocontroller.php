@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Notifications\Notification;
 use Illuminate\Http\Request;
+use \App\Notifications\usuarioNotificacao;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
+use \App\Mail\emailConfirmacao;
 use App\Validator\UsuarioValidator;
 use App\Validator\ValidationException;
 
@@ -15,7 +20,11 @@ class Usuariocontroller extends Controller
 
             $usuario = new \App\Usuario();
             $usuario->fill($request->all());
-            $usuario->save();
+            if($usuario->save()){
+                $usuario = $request->email;
+                Mail::to($usuario)->send(new emailConfirmacao()); 
+        
+            }
             return redirect("listar/usuario");
         }
         catch(ValidationException $ex){

@@ -7,7 +7,8 @@
 			<tr>
 				<th>Id</th>
 				<th>Nome do Curso</th>
-				<th>Id do ciclo</th>
+				<th>ID do Ciclo</th>
+				<th>Unidade</th>
 				<th>Funções</th>
 			</tr>
 		</thead>
@@ -17,6 +18,7 @@
 				<td>{{$curso->id}}</td>
 				<td>{{$curso->curso_nome}}</td>
 				<td>{{$curso->ciclo_id}}</td>
+				<td>{{$curso->unidade_id}}</td>
 				<td> 
 					<a href="/editar/curso/{{$curso->id}}">Editar</a> - 
 					<a href="/remover/curso/{{$curso->id}}">Remover</a>

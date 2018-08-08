@@ -44,6 +44,7 @@
 		    		</span>
 		    	@endif
 	    	</div>
+
 	   	</div>
 
 	  <button type="submit" name="cadastrar" class="btn btn-primary float-right">Cadastrar</button><br><br>

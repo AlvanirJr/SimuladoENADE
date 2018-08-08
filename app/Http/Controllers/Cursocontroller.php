@@ -36,15 +36,17 @@ class Cursocontroller extends Controller
 
  	}
  	public function editar(Request $request){ 	
-        $ciclos = \App\Ciclo::all();	
+        $ciclos = \App\Ciclo::all();
+        $unidadeAcademicas = \App\UnidadeAcademica::all();
  		$curso = \App\Curso::find($request->id);
- 		return view('/CursoView/editarCursos', ['ciclos' => $ciclos,'curso' => $curso]);
+ 		return view('/CursoView/editarCursos', ['ciclos' => $ciclos,'unidade_academicas' => $unidadeAcademicas,'curso' => $curso, ]);
  	}	
     
     public function atualizar(Request $request) {
     	$curso = \App\Curso::find($request->id);
     	$curso->curso_nome = $request->curso_nome;
     	$curso->ciclo_id = $request->ciclo_id;
+        $curso->unidade_id = $request->unidade_id;
     	$curso->update();
     	return redirect("/listar/curso");
     }	

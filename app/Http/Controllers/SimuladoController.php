@@ -36,10 +36,10 @@ class SimuladoController extends Controller
     }
 
     public function editar(Request $request){
+    	$simulado= \App\Simulado::find($request->id);
         $cursos = \App\Curso::all();
         $usuarios = \App\Usuario::all();
     	return view ('/SimuladoView/editarSimulado', ['simulado' => $simulado, 'cursos' => $cursos, 'usuarios' => $usuarios]);
-
     }
 
     public function atualizar(Request $request){
@@ -50,10 +50,19 @@ class SimuladoController extends Controller
     	$simulado->update();
     	return redirect('listar/simulado');
     }
-    public function montar(Request $request){
 
-        return view('montar',['id_curso' => $request->id_curso]);
+//Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
+    public function montar(Request $request){
+        $disciplinas = \App\Disciplina::find($request->id);
+        //return view('montar',['disciplinas' => $disciplinas]);
     }
+
+    public function responder(Request $request){
+        
+
+    }
+
+
 
     public function remover(Request $request){
     	$simulado = \App\Simulado::find($request->id);

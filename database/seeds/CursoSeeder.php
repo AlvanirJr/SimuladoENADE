@@ -12,7 +12,7 @@ class CursoSeeder extends Seeder
     public function run()
     {
         for($i = 1; $i < 6; $i++){
-        	DB::table('cursos')->insert(['ciclo_id'=> $i, 'curso_nome'=> str_random(10)]);
+        	DB::table('cursos')->insert(['ciclo_id'=> 1, 'curso_nome'=> str_random(10), 'unidade_id' => 1]);
         }
     }
 }
