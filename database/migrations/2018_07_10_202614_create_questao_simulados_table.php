@@ -20,7 +20,7 @@ class CreateQuestaoSimuladosTable extends Migration
             
             $table->foreign('questao_id')->references('id')->on('questaos');
             $table->foreign('simulado_id')->references('id')->on('simulados');
-             $table->timestamps();
+            $table->timestamps();
             
         });
     }

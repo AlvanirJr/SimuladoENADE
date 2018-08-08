@@ -20,6 +20,7 @@ class QuestaoSimuladoController extends Controller
     public function cadastrar(){
     	$questaos = \App\Questao::all();
     	$simulados = \App\Simulado::all();
+
     	return view('/QuestaoSimuladoView/cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
     }
 
