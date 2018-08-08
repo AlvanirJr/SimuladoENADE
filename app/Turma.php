@@ -14,7 +14,7 @@ class Turma extends Model
     	return $this->hasOne('App\Ciclo');
     }
 
-     protected $fillable = [];
+     protected $fillable = ['aluno_id', 'ciclo_id'];
 
      public static $rules = [
      	'aluno_id' => 'required',

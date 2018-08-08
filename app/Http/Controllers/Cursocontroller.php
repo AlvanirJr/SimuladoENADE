@@ -26,7 +26,8 @@ class Cursocontroller extends Controller
 
 	 public function cadastrar() {
     	$ciclos = \App\Ciclo::all();
-        return view('/CursoView/cadastrarCursos', ['ciclos' => $ciclos]);
+        $unidadeAcademicas = \App\UnidadeAcademica::all();
+        return view('/CursoView/cadastrarCursos', ['ciclos' => $ciclos, 'unidade_academicas' => $unidadeAcademicas]);
     }
 
 	public function listar(){

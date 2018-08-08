@@ -19,7 +19,7 @@ class Questao extends Model
 						   'alternativa_d',
 						   'alternativa_e', 
 						   'alternativa_correta', 
-						   'dificuldade'];
+						   'dificuldade', 'disciplina_id'];
 
     public static $rules = [
     	'enunciado' => 'required|min:10',

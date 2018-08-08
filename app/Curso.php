@@ -11,7 +11,7 @@ class Curso extends Model
     	return $this->hasOne('App\Ciclo');
     }
 
-    protected $fillable = ['curso_nome'];
+    protected $fillable = ['curso_nome', 'ciclo_id'];
     
     public static $rules = [
     	'ciclo_id' => 'required',

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Aluno extends Model
 {
-    protected $fillable = ['nome', 'email', 'password', 'cpf'];
+    protected $fillable = ['nome', 'email', 'password', 'cpf', 'curso_id'];
     protected $hidden = ['password', 'remember_token'];
     //
     public function curso(){

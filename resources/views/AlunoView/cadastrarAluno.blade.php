@@ -8,20 +8,20 @@
 	  <div class="form-row ">
 	    <div class="form-group col-md-6">
 	      <label for="nome">Nome</label>
-	      <input type="text" class="form-control"  name="nome" id="nome" placeholder="Nome" required>
+	      <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" value="{{ old('nome') }}" required autofocus >
 	      @if ($errors->has('nome'))
-	        <span class = "help-block">
-	          <strong>{{$errors->first('nome')}}</strong>
+	        <span class = "invalid-feedback" role="alert">
+	          {{$errors->first('nome')}}
 	        </span>
 	      @endif
 	    </div>
 
 	    <div class="form-group col-md-6">
 	      <label for="password">Senha</label>
-	      <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
+	      <input type="password" id="password" name="password" placeholder="Senha" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}" required autofocus>
 	      @if ($errors->has('password'))
-	    	<span class = "help-block">
-	    		<strong>{{$errors->first('password')}}</strong>
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('password')}}
 	    	</span>
 	    	@endif
 	    </div>
@@ -29,10 +29,10 @@
 	  
 	  <div class="form-group">
 	    <label for="email">E-mail</label>
-	    <input type="text" class="form-control" id="email" name="email" placeholder="exemplo@exemplo" required>
+	    <input type="text" id="email" name="email" placeholder="exemplo@exemplo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required autofocus>
 	  	@if ($errors->has('email'))
-	    	<span class = "help-block">
-	    		<strong>{{$errors->first('email')}}</strong>
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('email')}}
 	    	</span>
 	    @endif
 	  </div>
@@ -40,24 +40,25 @@
 	  <div class="form-row">
 	    <div class="form-group col-md-4">
 	      	<label for="curso_id">Curso</label>
-	      	<select class="form-control" name="curso_id" required>	
+	      	<select name="curso_id" class="form-control{{ $errors->has('curso_id') ? ' is-invalid' : '' }}" required autofocus>
 				@foreach ($cursos as $curso)
-				<option value="{{$curso->id}}">{{$curso->curso_nome}}</option>
+				<option value="{{$curso->id}}" {{old('curso') == $curso->id ? 'selected' : '' }}>{{$curso->curso_nome}} 
+				</option>
 				@endforeach
 			</select>
 			@if ($errors->has('curso_id'))
-	    		<span class = "help-block">
-	    			<strong>{{$errors->first('curso_id')}}</strong>
+	    		<span class = "invalid-feedback" role="alert">
+	    			{{$errors->first('curso_id')}}
 	    		</span>
 	    	@endif
 	    </div>
 
 	     <div class="form-group col-md-4">
 	    	<label for="cpf">CPF</label>
-	    	<input type="text" class="form-control" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
+	    	<input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ old('cpf') }}" required autofocus>
 	    	@if ($errors->has('cpf'))
-	    		<span class = "help-block">
-	    			<strong>{{$errors->first('cpf')}}</strong>
+	    		<span class = "invalid-feedback" role="alert">
+	    			{{$errors->first('cpf')}}
 	    		</span>
 	    	@endif
 	    </div>
