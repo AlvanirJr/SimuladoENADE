@@ -43,12 +43,18 @@ class Cursocontroller extends Controller
  	}	
     
     public function atualizar(Request $request) {
-    	$curso = \App\Curso::find($request->id);
-    	$curso->curso_nome = $request->curso_nome;
-    	$curso->ciclo_id = $request->ciclo_id;
-        $curso->unidade_id = $request->unidade_id;
-    	$curso->update();
-    	return redirect("/listar/curso");
+
+        try{
+            CursoValidator::Validate($request->all());
+
+            $curso = \App\Curso::find($request->id);
+            $curso->fill($request->all());
+            $curso->update();
+            return redirect("listar/curso");
+        }
+        catch(ValidationException $ex){
+            return redirect("editar/curso")->withErrors($ex->getValidator())->withInput();
+        }
     }	
     
     public function remover(Request $request){

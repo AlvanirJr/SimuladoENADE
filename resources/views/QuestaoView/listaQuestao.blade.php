@@ -18,7 +18,7 @@
 			@foreach($questaos as $questao)
 			<tr>
 				<td>{{$questao->id}}</td>
-				<td>{{$questao->enuciado}}</td>
+				<td>{{$questao->enunciado}}</td>
 				<td>{{$questao->dificuldade}}</td>
 				<td>{{$questao->disciplina_id}}</td>
 
