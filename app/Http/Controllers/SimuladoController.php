@@ -61,16 +61,14 @@ class SimuladoController extends Controller
     }
 
     public function cadastrarQuestao(Request $request){
-        
+        try{
 
          $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
                                         ->get()->toArray();
        
         $num_questao = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
-        if($request->dificuldade == 1){
-            $request->dificuldade = "facil";
-        }
+
 
         $cachorro = count($num_questao);
 
@@ -87,7 +85,11 @@ class SimuladoController extends Controller
             $questao->save();
         }
         return redirect('/montar/simulado/'.$request->id);
+        }
+        catch(Exeption $ex){
+                  
 
+        }
     }
 
     public function responder(Request $request){
