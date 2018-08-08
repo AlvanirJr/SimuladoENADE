@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+    <div class="shadow p-4 mb-5 bg-white rounded container-fluid" style="overflow-x: auto;">
     
 	<h1> Lista de Simulado dos Alunos </h1><br><br>
 	<table class="table">

@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    
+    <div class="shadow p-4 mb-5 bg-white rounded container-fluid" style="overflow-x: auto;">
 	<h1>Listar Aluno</h1>
 	<table class="table table-hover table-bordered">
  		<thead>
