@@ -16,6 +16,7 @@ class SimuladoAluno extends Model
 
       protected $fillable = ['aluno_id','simulado_id'];
 
+
      public static $rules = [
      	'aluno_id' => 'required',
      	'simulado_id' => 'required'

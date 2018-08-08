@@ -13,8 +13,9 @@ class Simulado extends Model
     public function curso(){
     	return $this->hasOne('App\Curso');
     }
-
+  
     protected $fillable = ['descricao_simulado','usuario_id','simulado_id'];
+
 
     public static $rules = [
     	'descricao_simulado' => 'required|min:5',

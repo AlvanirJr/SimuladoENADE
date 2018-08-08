@@ -8,10 +8,10 @@
 		<div class="form-row ">
 	    	<div class="form-group col-md-6">
 	      	<label for="tipo_ciclo">Tipo Ciclo</label>
-	      	<input type="text" class="form-control"  name="tipo_ciclo" id="tipo_ciclo" placeholder="Nome" required>
+	      	<input type="text" name="tipo_ciclo" id="tipo_ciclo" placeholder="Nome" class="form-control{{ $errors->has('tipo_ciclo') ? ' is-invalid' : '' }}" value="{{ old('tipo_ciclo') }}" required autofocus>
 	    	@if ($errors->has('tipo_ciclo'))
-	    	<span class = "help-block">
-	    		<strong>{{$errors->first('tipo_ciclo')}}</strong>
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('tipo_ciclo')}}
 	    	</span>
 	    	@endif
 	    	</div> 

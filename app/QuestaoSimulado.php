@@ -14,7 +14,6 @@ class QuestaoSimulado extends Model
     	return $this->hasOne('App\Questao');
     }
 
-
     protected $fillable = ['questao_id','simulado_id'];
 
     public static $rules = [

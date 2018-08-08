@@ -15,6 +15,7 @@ class Curso extends Model
     }
 
     protected $fillable = ['curso_nome','ciclo_id', 'unidade_id'];
+
     
     public static $rules = [
     	'ciclo_id' => 'required',

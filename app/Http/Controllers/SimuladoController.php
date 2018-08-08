@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Validator\SimuladoValidator;
+use App\Validator\ValidationException;
+
 
 class SimuladoController extends Controller
 {
     //
     public function adicionar(Request $request){
-    	$simulados = new \App\Simulado();
-    	$simulados->descricao_simulado = $request->descricao_simulado;
-        $simulados->curso_id = $request->curso_id;
-        $simulados->usuario_id = $request->usuario_id;
-    	$simulados->save();
-    	return redirect('/listar/simulado');
+        try{
+            SimuladoValidator::Validate($request->all());
+
+            $simulado = new \App\Simulado();
+            $simulado->fill($request->all());
+            $simulado->save();
+            return redirect("listar/simulado");
+        }
+        catch(ValidationException $ex){
+            return redirect("cadastrar/simulado")->withErrors($ex->getValidator())->withInput();
+        }
     }
 
     public function cadastrar(){
