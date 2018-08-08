@@ -22,7 +22,8 @@
 				<td>{{$simulado->curso_id}}</td>
 				<td>
 					<a href="/editar/simulado/{{$simulado->id}}">Editar</a> -
-					<a href="/remover/simulado/{{$simulado->id}}">Remover</a>
+					<a href="/remover/simulado/{{$simulado->id}}">Remover</a> - 
+					<a href="/montar/simulado/{{$simulado->id}}">Montar</a>
 				</td>
 			</tr>
 			@endforeach

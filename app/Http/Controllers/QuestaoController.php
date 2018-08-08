@@ -66,7 +66,9 @@ class QuestaoController extends Controller
     public function filtro_disciplina_dificuldade(Request $request){
         $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
-                                        ->get();
+                                        ->get()->toArray();
+        var_dump($questaos);
+        exit();
 
         return json_encode($questaos);
     }
