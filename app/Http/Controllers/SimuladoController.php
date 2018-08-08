@@ -42,11 +42,19 @@ class SimuladoController extends Controller
     	$simulado->update();
     	return redirect('listar/simulado');
     }
-    public function montar(Request $request){
 
-            $disciplinas = \App\Disciplina::find($request->id);
-        return view('montar',['disciplinas' => $disciplinas]);
+//Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
+    public function montar(Request $request){
+        $disciplinas = \App\Disciplina::find($request->id);
+        //return view('montar',['disciplinas' => $disciplinas]);
     }
+
+    public function responder(Request $request){
+        
+
+    }
+
+
 
     public function remover(Request $request){
     	$simulado = \App\Simulado::find($request->id);
