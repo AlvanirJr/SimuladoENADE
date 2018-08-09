@@ -59,7 +59,7 @@ class SimuladoController extends Controller
 //Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
     public function montar(Request $request){
         $disciplinas = \App\Disciplina::find($request->id);
-        //return view('montar',['disciplinas' => $disciplinas]);
+        //return view('montar',['disciplians' => $disciplinas]);
     }
 
     public function responder(Request $request){

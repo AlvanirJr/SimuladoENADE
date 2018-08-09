@@ -11,8 +11,10 @@ class QuestaoController extends Controller
 {
     public function adicionar(Request $request){
         try{
-            QuestaoValidator::Validate($request->all());
+            //QuestaoValidator::Validate($request->all());
             $questao = new \App\Questao();
+            var_dump($request->enunciado);
+            exit();
             $questao->fill($request->all());
             $questao->save();
             return redirect("listar/questao");
