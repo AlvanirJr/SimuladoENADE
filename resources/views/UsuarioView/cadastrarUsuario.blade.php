@@ -55,9 +55,9 @@
 	   
 	    <div class="form-group col-md-4">
 	    	<label for="tipo_usuario_id">Tipo de usuário</label>
-	      	<select name="tipo_usuario_id" class="form-control{{ $errors->has('tipo_usuario_id') ? ' is-invalid' : '' }}" required autofocus>
+	      	<select name="tipousuario_id" class="form-control{{ $errors->has('tipousuario_id') ? ' is-invalid' : '' }}" required autofocus>
 				@foreach ($tipos_usuario as $tipo_usuario)
-				<option value="{{$tipo_usuario->id}}" {{old('tipo_usuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
+				<option value="{{$tipo_usuario->id}}" {{old('tipousuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
 				@endforeach
 			</select>
 			@if ($errors->has('tipo_usuario_id'))

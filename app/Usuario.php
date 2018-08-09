@@ -8,15 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Usuario extends Authenticatable
 {
 
-	protected $fillable = ['nome', 'cpf', 'email', 'password', 'tipo_usuario_id','curso_id'];
+	protected $fillable = ['nome', 'cpf', 'email', 'password', 'tipousuario_id','curso_id'];
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function tipo_usuario(){
-        return $this->hasOne('App\TipoUsuario');
+    public function tipousuario(){
+        return $this->BelongsTo('\App\Tipousuario');
     }
     public function curso(){
-        return $this->hasOne('App\Curso');
+        return $this->hasOne('\App\Curso');
     }
 
     public static $rules = [
@@ -24,7 +24,7 @@ class Usuario extends Authenticatable
     	'cpf' => 'required|min:14',
     	'password' => 'required|min:8',
     	'email' => 'required|email',
-    	'tipo_usuario_id' => 'required',
+    	'tipousuario_id' => 'required',
     	'curso_id'  => 'required'
     ];
 
