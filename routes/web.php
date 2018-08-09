@@ -80,6 +80,9 @@ Route::post('/atualizar/simulado', 'SimuladoController@atualizar');
 Route::get('/remover/simulado/{id}', 'SimuladoController@remover');
 Route::get('/montar/simulado/{id}', 'SimuladoController@montar');
 Route::post('/cadastrarQuestao/simulado', 'SimuladoController@cadastrarQuestao');
+Route::get('/questao/simulado/{id}', 'SimuladoController@questao');
+Route::post('/responder/simulado/', 'SimuladoController@responder');
+Route::get('/resultado/simulado/{id}', 'SimuladoController@resultado');
 
 });
 

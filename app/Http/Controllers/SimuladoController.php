@@ -99,14 +99,72 @@ class SimuladoController extends Controller
 
         }
     }
-
+   
     public function responder(Request $request){
-        
+
+        $usuario = \Auth::user()->id;
+
+        $resposta = new \App\Resposta();
+        $resposta->questao_id = $request->questao_id;
+        $resposta->alternativa_questao = $request->alternativa;
+        $resposta->aluno_id = $usuario;
+        $resposta->save();
+
+        return redirect('/questao/simulado/'.$request->simulado_id);
+    
+    }
+    public function questao(Request $request){
+
+        $simulado = \App\Simulado::find($request->id);
+
+        //Id do usuário
+        $usuario = \Auth::user()->id;
+
+        $questaos = \DB::table('questao_simulados')
+            ->whereNotIn('questao_id',function($query) use ($usuario){
+                $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario);
+            })
+            ->where('simulado_id', '=', $request->id)
+            ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
+            ->select('*')
+            ->get()->toArray();
+
+            
+        if (empty($questaos)){
+            return redirect('/resultado/simulado/'.$request->id);
+        }
+        $array = (array) $questaos[0];
+        return view('/SimuladoView/questaoSimulado',['questao'=> $array, 'simulado_id'=>$request->id]);
 
     }
-    
+    public function resultado(Request $request){
+
+        //Id do usuário
+        $usuario = \Auth::user()->id;
+
+        $questaos = \DB::table('questao_simulados')
+            ->join('respostas', 'respostas.questao_id','=','questao_simulados.questao_id')
+            ->join('questaos', 'questaos.id','=','questao_simulados.questao_id')
+            ->where([['respostas.aluno_id', '=', $usuario], ['questao_simulados.simulado_id','=',$request->id]])
+            ->get()->toArray();
+      
+        $resultado = 0;
+
+        $count = count($questaos);
 
 
+
+        foreach ($questaos as $questao) {
+            
+            if($questao->alternativa_questao == $questao->alternativa_correta)
+            {
+                
+                $resultado += 1;
+            }
+
+        }
+        return view('/SimuladoView/resultadoSimulado',['resultado' => $resultado, 'count' => $count]);
+    }
     public function remover(Request $request){
     	$simulado = \App\Simulado::find($request->id);
     	$simulado->delete();
