@@ -18,8 +18,8 @@ class CreateQuestaoSimuladosTable extends Migration
             $table->integer('questao_id')->unsigned();
            	$table->integer('simulado_id')->unsigned();           
             
-            $table->foreign('questao_id')->references('id')->on('questaos');
-            $table->foreign('simulado_id')->references('id')->on('simulados');
+            $table->foreign('questao_id')->references('id')->on('questaos')->onDelete('cascade');
+            $table->foreign('simulado_id')->references('id')->on('simulados')->onDelete('cascade');
             $table->timestamps();
             
         });

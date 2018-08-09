@@ -21,17 +21,18 @@
    		
 
 
-   		<select name="disciplina_id" class="custom-select">
- 			<option selected>Open this select menu</option>
+   		<select name="disciplina_id" class="custom-select" required>
+ 			<option selected hidden value="">Selecione uma opção</option>
  			@foreach($disciplinas as $disciplina);
  			
   			<option value="{{$disciplina->id}}">{{$disciplina->nome}}</option>
   			@endforeach
 		</select>
 
-		<select name="dificuldade" class="custom-select">
- 			<option selected>Open this select menu</option>
-  			<option value="1">Fácil</option>
+		<select name="dificuldade" class="custom-select" required>
+
+ 			<option selected hidden value="">Selecione uma opção</option>  			
+ 			<option value="1">Fácil</option>
   			<option value="2">Médio</option>
   			<option value="3">Difícil</option>
 		</select>
