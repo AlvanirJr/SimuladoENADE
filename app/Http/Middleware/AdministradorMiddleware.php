@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware\MiddlewareModels;
+namespace App\Http\Middleware;
 
 use Closure;
 
-class AutorizacaoMiddleware
+class AdministradorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,13 @@ class AutorizacaoMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->is("/cadastrar/ciclo")) {
-            if(!\Auth::guest() || !\Auth::user()->Usuario->tipousuario_id != 4)
-                return redirect("login");
+
+        if(\Auth::guest() || \Auth::user()->tipousuario_id != 4){
+            return redirect("home");
         }
+        
 
         return $next($request);
     }
 }
+

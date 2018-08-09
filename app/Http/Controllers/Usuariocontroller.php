@@ -17,28 +17,29 @@ class Usuariocontroller extends Controller
 {
     public function adicionar(Request $request){
     	try{
+
             UsuarioValidator::Validate($request->all());
 
             $usuario = new \App\Usuario();
             $usuario->fill($request->all());
             $usuario->password = Hash::make($request->password);
-
-            if($usuario->save()){
+            $usuario->save();
+            if(true){
                 $usuario = $request->email;
                 Mail::to($usuario)->send(new emailConfirmacao()); 
         
             }
-            return redirect("listar/usuario");
+            return redirect("/listar/usuario");
         }
         catch(ValidationException $ex){
-            return redirect("cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
+            return redirect("/cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
         }
     }
 
     public function cadastrar(){
 //        $this->authorize('adcionar', \App\Usuario::class);        
         $cursos = \App\Curso::all();
-        $tipos_usuario = \App\TipoUsuario::all();
+        $tipos_usuario = \App\Tipousuario::all();
 		return view('/UsuarioView/cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
     }
     
@@ -49,7 +50,7 @@ class Usuariocontroller extends Controller
     
     public function editar(Request $request) {
         $cursos = \App\Curso::all();
-        $tipos_usuario = \App\TipoUsuario::all();
+        $tipos_usuario = \App\Tipousuario::all();
 		$usuario = \App\Usuario::find($request->id);
 		return view('/UsuarioView/editarUsuario', ['usuario'=> $usuario, 'cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);    
     }

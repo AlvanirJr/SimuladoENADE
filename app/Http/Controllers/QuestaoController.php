@@ -42,18 +42,17 @@ class QuestaoController extends Controller
     }
 
     public function atualizar(Request $request){
-        $questaos = \App\Questao::find($request->id);
-        $questaos->enuciado = $request->enuciado;
-        $questaos->alternativa_a = $request->alternativa_a;
-        $questaos->alternativa_b = $request->alternativa_b;
-        $questaos->alternativa_c = $request->alternativa_c;
-        $questaos->alternativa_d = $request->alternativa_d;
-        $questaos->alternativa_e = $request->alternativa_e;
-        $questaos->alternativa_correta = $request->alternativa_correta;
-        $questaos->dificuldade = $request->dificuldade;
-        $questaos->disciplina_id = $request->disciplina_id;
-        $questaos->update();
-        return redirect('\listar\questao');
+        try{
+            QuestaoValidator::Validate($request->all());
+            $questao = \App\Questao::find($request->id);
+            $questao->fill($request->all());
+            $questao->update();
+            return redirect("listar/questao");
+        }
+        catch(ValidationException $ex){
+            return redirect("editar/questao")->withErrors($ex->getValidator())->withInput();
+
+        }
 
     }
 

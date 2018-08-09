@@ -3,9 +3,24 @@
     
 	<h1>Montar Simulados</h1><br><br>
 	<form action = "/cadastrarQuestao/simulado" method = "post">
+
+
+
+	@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+	@endif
+
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
-  		<input type = "hidden" name="id" value="{{$simulado_id}}">
+  		<input type = "hidden" name="simulado_id" value="{{$simulado_id}}">
    		
+
+
    		<select name="disciplina_id" class="custom-select">
  			<option selected>Open this select menu</option>
  			@foreach($disciplinas as $disciplina);
@@ -29,7 +44,7 @@
 	   
 	    </div>
 
-		<input type="submit" value="cadastrar"/>
+		<input type="submit" value="montar"/>
 
     
 	<h1>Lista de Questões Cadastradas</h1>
@@ -64,7 +79,7 @@
 
 				</td>
 				<td>{{$questaocerta->disciplina_id}}</td>
-				<td> <a href='/excluir/simulado/{{$questaocerta->id}}'>Editar</a></td>
+				<td> <a href='/remover/questao/{{$questaocerta->id}}'>Remover</a></td>
 			</tr>
 			@endforeach
 			@else

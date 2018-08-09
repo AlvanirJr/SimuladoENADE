@@ -5,7 +5,7 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<h1 class="text-center"> Cadastrar usuário </h1><br><br>	
 
-	  <div class="form-row ">
+	  
 	    <div class="form-group col-md-6">
 	      <label for="nome">Nome</label>
 	      <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" value="{{ old('nome') }}" required autofocus>
@@ -25,8 +25,20 @@
 	    	</span>
 	    	@endif
 	    </div>
-	  </div>
 	  
+	  
+
+	    <div class="form-group col-md-6">
+	      <label for="password_confirmation">Confirmar Senha</label>
+	      <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Senha" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" value="{{ old('password_confirmation') }}" required autofocus>
+	      @if ($errors->has('password_confirmation'))
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('password_confirmation')}}
+	    	</span>
+	    	@endif
+	    </div>
+
+
 	  <div class="form-group">
 	    <label for="email">E-mail</label>
 	    <input type="text" id="email" name="email" placeholder="exemplo@exemplo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" required autofocus>
@@ -55,9 +67,9 @@
 	   
 	    <div class="form-group col-md-4">
 	    	<label for="tipo_usuario_id">Tipo de usuário</label>
-	      	<select name="tipo_usuario_id" class="form-control{{ $errors->has('tipo_usuario_id') ? ' is-invalid' : '' }}" required autofocus>
+	      	<select name="tipousuario_id" class="form-control{{ $errors->has('tipousuario_id') ? ' is-invalid' : '' }}" required autofocus>
 				@foreach ($tipos_usuario as $tipo_usuario)
-				<option value="{{$tipo_usuario->id}}" {{old('tipo_usuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
+				<option value="{{$tipo_usuario->id}}" {{old('tipousuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
 				@endforeach
 			</select>
 			@if ($errors->has('tipo_usuario_id'))

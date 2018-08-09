@@ -36,10 +36,17 @@ class Ciclocontroller extends Controller
 		return view('/CicloView/editarCiclo',['ciclo' =>$ciclos]);
 	}
 	public function atualizar(Request $request){
-		$ciclos = \App\Ciclo::find($request->id);
-		$ciclos->tipo_ciclo = $request->tipo_ciclo;
-		$ciclos->update();
-		return redirect("listar\ciclo");
+		try{
+        	CicloValidator::Validate($request->all());
+
+			$ciclo = \App\Ciclo::find($request->id);
+        	$ciclo->fill($request->all());
+        	$ciclo->update();
+        	return redirect("listar/ciclo");
+    	}
+    	catch(ValidationException $ex){
+        	return redirect("editar/ciclo")->withErrors($ex->getValidator())->withInput();
+    	}
 	}
 
 	public function remover(Request $request){

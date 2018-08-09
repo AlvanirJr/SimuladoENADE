@@ -8,23 +8,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Usuario extends Authenticatable
 {
 
-	protected $fillable = ['nome', 'cpf', 'email', 'password', 'tipo_usuario_id','curso_id'];
+	protected $fillable = ['nome', 'cpf', 'email', 'password', 'tipousuario_id','curso_id'];
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function tipo_usuario(){
-        return $this->hasOne('App\TipoUsuario');
+    public function tipousuario(){
+        return $this->BelongsTo('\App\Tipousuario');
     }
     public function curso(){
-        return $this->hasOne('App\Curso');
+        return $this->hasOne('\App\Curso');
     }
 
     public static $rules = [
     	'nome'  => 'required',
     	'cpf' => 'required|min:14',
-    	'password' => 'required|min:8',
+    	'password' => 'required|min:8|confirmed',
     	'email' => 'required|email',
-    	'tipo_usuario_id' => 'required',
+    	'tipousuario_id' => 'required',
     	'curso_id'  => 'required'
     ];
 
@@ -32,6 +32,7 @@ class Usuario extends Authenticatable
     	'required' => 'O campo :attribute deve ser preenchido na forma correta',
     	'cpf.min' => 'O :attribute deve conter no minimo 14 caracteres',
     	'password.min' => 'A senha deve ter no minimo 8 caracteres',
-    	'email.email' => "O email deve ser um email valido"
+    	'email.email' => "O email deve ser um email valido",
+        'password.confirmed' => "As senhas devem ser identicas"
     ];
 }

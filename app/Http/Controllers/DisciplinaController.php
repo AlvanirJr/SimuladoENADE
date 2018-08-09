@@ -46,12 +46,19 @@ class DisciplinaController extends Controller
  	}
 
 	public function atualizar(Request $request){
-		
-		$disciplina = \App\Disciplina::find($request->id);
-		$disciplina->nome = $request->nome;
-		$disciplina->curso_id = $request->curso_id;
-		$disciplina->update();
-		return redirect("/listar/disciplina");
+
+
+        try{
+            DisciplinaValidator::Validate($request->all());
+            $disciplina = \App\Disciplina::find($request->id);
+            $disciplina->fill($request->all());
+            $disciplina->update();
+            return redirect("listar/disciplina");
+        }
+        catch(ValidationException $ex){
+            return redirect("editar/disciplina")->withErrors($ex->getValidator())->withInput();
+
+        }
 	} 	
  	
  	public function remover(Request $request){

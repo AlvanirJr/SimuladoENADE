@@ -28,4 +28,10 @@ class Simulado extends Model
     	'descricao_simulado.min' => 'O campo deve ser no minimo 5 letras'
 
     ];
+
+
+
+    public function dificuldade() {
+            return $this->belongsTo('\App\Questao', 'dificuldade');    
+    }
 }
