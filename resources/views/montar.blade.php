@@ -20,7 +20,8 @@
   		<input type = "hidden" name="simulado_id" value="{{$simulado_id}}">
    		
    		<select name="disciplina_id" class="custom-select" required>
- 			<option selected hidden value="">Open this select menu</option>
+ 			<option selected hidden value="">Selecione uma opção</option>
+
  			@foreach($disciplinas as $disciplina);
  			
   			<option value="{{$disciplina->id}}">{{$disciplina->nome}}</option>
@@ -28,8 +29,10 @@
 		</select>
 
 		<select name="dificuldade" class="custom-select" required>
- 			<option selected hidden value="">Open this select menu</option>
-  			<option value="1">Fácil</option>
+
+ 			<option selected hidden value="">Selecione uma opção</option>  			
+ 			<option value="1">Fácil</option>
+
   			<option value="2">Médio</option>
   			<option value="3">Difícil</option>
 		</select>

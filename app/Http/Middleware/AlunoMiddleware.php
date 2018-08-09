@@ -16,7 +16,7 @@ class AlunoMiddleware
     public function handle($request, Closure $next){
 
         $user = Auth::user()->type;
-        if ($user == 1){
+        if ($user >= 1){
             return $next($request);
         }
 

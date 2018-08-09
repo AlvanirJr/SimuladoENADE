@@ -15,11 +15,11 @@ class CreateSimuladosTable extends Migration
     {
         Schema::create('simulados', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('curso_id')->unsigned();
+            $table->integer('curso_id')->unsigned()->nullable();
             $table->string('descricao_simulado');
-            $table->integer('usuario_id');
-            $table->foreign('curso_id')->references('id')->on('cursos');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->integer('usuario_id')->unsigned()->nullable();
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('set null');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('set null');
             ##Saber quando se foi realizado o simulado
             $table->timestamps();
         });
