@@ -8,17 +8,21 @@
 
 		<h1 class="text-center"> Editar questao </h1><br><br>	
 
-	  <div class="form-row ">
-	    <div class="form-group col-md-6">
-	      <label for="enunciado">enunciado</label>
-	      <input type="text" name="enunciado" id="enunciado" placeholder="enunciado" class="form-control{{ $errors->has('enunciado') ? ' is-invalid' : '' }}" value="{{$questao->enunciado}}" required autofocus>
-	      @if ($errors->has('enunciado'))
-	        <span class = "invalid-feedback" role="alert">
-	          {{$errors->first('enunciado')}}
-	        </span>
-	      @endif
-	    </div>
+	   <script src="{{ asset( '/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+		 <script>
+		  tinymce.init({
+		    selector: '#mytextarea'
+		  });
+  		</script>
 
+	  	<div class="form-row ">
+		    <div class="form-group col-md-6">
+		      	<label for="enunciado">enunciado</label>
+
+	    		<textarea id="mytextarea" name="enunciado">{{$questao->enunciado}}</textarea>
+		    </div>
+    	</div>	
+	    
 	    <div class="form-group col-md-6">
 	      <label for="alternativa_a">alternativa_a</label>
 	      <input type="alternativa_a" id="alternativa_a" name="alternativa_a" placeholder="alternativa_a" class="form-control{{ $errors->has('alternativa_a') ? ' is-invalid' : '' }}" value="{{$questao->alternativa_a}}" required autofocus>

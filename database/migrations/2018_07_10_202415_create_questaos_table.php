@@ -23,9 +23,9 @@ class CreateQuestaosTable extends Migration
 			$table->string('alternativa_e');
 			$table->string('alternativa_correta');
             $table->integer('dificuldade');
-            $table->integer('disciplina_id')->unsigned();
+            $table->integer('disciplina_id')->unsigned()->nullable();
 
-			$table->foreign('disciplina_id')->references('id')->on('disciplinas');
+			$table->foreign('disciplina_id')->references('id')->on('disciplinas')->onDelete('set null');
 				
             $table->timestamps();
         });

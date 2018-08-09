@@ -5,17 +5,21 @@
 	<form class="shadow p-3 mb-5 bg-white rounded" action= "/adicionar/questao" method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<h1 class="text-center"> Cadastrar questao </h1><br><br>	
+		 <script src="{{ asset( '/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+		 <script>
+		  tinymce.init({
+		    selector: '#mytextarea'
+		  });
+  		</script>
 
-	  <div class="form-row ">
-	    <div class="form-group col-md-6">
-	      <label for="enunciado">enunciado</label>
-	      <input type="text" name="enunciado" id="enunciado" placeholder="enunciado" class="form-control{{ $errors->has('enunciado') ? ' is-invalid' : '' }}" value="{{ old('enunciado') }}" required autofocus>
-	      @if ($errors->has('enunciado'))
-	        <span class = "invalid-feedback" role="alert">
-	          {{$errors->first('enunciado')}}
-	        </span>
-	      @endif
-	    </div>
+	  	<div class="form-row ">
+		    <div class="form-group col-md-6">
+		      	<label for="enunciado">enunciado</label>
+	    		<textarea id="mytextarea" name="enunciado"></textarea>
+		    </div>
+    	</div>	
+	    
+ 
 
 	    <div class="form-group col-md-6">
 	      <label for="alternativa_a">alternativa_a</label>
@@ -26,7 +30,6 @@
 	    	</span>
 	    	@endif
 	    </div>
-
 	  <div class="form-group">
 	    <label for="alternativa_b">alternativa_b</label>
 	    <input type="text" id="alternativa_b" name="alternativa_b" placeholder="alternativa_b" class="form-control{{ $errors->has('alternativa_b') ? ' is-invalid' : '' }}" value="{{ old('alternativa_b') }}" required autofocus>
@@ -99,11 +102,11 @@
 	    			{{$errors->first('disciplina_id')}}
 	    		</span>
 	    	@endif
-
 	    </div>
 	  </div>
 	  
 	  <button type="submit" name="cadastrar" class="btn btn-primary float-right">Cadastrar</button><br><br>
 
 	</form>
+
 @stop

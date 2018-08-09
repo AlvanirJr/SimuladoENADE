@@ -18,6 +18,7 @@ class AlunoMiddleware
         $user = \Auth::user()->tipousuario_id;
 
         if ($user == 1){
+
             return $next($request);
         }
 

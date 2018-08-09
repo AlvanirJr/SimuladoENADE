@@ -18,8 +18,8 @@ class CreateRespostasTable extends Migration
             $table->integer('questao_id')->unsigned();
             $table->integer('aluno_id')->unsigned();
             $table->string('alternativa_questao');
-            $table->foreign('questao_id')->references('id')->on('questaos');
-            $table->foreign('aluno_id')->references('id')->on('alunos')            ;
+            $table->foreign('questao_id')->references('id')->on('questaos')->onDelete('cascade');
+            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
             $table->timestamps();
         });
     }
