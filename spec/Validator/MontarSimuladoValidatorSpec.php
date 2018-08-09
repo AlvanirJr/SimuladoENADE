@@ -6,7 +6,7 @@ use App\Validator\MontarSimuladoValidator;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class MontarSimuladoValidatorSpec extends ObjectBehavior
+class MontarSimuladoValidatorSpec extends LaravelObjectBehavior
 {
     function it_is_initializable()
     {
