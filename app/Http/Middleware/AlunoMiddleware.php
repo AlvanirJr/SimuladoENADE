@@ -15,8 +15,10 @@ class AlunoMiddleware
      */
     public function handle($request, Closure $next){
 
-        $user = Auth::user()->type;
-        if ($user >= 1){
+        $user = \Auth::user()->tipousuario_id;
+
+        if ($user == 1){
+
             return $next($request);
         }
 
@@ -26,4 +28,5 @@ class AlunoMiddleware
         }
         }return $next($request);
 */
+}
 }

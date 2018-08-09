@@ -35,6 +35,17 @@ class UsuarioPolicy
             return false;
         }
     }
+
+    /*public function simuladoAuth(Usuario $user){
+        if($user->tipousuario->id === 4){
+            return true;
+        }elseif($user->tipousuario->id === 1){
+            return false;
+        }
+     }
+    */
+
+   
     
     
    /** public function disciplinaAuth(Usuario $user){
