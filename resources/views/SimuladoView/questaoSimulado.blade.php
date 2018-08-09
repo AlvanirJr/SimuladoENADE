@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2><b> Enunciado:</b></h2>
-				<h4 class="text-center"> {{$questao['enunciado']}} </h4><br><br>
+				<h4 class="text-center"> {!! $questao['enunciado']!!} </h4><br><br>
 			</div>
 		</div>
 		<div class="row">
@@ -25,6 +25,7 @@
 				    B) {{$questao['alternativa_b']}}
 				  </label>
 				</div>
+				
 				<div class="form-check">
 				  <input class="form-check-input" type="radio" name="alternativa" id="radioc" value="3">
 				  <label class="form-check-label" for="radioc">

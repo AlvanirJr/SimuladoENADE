@@ -18,8 +18,8 @@ class CreateTurmasTable extends Migration
             ##DATA_CICLO
             $table->integer('aluno_id')->unsigned();
             $table->integer('ciclo_id')->unsigned();            
-            $table->foreign('aluno_id')->references('id')->on('alunos');
-            $table->foreign('ciclo_id')->references('id')->on('ciclos');
+            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('cascade');
             $table->timestamps();
         });
     }

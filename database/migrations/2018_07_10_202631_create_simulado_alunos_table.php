@@ -17,8 +17,8 @@ class CreateSimuladoAlunosTable extends Migration
             $table->increments('id');
             $table->integer('aluno_id')->unsigned();
             $table->integer('simulado_id')->unsigned();
-            $table->foreign('aluno_id')->references('id')->on('alunos');
-            $table->foreign('simulado_id')->references('id')->on('simulados');
+            $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
+            $table->foreign('simulado_id')->references('id')->on('simulados')->onDelete('cascade');
             
             $table->timestamps();
         });

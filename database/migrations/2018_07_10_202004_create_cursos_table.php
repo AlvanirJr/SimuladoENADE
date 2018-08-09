@@ -15,11 +15,11 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ciclo_id')->unsigned();
+            $table->integer('ciclo_id')->unsigned()->nullable();
             $table->string('curso_nome');
-            $table->integer('unidade_id')->unsigned();
+            $table->integer('unidade_id')->unsigned()->nullable();
             
-            $table->foreign('ciclo_id')->references('id')->on('ciclos');
+            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onDelete('set null');
 
             $table->timestamps();
         });

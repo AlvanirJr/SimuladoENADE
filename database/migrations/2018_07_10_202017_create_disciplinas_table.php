@@ -17,7 +17,7 @@ class CreateDisciplinasTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->integer('curso_id')->nullable()->unsigned();
-            $table->foreign('curso_id')->references('id')->on('cursos');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('set null');
             
             $table->timestamps();
         });

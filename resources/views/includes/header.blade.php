@@ -42,7 +42,6 @@
           <a class="dropdown-item" href="/listar/ciclo">Listar</a>
         </div>
       </li>
-      @endcan
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Questão
@@ -74,16 +73,21 @@
         </div>
       </li>
 
-
+ 
+       @endcan
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          
           Simulado
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('create', Auth::user())
           <a class="dropdown-item" href="/cadastrar/simulado">Cadastrar</a>
+          @endcan
           <a class="dropdown-item" href="/listar/simulado">Listar</a>
-        </div>
+       </div>
       </li>
+   
     </ul>
   </div>
 

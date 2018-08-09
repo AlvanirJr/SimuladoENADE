@@ -19,10 +19,10 @@ class CreateUsuariosTable extends Migration
             $table->string('cpf');
             $table->string('password');
             $table->string('email')->unique();
-            $table->integer('tipousuario_id')->unsigned();
-            $table->integer('curso_id')->unsigned();
-            $table->foreign('tipousuario_id')->references('id')->on('tipousuarios');
-            $table->foreign('curso_id')->references('id')->on('cursos');
+            $table->integer('tipousuario_id')->unsigned()->nullable();
+            $table->integer('curso_id')->unsigned()->nullable();
+            $table->foreign('tipousuario_id')->references('id')->on('tipousuarios')->onDelete('set null');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('set null');
             $table->timestamps();
             $table->rememberToken();
         });
