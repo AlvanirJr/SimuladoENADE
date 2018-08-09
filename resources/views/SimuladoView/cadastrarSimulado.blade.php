@@ -3,6 +3,7 @@
 
 <form class="shadow p-3 mb-5 bg-white rounded" action= "/adicionar/simulado" method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
+		
 		<h1 class="text-center"> Cadastrar simulado </h1><br><br>	
 
 		<div class="form-row ">
@@ -32,7 +33,7 @@
 	    	</div>
 
 	    		<div class="form-group col-md-4">
-		      	<label for="usuario_id">Unidade</label>
+		      	<label for="usuario_id">Coordenador</label>
 		      	<select class="form-control{{ $errors->has('usuario_id') ? ' is-invalid' : '' }}" name="usuario_id" required autofocus>
 					@foreach($usuarios as $usuario)
 					<option value="{{$usuario->id}}" {{old('usuario') == $usuario->id ? 'selected' : '' }}  >{{$usuario->nome}}</option>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Validator\SimuladoValidator;
+use App\Validator\MontarSimuladoValidator;
 use App\Validator\ValidationException;
 
 
@@ -13,7 +14,7 @@ class SimuladoController extends Controller
     public function adicionar(Request $request){
         try{
             SimuladoValidator::Validate($request->all());
-
+            //sql pegar qtd questaos da disciplinas
             $simulado = new \App\Simulado();
             $simulado->fill($request->all());
             $simulado->save();
@@ -62,6 +63,7 @@ class SimuladoController extends Controller
 //Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
     public function montar(Request $request){
 
+      
         $disciplinas = \App\Disciplina::all();
         //$questaos = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
         $questaos = \DB::table('questao_simulados')
@@ -70,39 +72,48 @@ class SimuladoController extends Controller
             ->where('simulado_id', '=', $request->id)
             ->get();
 
-        return view('montar',['disciplinas' => $disciplinas, 'questaos' => $questaos, 'simulado_id'=> $request->id]);
+        return view('montar',['disciplinas' => $disciplinas, 'questaos' => $questaos, 'simulado_id'=> $request->id]);     
+        
+     
     }
 
     public function cadastrarQuestao(Request $request){
-        try{
 
-         $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
+          try{
+
+        $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
                                         ->get()->toArray();
        
-        $num_questao = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
-
+        $num_questao = \App\QuestaoSimulado::where('simulado_id', '=', $request->simulado_id)->get();
 
         $cachorro = count($num_questao);
 
-        if(($cachorro + $request->numero) > 30)
-            return redirect('/montar/simulado/'.$request->id);
- 
-        shuffle($questaos);
+        MontarSimuladoValidator::Validate(count($questaos), $request->numero);
+
+        if(($cachorro + $request->numero) > 30){
+            return redirect('/montar/simulado/'.$request->simulado_id);
+        }
+
+        shuffle($questaos); 
         $row = [];
+
         for($i = 0; $i < $request->numero; $i++){
             $row = $questaos[$i];
             $questao = new \App\QuestaoSimulado();
             $questao->questao_id = $row['id'];
-            $questao->simulado_id = $request->id;
+            $questao->simulado_id = $request->simulado_id;
             $questao->save();
         }
-        return redirect('/montar/simulado/'.$request->id);
+        return redirect('/montar/simulado/'.$request->simulado_id);
+
+        }catch(ValidationException $ex){
+            return redirect("/montar/simulado/".$request->simulado_id)->withErrors($ex->getValidator())->withInput();
         }
-        catch(Exeption $ex){
+  
                   
 
-        }
+        
     }
 
     public function responder(Request $request){
