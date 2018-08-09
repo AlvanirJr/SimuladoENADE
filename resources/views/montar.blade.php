@@ -19,18 +19,16 @@
 		<input type = "hidden" name="_token" value="{{csrf_token()}}">
   		<input type = "hidden" name="simulado_id" value="{{$simulado_id}}">
    		
-
-
-   		<select name="disciplina_id" class="custom-select">
- 			<option selected>Open this select menu</option>
+   		<select name="disciplina_id" class="custom-select" required>
+ 			<option selected hidden value="">Open this select menu</option>
  			@foreach($disciplinas as $disciplina);
  			
   			<option value="{{$disciplina->id}}">{{$disciplina->nome}}</option>
   			@endforeach
 		</select>
 
-		<select name="dificuldade" class="custom-select">
- 			<option selected>Open this select menu</option>
+		<select name="dificuldade" class="custom-select" required>
+ 			<option selected hidden value="">Open this select menu</option>
   			<option value="1">Fácil</option>
   			<option value="2">Médio</option>
   			<option value="3">Difícil</option>
@@ -53,7 +51,7 @@
 		
 			<tr>
 				<th>Numº Questao</th>
-				<th>Enuciado</th>
+				<th>Enunciado</th>
 				<th>Nivel Questão</th>
 				<th>ID da Disciplina</th>
 				<th>Funções</th>
@@ -65,7 +63,7 @@
 			@foreach($questaos as $questaocerta)
 			<tr>
 				<td>{{$questaocerta->id}}</td>
-				<td>{{$questaocerta->enunciado}}</td>
+				<td>{{  preg_replace('/<[^>]*>|[&;]/', '', $questaocerta->enunciado) }}</td>
 				<td>
 					@if($questaocerta->dificuldade  == 1)
 						facil
@@ -74,8 +72,6 @@
 					@else
 						difícil
 					@endif
-
-
 
 				</td>
 				<td>{{$questaocerta->disciplina_id}}</td>
