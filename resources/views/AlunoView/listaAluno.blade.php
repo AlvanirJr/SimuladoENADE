@@ -8,7 +8,7 @@
 				<th>Id</th>
 				<th>nome</th>
 				<th>cpf</th>
-				<th>senha</th>
+				
 				<th>email</th>
 				<th>Id do curso</th>
 				<th>Funções</th>
@@ -20,7 +20,6 @@
 				<td>{{$aluno->id}}</td>
 				<td>{{$aluno->nome}}</td>
 				<td>{{$aluno->cpf}}</td>
-				<td>{{$aluno->senha}}</td>
 				<td>{{$aluno->email}}</td>
 				<td>{{$aluno->curso_id}}</td>
 				

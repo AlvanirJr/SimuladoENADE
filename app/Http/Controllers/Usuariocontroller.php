@@ -24,6 +24,8 @@ class Usuariocontroller extends Controller
             $usuario->fill($request->all());
             $usuario->password = Hash::make($request->password);
             $usuario->save();
+            var_dump($usuario);
+          
             if(true){
                 $usuario = $request->email;
                 Mail::to($usuario)->send(new emailConfirmacao()); 

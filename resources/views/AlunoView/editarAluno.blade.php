@@ -8,10 +8,10 @@
 
 
 
-		<h1 class="text-center"> Cadastrar aluno </h1><br><br>	
+		<h1 class="text-center"> Editar aluno </h1><br><br>	
 
-	  <div class="form-row ">
-	    <div class="form-group col-md-6">
+	  <div class="form-row">
+	    <div class="form-group col-md-4">
 	      <label for="nome">Nome</label>
 	      <input type="text" name="nome" id="nome" placeholder="{{$aluno->nome}}" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" value="{{ $aluno->nome }}" required autofocus >
 	      @if ($errors->has('nome'))
@@ -22,7 +22,7 @@
 	    </div>
 	  </div>
 	  
-	  <div class="form-group">
+	  <div class="form-group col-md-4">
 	    <label for="email">E-mail</label>
 	    <input type="text" id="email" name="email" placeholder="{{$aluno->email}}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{$aluno->email}}" required autofocus>
 	  	@if ($errors->has('email'))
@@ -31,22 +31,7 @@
 	    	</span>
 	    @endif
 	  </div>
-	  
-	  <div class="form-row">
-	    <div class="form-group col-md-4">
-	      	<label for="curso_id">Curso</label>
-	      	<select name="curso_id" class="form-control{{ $errors->has('curso_id') ? ' is-invalid' : '' }}" required autofocus>
-				@foreach ($cursos as $curso)
-				<option value="{{$curso->id}}" {{$aluno->curso_id == $curso->id ? 'selected' : '' }}>{{$curso->curso_nome}} 
-				</option>
-				@endforeach
-			</select>
-			@if ($errors->has('curso_id'))
-	    		<span class = "invalid-feedback" role="alert">
-	    			{{$errors->first('curso_id')}}
-	    		</span>
-	    	@endif
-	    </div>
+	 
 
 	     <div class="form-group col-md-4">
 	    	<label for="cpf">CPF</label>

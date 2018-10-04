@@ -30,6 +30,9 @@
 	    	</span>
 	    	@endif
 	    </div>
+
+
+	    
 	  <div class="form-group">
 	    <label for="alternativa_b">alternativa_b</label>
 	    <input type="text" id="alternativa_b" name="alternativa_b" placeholder="alternativa_b" class="form-control{{ $errors->has('alternativa_b') ? ' is-invalid' : '' }}" value="{{ old('alternativa_b') }}" required autofocus>

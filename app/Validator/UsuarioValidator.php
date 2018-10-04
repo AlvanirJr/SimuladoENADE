@@ -13,5 +13,8 @@ class UsuarioValidator
     	if(!$validator->errors()->isEmpty()){
     		throw new ValidationException($validator, "Erro ao validar um aluno");
     	}
+
+
+    	
     }
 }

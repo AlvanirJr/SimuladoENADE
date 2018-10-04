@@ -18,9 +18,9 @@ class Aluno extends Model
     public static $rules = [
     	'nome'  => 'required|',
     	'cpf' => 'required|min:14',
-    	'password' => 'required|min:8|confirmed',
+    	//'password' => 'required|min:8|confirmed',
     	'email' => 'required|email',
-    	'curso_id'  => 'required'
+    	//'curso_id'  => 'required'
     ];
 
      public static $messages = [

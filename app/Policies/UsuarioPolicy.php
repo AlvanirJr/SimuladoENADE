@@ -36,6 +36,16 @@ class UsuarioPolicy
         }
     }
 
+         
+    public function view_coordenador(Usuario $user){
+        if($user->tipousuario->id === 2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     /*public function simuladoAuth(Usuario $user){
         if($user->tipousuario->id === 4){
             return true;

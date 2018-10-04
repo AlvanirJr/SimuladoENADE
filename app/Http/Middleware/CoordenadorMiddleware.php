@@ -17,6 +17,6 @@ class CoordenadorMiddleware
         if(\Auth::guest() || \Auth::user()->Usuario->tipousuario_id === 2){
             return redirect("login");
         }
-        }
         return $next($request);
+    }
 }

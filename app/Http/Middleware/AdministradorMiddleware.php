@@ -17,7 +17,9 @@ class AdministradorMiddleware
     {
 
         if(\Auth::guest() || \Auth::user()->tipousuario_id != 4){
+           
             return redirect("home");
+
         }
         
 

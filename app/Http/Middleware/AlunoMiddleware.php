@@ -22,7 +22,7 @@ class AlunoMiddleware
             return $next($request);
         }
 
-        return redirect("Login");
+        return redirect("login");
         /*if(\Auth::guest() || \Auth::user()->Usuario->tipousuario_id === 1){
             return redirect("login");
         }
