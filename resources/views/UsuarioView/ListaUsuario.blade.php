@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <div class="shadow p-4 mb-5 bg-white rounded container-fluid" style="overflow-x: auto;">
-	<h1>Listar Usuarios</h1>
+	<h1>Lista de Coordenadores</h1>
 	<table class="table table-hover table-bordered">
  		<thead>
 			<tr>
@@ -21,7 +21,7 @@
 				<td>{{$usuario->nome}}</td>
 				<td>{{$usuario->cpf}}</td>
 				<td>{{$usuario->email}}</td>
-				<td>{{$usuario->curso_id}}</td>
+				<td>{{$usuario->curso_nome}}</td>
 				<td>{{$usuario->tipo_usuario_id}}</td>
 	
 

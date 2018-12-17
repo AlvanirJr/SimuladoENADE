@@ -31,6 +31,7 @@ class QuestaoController extends Controller
     }
     
     public function listar(){
+        
     	$questao = \App\Questao::all();
     	return view('/QuestaoView/listaQuestao', ['questaos' => $questao]);
     }
@@ -65,6 +66,15 @@ class QuestaoController extends Controller
     public function filtro_disciplina_dificuldade(Request $request){
         $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
+                                        ->get()->toArray();
+        var_dump($questaos);
+        exit();
+
+        return json_encode($questaos);
+    }
+
+       public function filtro_curso_questao(Request $request){
+        $questaos = \App\Questao::where([['curso_id', '=', $request->curso_id]])
                                         ->get()->toArray();
         var_dump($questaos);
         exit();

@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Aluno extends Model
+
+class Aluno extends Authenticatable
 {
     protected $fillable = ['nome', 'email', 'password', 'cpf','curso_id'];
     protected $hidden = ['password', 'remember_token'];

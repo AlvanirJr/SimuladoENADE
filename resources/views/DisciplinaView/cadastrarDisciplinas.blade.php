@@ -5,8 +5,8 @@
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<h1 class="text-center"> Cadastrar disciplina </h1><br><br>	
 
-	  <div class="form-row ">
-	    <div class="form-group col-md-6">
+	  
+	    <div class="form-group col-md-4">
 	      <label for="nome">Nome</label>
 	      <input type="text"  name="nome" id="nome" placeholder="Nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" value="{{ old('nome') }}" required autofocus>
 	      @if ($errors->has('nome'))
@@ -29,7 +29,7 @@
 	    			{{$errors->first('curso_id')}}
 	    		</span>
 	    	@endif
-	    </div> 
+	    
 
 		</div>
 		<button type="submit" name="cadastrar" class="btn btn-primary float-right">Cadastrar</button><br><br>

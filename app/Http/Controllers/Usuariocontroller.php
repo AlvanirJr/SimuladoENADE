@@ -16,6 +16,7 @@ use App\Validator\ValidationException;
 class Usuariocontroller extends Controller
 {
     public function adicionar(Request $request){
+
     	try{
 
             UsuarioValidator::Validate($request->all());
@@ -24,11 +25,12 @@ class Usuariocontroller extends Controller
             $usuario->fill($request->all());
             $usuario->password = Hash::make($request->password);
             $usuario->save();
-            var_dump($usuario);
+
           
             if(true){
                 $usuario = $request->email;
-                Mail::to($usuario)->send(new emailConfirmacao()); 
+                Mail::to($usuario)->send(new emailConfirmacao());
+
         
             }
             return redirect("/listar/usuario");
@@ -39,14 +41,16 @@ class Usuariocontroller extends Controller
     }
 
     public function cadastrar(){
+
 //        $this->authorize('adcionar', \App\Usuario::class);        
         $cursos = \App\Curso::all();
         $tipos_usuario = \App\Tipousuario::all();
 		return view('/UsuarioView/cadastrarUsuario',['cursos' => $cursos, 'tipos_usuario' => $tipos_usuario]);   
     }
     
-    public function listar () {
-		$usuarios = \App\Usuario::all();
+    public function listar (Request $request) {
+        $tipo = \Auth::user()->curso_id;
+		$usuarios = \App\Usuario::where('curso_id', '=', $tipo)->get();
 		return view('/UsuarioView/ListaUsuario',['usuarios' => $usuarios]);   
     }
     

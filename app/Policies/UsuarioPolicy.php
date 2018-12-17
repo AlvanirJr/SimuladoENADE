@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use \App\Usuario;
+use \App\Aluno;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UsuarioPolicy
@@ -41,6 +42,25 @@ class UsuarioPolicy
         if($user->tipousuario->id === 2){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    public function view_professor(Usuario $user){
+        if($user->tipousuario->id === 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+   public function view_aluno(Usuario $user){
+        if($user->tipousuario->id === 1){
+            return true;
+        }
+        else{
             return false;
         }
     }

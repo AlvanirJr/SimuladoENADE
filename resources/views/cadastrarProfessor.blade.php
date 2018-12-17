@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('content')
-	<form class="shadow p-3 mb-5 bg-white rounded" action= "/adicionar/usuario" method="post">
+	<form class="shadow p-3 mb-5 bg-white rounded" action= "/adicionar/professor" method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		<h1 class="text-center"> Cadastrar Coordenador </h1><br><br>	
+		<h1 class="text-center"> Cadastrar Professor </h1><br><br>	
 
 	  
 	    <div class="form-group col-md-4">

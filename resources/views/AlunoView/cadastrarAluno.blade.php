@@ -29,13 +29,34 @@
 	  </div>
 	  
 
-	     <div class="form-group col-md-4">
+		    <div class="form-group col-md-4">
 	    	<label for="cpf">CPF</label>
-	    	<input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ old('cpf') }}" required autofocus>
+	    	<input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }} cpf" value="{{ old('cpf') }}" required autofocus>
 	    	@if ($errors->has('cpf'))
 	    		<span class = "invalid-feedback" role="alert">
 	    			{{$errors->first('cpf')}}
 	    		</span>
+	    	@endif
+	    </div>	 
+	    <div class="form-group col-md-4">
+	      <label for="password">Senha</label>
+	      <input type="password" id="password" name="password" placeholder="Senha" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}" required autofocus>
+	      @if ($errors->has('password'))
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('password')}}
+	    	</span>
+	    	@endif
+	    </div>
+	  
+	  
+
+	    <div class="form-group col-md-4">
+	      <label for="password_confirmation">Confirmar Senha</label>
+	      <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmar Senha" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" value="{{ old('password_confirmation') }}" required autofocus>
+	      @if ($errors->has('password_confirmation'))
+	    	<span class = "invalid-feedback" role="alert">
+	    		{{$errors->first('password_confirmation')}}
+	    	</span>
 	    	@endif
 	    </div>
 

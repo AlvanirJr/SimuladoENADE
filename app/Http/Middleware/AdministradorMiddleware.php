@@ -14,7 +14,8 @@ class AdministradorMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {   
+      
 
         if(\Auth::guest() || \Auth::user()->tipousuario_id != 4){
            
