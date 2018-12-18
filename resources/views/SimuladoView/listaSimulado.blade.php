@@ -22,11 +22,11 @@
 				<td>{{$simulado->usuario_id}}</td>
 				<td>{{$simulado->curso_id}}</td>
 				<td>
-					@can('create',Auth::user())
+					
 					<a href="/editar/simulado/{{$simulado->id}}">Editar</a> -
 					<a href="/remover/simulado/{{$simulado->id}}">Remover</a> - 
 					<a href="/montar/simulado/{{$simulado->id}}">Montar</a> -
-					@endcan
+					
 					<a href="/questao/simulado/{{$simulado->id}}">Responder</a>
 				</td>
 			</tr>

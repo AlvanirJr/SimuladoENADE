@@ -2,12 +2,13 @@
 
 namespace App\Policies;
 
-use App\Usuario;
-use App\Aluno;
+//use \App\Usuario;
+use \App\Aluno;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AlunoPolicy
 {
+
     use HandlesAuthorization;
 
     /**
@@ -29,6 +30,12 @@ class AlunoPolicy
      * @return mixed
      */
     public function create(Usuario $user) {
+        if($user->tipousuario->id === 1){
+            return true;
+        }
+        else{
+            return false;
+        }
        
     }
 

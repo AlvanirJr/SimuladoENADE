@@ -11,8 +11,10 @@ class CicloSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 0; $i < 6; $i++){
-        	DB::table('ciclos')->insert(['tipo_ciclo'=> str_random(10)]);	
-        }
+        //for($i = 0; $i < 6; $i++){
+        	DB::table('ciclos')->insert(['tipo_ciclo'=> "2018"]);	
+            DB::table('ciclos')->insert(['tipo_ciclo'=> "2019"]);
+            DB::table('ciclos')->insert(['tipo_ciclo'=> "2020"]);
+        //}
     }   
 }

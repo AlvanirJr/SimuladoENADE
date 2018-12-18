@@ -59,7 +59,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'autorizacao' => \App\Http\Middleware\AutorizacaoMiddleware::class, 
+        //'autorizacao' => \App\Http\Middleware\AutorizacaoMiddleware::class, 
         'aluno.auth' => \App\Http\Middleware\AlunoMiddleware::class,
         'coordenador.auth'=>\App\Http\Middleware\CoordenadorMiddleware::class,
         'professor.auth'=>\App\Http\Middleware\ProfessorMiddleware::class,
@@ -67,3 +67,5 @@ class Kernel extends HttpKernel
         
         ];
 }
+
+

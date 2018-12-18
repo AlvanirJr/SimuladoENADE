@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body style="background: #EEE">
-@include('includes.header')
+@include('includes.header')	
 <div class="container">
     <div class="row justify-content-center"><br>
     	<div class="col-sm-12"><br><br><br>

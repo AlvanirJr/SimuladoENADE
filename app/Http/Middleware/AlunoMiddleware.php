@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 
 class AlunoMiddleware
-{
+{   
     /**
      * Handle an incoming request.
      *
@@ -13,20 +13,29 @@ class AlunoMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle($request, Closure $next){
 
-        $user = \Auth::user()->tipousuario_id;
+        $user = \Auth::guard('aluno')->user();
+       // echo($user);
+        //exit(0);
+        
+        
 
-        if ($user == 1){
+        if ($user == 'aluno'){
 
-            return $next($request);
+            
+        return redirect("home");
         }
 
-        return redirect("Login");
-        /*if(\Auth::guest() || \Auth::user()->Usuario->tipousuario_id === 1){
-            return redirect("login");
-        }
-        }return $next($request);
-*/
-}
+        return $next($request);
+      /*  if(\Auth::guest() || \Auth::user()->Usuario->tipousuario_id === 1){
+               echo "Teste";
+        exit(0);
+            return redirect("home");
+            }
+        
+        return $next($request);*/
+
+    }
 }

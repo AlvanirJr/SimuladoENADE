@@ -16,10 +16,15 @@ class ProfessorMiddleware
     public function handle($request, Closure $next)
     {
 
-        if(\Auth::guest() || \Auth::user()->tipousuario_id != 2){
-            return redirect("login");
+        //echo("adm" . \Auth::user()->tipousuario_id);
+        //exit(1);
+        if(\Auth::guest() || \Auth::user()->tipousuario_id != 3){
+            return redirect("home");
             }
+            return $next($request);
         }
-        return $next($request);
+
+
+        
     }
 

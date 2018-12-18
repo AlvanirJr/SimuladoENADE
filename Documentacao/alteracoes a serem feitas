@@ -12,3 +12,7 @@ inclusao de imagens nas questoes
 shuffle função para embaralhar as questao
 
 tinker para testes em banco
+
+
+
+{{ dd(Auth::guard('aluno')->user()->nome) }} ->  comentario php

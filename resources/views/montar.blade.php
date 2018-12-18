@@ -20,7 +20,7 @@
   		<input type = "hidden" name="simulado_id" value="{{$simulado_id}}">
    		
    		<select name="disciplina_id" class="custom-select" required>
- 			<option selected hidden value="">Selecione uma opção</option>
+ 			<option selected hidden value="">Selecione uma Disciplina</option>
 
  			@foreach($disciplinas as $disciplina);
  			
@@ -30,7 +30,7 @@
 
 		<select name="dificuldade" class="custom-select" required>
 
- 			<option selected hidden value="">Selecione uma opção</option>  			
+ 			<option selected hidden value="">Selecione o Nível da Questão</option>  			
  			<option value="1">Fácil</option>
 
   			<option value="2">Médio</option>
@@ -78,7 +78,7 @@
 
 				</td>
 				<td>{{$questaocerta->disciplina_id}}</td>
-				<td> <a href='/remover/questao/{{$questaocerta->id}}'>Remover</a></td>
+				<td> <a href='/remover/questaosimulado/{{$questaocerta->id}}'>Remover</a></td>
 			</tr>
 			@endforeach
 			@else

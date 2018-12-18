@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Validator\SimuladoValidator;
 use App\Validator\MontarSimuladoValidator;
 use App\Validator\ValidationException;
+use Illuminate\Http\Resources\Json\Resource;
+use App\Http\Resources\User as UserResource;
 
 
 class SimuladoController extends Controller
@@ -35,6 +37,7 @@ class SimuladoController extends Controller
 
 
     public function listar(){
+    
     	$simulados = \App\Simulado::all();
     	return view('/SimuladoView/listaSimulado', ['simulados' => $simulados]);
     }
@@ -60,12 +63,48 @@ class SimuladoController extends Controller
         }
     }
 
+
+    public function listaSimuladoAluno(Request $request){
+        $curso = \Auth::guard('aluno')->user()->curso_id;
+        $simulados = \App\Simulado::where('curso_id', '=', $curso)->get();
+       
+        return view('/listaSimuladoAluno', ['simulados' => $simulados]);
+    }
+
 //Quando e se cezar terminar o controlo de acesso, nois iremos instaciar disciplinas pelo curso do usuario atual(coordenador)
     public function montar(Request $request){
+        //Verificar filtrpo de
+        $curso = \Auth::user()->curso_id;
+        $simulado = \App\Simulado::all();
+        //var_dump($curso);
+        //exit(0);
+     
+        $disciplinas = \App\Disciplina::where('curso_id', '=', $curso)->get();
+        //dd($disciplinas);
+        //exit(0);
+        //dd($disciplinas);
+        //exit(0);
+        //$teste = \App\Disciplina::where([['curso_id', '=', $request->curso_id]])
+          //                              ->get()->toArray();
+        //$simulado = \App\Simulado::find($request->id);
+        //$cao = $simulado->curso_id; 
 
-      
-        $disciplinas = \App\Disciplina::all();
-        //$questaos = \App\QuestaoSimulado::where('simulado_id', '=', $request->id)->get();
+        //$t = \App\Curso::all();
+        //$t = \App\Questao::filtro_curso_questao();
+        //$questaos = \App\Questao::all();
+
+        //var_dump($q);
+        //exit();
+
+        //return json_encode($questaos);
+        //if($disciplinas->curso_id == $cao){
+            
+        //$disciplinas = $teste1;
+
+        //}
+
+
+        //if($disciplinas->curso_id)
         $questaos = \DB::table('questao_simulados')
             ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
             ->select('questaos.*', 'questao_simulados.*')
@@ -118,8 +157,10 @@ class SimuladoController extends Controller
    
     public function responder(Request $request){
 
-        $usuario = \Auth::user()->id;
 
+        $usuario = \Auth::guard('aluno')->user()->id;
+
+  
         $resposta = new \App\Resposta();
         $resposta->questao_id = $request->questao_id;
         $resposta->alternativa_questao = $request->alternativa;
@@ -132,18 +173,32 @@ class SimuladoController extends Controller
     public function questao(Request $request){
 
         $simulado = \App\Simulado::find($request->id);
+           
+     
 
         //Id do usuário
-        $usuario = \Auth::user()->id;
 
+        $usuario = \Auth::guard('aluno')->user()->id;
+        
+
+        /*$respondidas = \DB::table('respostas')->select('questao_id')
+                        ->where('respostas.aluno_id','=',$usuario)->get()->toArray();
+
+        dd(array_values($respondidas));
+        */
+        
         $questaos = \DB::table('questao_simulados')
-            ->whereNotIn('questao_id',function($query) use ($usuario){
-                $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario);
+           ->whereNotIn('questao_id', function($query) use ($usuario){
+               $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario);//filtrar pelo id do simulado também
             })
-            ->where('simulado_id', '=', $request->id)
+            //->where('simulado_id', '=', $request->id)
             ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
             ->select('*')
             ->get()->toArray();
+        //echo("teste");
+        //dd($questaos);
+        //exit(0);
+           
 
             
         if (empty($questaos)){
@@ -156,7 +211,8 @@ class SimuladoController extends Controller
     public function resultado(Request $request){
 
         //Id do usuário
-        $usuario = \Auth::user()->id;
+        $usuario = \Auth::guard('aluno')->user()->id;
+
 
         $questaos = \DB::table('questao_simulados')
             ->join('respostas', 'respostas.questao_id','=','questao_simulados.questao_id')
