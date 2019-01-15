@@ -5,12 +5,11 @@
 	<table class="table table-hover table-bordered">
  		<thead>
 			<tr>
-				<th>Id</th>
-				<th>nome</th>
-				<th>cpf</th>
-				
-				<th>email</th>
-				<th>Id do curso</th>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Email</th>
+				<th>Curso</th>
 				<th>Funções</th>
 			</tr>
 		</thead>

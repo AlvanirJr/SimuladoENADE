@@ -27,7 +27,7 @@
 					<a href="/remover/simulado/{{$simulado->id}}">Remover</a> - 
 					<a href="/montar/simulado/{{$simulado->id}}">Montar</a> -
 					
-					<a href="/questao/simulado/{{$simulado->id}}">Responder</a>
+					
 				</td>
 			</tr>
 			@endforeach

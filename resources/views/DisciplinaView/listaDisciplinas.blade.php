@@ -6,9 +6,9 @@
 	<table class="table">
  		<thead>
 			<tr>
-				<th>Id</th>
-				<th>nome</th>
-				<th>Id do curso</th>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Curso</th>
 				<th>Funções</th>
 			</tr>
 		</thead>

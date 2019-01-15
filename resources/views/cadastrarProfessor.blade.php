@@ -65,20 +65,6 @@
 	    </div>
 	   
 	    <div class="form-group col-md-4">
-	    	<label for="tipousuario_id">Tipo de usuário</label>
-	      	<select name="tipousuario_id" class="form-control{{ $errors->has('tipousuario_id') ? ' is-invalid' : '' }}" required autofocus>
-				@foreach ($tipos_usuario as $tipo_usuario)
-				<option value="{{$tipo_usuario->id}}" {{old('tipousuario') == $tipo_usuario->id ? 'selected' : '' }}>{{$tipo_usuario->tipo}}</option>
-				@endforeach
-			</select>
-			@if ($errors->has('tipo_usuario_id'))
-	    		<span class = "invalid-feedback" role="alert">
-	    			{{$errors->first('tipo_usuario_id')}}
-	    		</span>
-	    	@endif
-	    </div>
-	   
-	    <div class="form-group col-md-4">
 	    	<label for="cpf">CPF</label>
 	    	<input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }} cpf" value="{{ old('cpf') }}" required autofocus>
 	    	@if ($errors->has('cpf'))

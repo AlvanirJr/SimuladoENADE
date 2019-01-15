@@ -44,7 +44,7 @@
 	      <input type="number" class="form-control"  name="numero" id="numero" placeholder="numero" max="30" required>
 	   
 	    </div>
-
+	      
 		<input type="submit" value="montar"/>
 
     

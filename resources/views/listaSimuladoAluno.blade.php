@@ -1,4 +1,4 @@
-
+@extends('AlunoBlade/css')
     <div class="shadow p-4 mb-5 bg-white rounded container-fluid" style="overflow-x: auto;">
     
 	<h1> Lista de Simulado </h1><br><br>
