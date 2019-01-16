@@ -60,6 +60,16 @@ Route::middleware('coordenador.auth')->group(function(){
 
 
 
+
+
+		Route::get('/listar/questaoCoordenador', 'QuestaoController@listar');
+		Route::get('/cadastrar/questaoCoordenador', 'QuestaoController@cadastrar');
+		Route::post('/adicionar/questaoCoordenador', 'QuestaoController@adicionar');
+		Route::get('/editar/questaoCoordenador/{id}', 'QuestaoController@editar');
+		Route::post('/atualizar/questaoCoordenador', 'QuestaoController@atualizar');
+		Route::get('/remover/questaoCoordenador/{id}', 'QuestaoController@remover');
+
+
 		/*
 		Route::get('/listar/questao', 'QuestaoController@listar');
 		Route::get('/cadastrar/questao', 'QuestaoController@cadastrar');

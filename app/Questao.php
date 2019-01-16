@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,7 @@ class Questao extends Model
 {
     //
     public function disciplina(){
-    	return $this->hasOne('App\Disciplina');
+    	return $this->hasOne('SimuladoENADE\Disciplina');
     }
 
     protected $fillable = ['enunciado', 

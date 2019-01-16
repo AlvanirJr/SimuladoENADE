@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Validator;
-use App\SimuladoAluno;
-use App\Validator\ValidationException;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\SimuladoAluno;
+use SimuladoENADE\Validator\ValidationException;
 use Illuminate\Support\Facades\Validator;
 
 class MontarSimuladoValidator

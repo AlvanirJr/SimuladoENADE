@@ -70,17 +70,18 @@ return [
     | Supported: "database", "eloquent"
     |
     */
+ 
 
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Usuario::class, 
+            'model' => SimuladoENADE\Usuario::class, 
             //'model' => App\Aluno::class,
         ],
 
         'alunos' =>[
             'driver' => 'eloquent',
-            'model' =>  App\Aluno::class,
+            'model' =>  SimuladoENADE\Aluno::class,
 
         ]
        

@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Curso;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Curso;
 class CursoValidator
 {
 	public static function validate($dados)

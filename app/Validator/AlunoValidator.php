@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Aluno;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Aluno;
 class AlunoValidator
 {
 

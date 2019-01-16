@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,10 +8,10 @@ class Turma extends Model
 {
     //
     public function aluno(){
-    	return $this->hasOne('App\Aluno');
+    	return $this->hasOne('SimuladoENADE\Aluno');
     }
     public function ciclo(){
-    	return $this->hasOne('App\Ciclo');
+    	return $this->hasOne('SimuladoENADE\Ciclo');
     }
 
 

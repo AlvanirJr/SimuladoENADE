@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SimuladoENADE\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -9,7 +9,7 @@ class QuestaoSimuladoController extends Controller
     //
 
     public function adicionar(Request $request){
-    	$questaoSimulado = new \App\QuestaoSimulado();
+    	$questaoSimulado = new \SimuladoENADE\QuestaoSimulado();
     	$questaoSimulado->questao_id = $request->questao_id;
     	$questaoSimulado->simulado_id  =$request->simulado_id;
     	$questaoSimulado->save();
@@ -18,28 +18,29 @@ class QuestaoSimuladoController extends Controller
 
 
     public function cadastrar(){
-    	$questaos = \App\Questao::all();
-    	$simulados = \App\Simulado::all();
+    	$questaos = \SimuladoENADE\Questao::all();
+    	$simulados = \SimuladoENADE\Simulado::all();
+        
 
     	return view('/QuestaoSimuladoView/cadastrarQuestaoSimulado', ['questaos' => $questaos, 'simulados' => $simulados]);
     }
 
      public function listar(){
-    	$questaoSimulados = \App\QuestaoSimulado::all();
+    	$questaoSimulados = \SimuladoENADE\QuestaoSimulado::all();
     	return view('/QuestaoSimuladoView/listaQuestaoSimulado', ['questaoSimulados' => $questaoSimulados]);
     }
 
     public function editar(Request $request){
-    	$questaoSimulado = \App\QuestaoSimulado::find($request->id);
-    	$alunos = \App\Aluno::all();
-    	$questaos = \App\Questao::all();
+    	$questaoSimulado = \SimuladoENADE\QuestaoSimulado::find($request->id);
+    	$alunos = \SimuladoENADE\Aluno::all();
+    	$questaos = \SimuladoENADE\Questao::all();
 
     	return view('/QuestaoSimuladoView/editarQuestaoSimulado',['questaoSimulado'=> $simuladoAluno, 'questaos'=> $questaos, 'simulados' => $simulados ]);
 
     }
 
       public function atualizar(Request $request){
-    	$questaoSimulado = \App\QuestaoSimulado::find($request->id);
+    	$questaoSimulado = \SimuladoENADE\QuestaoSimulado::find($request->id);
 		$questaoSimulado->aluno_id = $request->aluno_id;
 		$simuladoAluno->questao_id = $request->questao_id;
 		$simuladoAluno->update();
@@ -47,7 +48,7 @@ class QuestaoSimuladoController extends Controller
     }
 
     public function remover(Request $request){
- 	$questaoSimulado = \App\QuestaoSimulado::find($request->id);
+ 	$questaoSimulado = \SimuladoENADE\QuestaoSimulado::find($request->id);
  	$questaoSimulado->delete();
  	return redirect("/listar/questaosimulado");
  		

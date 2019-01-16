@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SimuladoENADE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Validator\SimuladoValidator;
-use App\Validator\MontarSimuladoValidator;
-use App\Validator\ValidationException;
+use SimuladoENADE\Validator\SimuladoValidator;
+use SimuladoENADE\Validator\MontarSimuladoValidator;
+use SimuladoENADE\Validator\ValidationException;
 use Illuminate\Http\Resources\Json\Resource;
-use App\Http\Resources\User as UserResource;
+use SimuladoENADE\Http\Resources\User as UserResource;
 
 
 class SimuladoController extends Controller
@@ -15,10 +15,15 @@ class SimuladoController extends Controller
     //
     public function adicionar(Request $request){
         try{
+
+            $curso_id = \Auth::user()->curso_id;
+            $user_id = \Auth::user()->id;
             SimuladoValidator::Validate($request->all());
             //sql pegar qtd questaos da disciplinas
-            $simulado = new \App\Simulado();
+            $simulado = new \SimuladoENADE\Simulado();
             $simulado->fill($request->all());
+            $simulado->curso_id = $curso_id;
+            $simulado->usuario_id = $user_id;
             $simulado->save();
             return redirect("listar/simulado");
         }
@@ -28,24 +33,25 @@ class SimuladoController extends Controller
     }
 
     public function cadastrar(){
-    	$cursos = \App\Curso::all();
-        $usuarios = \App\Usuario::all();
-        $disciplinas = \App\Disciplina::all();
+
+    	$cursos = \SimuladoENADE\Curso::all();
+        $usuarios = \SimuladoENADE\Usuario::all();
+        $disciplinas = \SimuladoENADE\Disciplina::all();
     	return view('/SimuladoView/cadastrarSimulado', ['cursos' => $cursos, 'usuarios' => $usuarios, 'disciplinas' => $disciplinas]);
     }
 
 
 
     public function listar(){
-    
-    	$simulados = \App\Simulado::all();
+        $user = \Auth::user()->curso_id;
+    	$simulados = \SimuladoENADE\Simulado::where('curso_id', '=', $user)->get();
     	return view('/SimuladoView/listaSimulado', ['simulados' => $simulados]);
     }
 
     public function editar(Request $request){
-    	$simulado= \App\Simulado::find($request->id);
-        $cursos = \App\Curso::all();
-        $usuarios = \App\Usuario::all();
+    	$simulado= \SimuladoENADE\Simulado::find($request->id);
+        $cursos = \SimuladoENADE\Curso::all();
+        $usuarios = \SimuladoENADE\Usuario::all();
     	return view ('/SimuladoView/editarSimulado', ['simulado' => $simulado, 'cursos' => $cursos, 'usuarios' => $usuarios]);
     }
 
@@ -53,7 +59,7 @@ class SimuladoController extends Controller
         try{
             SimuladoValidator::Validate($request->all());
 
-            $simulado = \App\Simulado::find($request->id);
+            $simulado = \SimuladoENADE\Simulado::find($request->id);
             $simulado->fill($request->all());
             $simulado->update();
             return redirect("listar/simulado");
@@ -66,7 +72,7 @@ class SimuladoController extends Controller
 
     public function listaSimuladoAluno(Request $request){
         $curso = \Auth::guard('aluno')->user()->curso_id;
-        $simulados = \App\Simulado::where('curso_id', '=', $curso)->get();
+        $simulados = \SimuladoENADE\Simulado::where('curso_id', '=', $curso)->get();
        
         return view('/listaSimuladoAluno', ['simulados' => $simulados]);
     }
@@ -75,23 +81,23 @@ class SimuladoController extends Controller
     public function montar(Request $request){
         //Verificar filtrpo de
         $curso = \Auth::user()->curso_id;
-        $simulado = \App\Simulado::all();
+        $simulado = \SimuladoENADE\Simulado::all();
         //var_dump($curso);
         //exit(0);
      
-        $disciplinas = \App\Disciplina::where('curso_id', '=', $curso)->get();
+        $disciplinas = \SimuladoENADE\Disciplina::where('curso_id', '=', $curso)->get();
         //dd($disciplinas);
         //exit(0);
         //dd($disciplinas);
         //exit(0);
-        //$teste = \App\Disciplina::where([['curso_id', '=', $request->curso_id]])
+        //$teste = \SimuladoENADE\Disciplina::where([['curso_id', '=', $request->curso_id]])
           //                              ->get()->toArray();
-        //$simulado = \App\Simulado::find($request->id);
+        //$simulado = \SimuladoENADE\Simulado::find($request->id);
         //$cao = $simulado->curso_id; 
 
-        //$t = \App\Curso::all();
-        //$t = \App\Questao::filtro_curso_questao();
-        //$questaos = \App\Questao::all();
+        //$t = \SimuladoENADE\Curso::all();
+        //$t = \SimuladoENADE\Questao::filtro_curso_questao();
+        //$questaos = \SimuladoENADE\Questao::all();
 
         //var_dump($q);
         //exit();
@@ -120,11 +126,11 @@ class SimuladoController extends Controller
 
           try{
 
-        $questaos = \App\Questao::where([['dificuldade', '=', $request->dificuldade],
+        $questaos = \SimuladoENADE\Questao::where([['dificuldade', '=', $request->dificuldade],
                                          ['disciplina_id', '=', $request->disciplina_id]])
                                         ->get()->toArray();
        
-        $num_questao = \App\QuestaoSimulado::where('simulado_id', '=', $request->simulado_id)->get();
+        $num_questao = \SimuladoENADE\QuestaoSimulado::where('simulado_id', '=', $request->simulado_id)->get();
 
         $cachorro = count($num_questao);
 
@@ -139,7 +145,7 @@ class SimuladoController extends Controller
 
         for($i = 0; $i < $request->numero; $i++){
             $row = $questaos[$i];
-            $questao = new \App\QuestaoSimulado();
+            $questao = new \SimuladoENADE\QuestaoSimulado();
             $questao->questao_id = $row['id'];
             $questao->simulado_id = $request->simulado_id;
             $questao->save();
@@ -161,7 +167,7 @@ class SimuladoController extends Controller
         $usuario = \Auth::guard('aluno')->user()->id;
 
   
-        $resposta = new \App\Resposta();
+        $resposta = new \SimuladoENADE\Resposta();
         $resposta->questao_id = $request->questao_id;
         $resposta->alternativa_questao = $request->alternativa;
         $resposta->aluno_id = $usuario;
@@ -172,7 +178,7 @@ class SimuladoController extends Controller
     }
     public function questao(Request $request){
 
-        $simulado = \App\Simulado::find($request->id);
+        $simulado = \SimuladoENADE\Simulado::find($request->id);
            
      
 
@@ -191,7 +197,7 @@ class SimuladoController extends Controller
            ->whereNotIn('questao_id', function($query) use ($usuario){
                $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario);//filtrar pelo id do simulado também
             })
-            //->where('simulado_id', '=', $request->id)
+            ->where('simulado_id', '=', $request->id)
             ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
             ->select('*')
             ->get()->toArray();
@@ -238,7 +244,7 @@ class SimuladoController extends Controller
         return view('/SimuladoView/resultadoSimulado',['resultado' => $resultado, 'count' => $count]);
     }
     public function remover(Request $request){
-    	$simulado = \App\Simulado::find($request->id);
+    	$simulado = \SimuladoENADE\Simulado::find($request->id);
     	$simulado->delete();
     	return redirect('listar/simulado');
     }

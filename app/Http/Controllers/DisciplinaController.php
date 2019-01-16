@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SimuladoENADE\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Validator\DisciplinaValidator;
-use App\Validator\ValidationException;
+use SimuladoENADE\Validator\DisciplinaValidator;
+use SimuladoENADE\Validator\ValidationException;
 
 class DisciplinaController extends Controller
 {   
@@ -14,7 +14,7 @@ class DisciplinaController extends Controller
         
         try{
             DisciplinaValidator::Validate($request->all());
-            $disciplina = new \App\Disciplina();
+            $disciplina = new \SimuladoENADE\Disciplina();
             $disciplina->fill($request->all());
             $disciplina->save();
             return redirect("listar/disciplina");
@@ -27,20 +27,23 @@ class DisciplinaController extends Controller
     }
 
     public function cadastrar() {
-    	$cursos = \App\Curso::all();
+    	$cursos = \SimuladoENADE\Curso::all();
     	return view('/DisciplinaView/cadastrarDisciplinas', ['cursos' => $cursos]);
     }
     	
     
  	public function listar(){
-		$disciplinas = \App\Disciplina::all();
+        $user = \Auth::user();
+        #dd($user->curso_id);
+		$disciplinas = \SimuladoENADE\Disciplina::where('curso_id', '=', $user->curso_id)->get();
+        $cursos = \SimuladoENADE\Curso::all();
 		return view('/DisciplinaView/listaDisciplinas', ['disciplinas' => $disciplinas]);
 
  	}   
  	
  	public function editar(Request $request){ 		
- 		$disciplina = \App\Disciplina::find($request->id);
- 		$cursos = \App\Curso::all();
+ 		$disciplina = \SimuladoENADE\Disciplina::find($request->id);
+ 		$cursos = \SimuladoENADE\Curso::all();
  		return view('/DisciplinaView/editarDisciplinas', ['disciplina' => $disciplina], ['cursos' => $cursos]);
  	
  	}
@@ -50,7 +53,7 @@ class DisciplinaController extends Controller
 
         try{
             DisciplinaValidator::Validate($request->all());
-            $disciplina = \App\Disciplina::find($request->id);
+            $disciplina = \SimuladoENADE\Disciplina::find($request->id);
             $disciplina->fill($request->all());
             $disciplina->update();
             return redirect("listar/disciplina");
@@ -62,14 +65,14 @@ class DisciplinaController extends Controller
 	} 	
  	
  	public function remover(Request $request){
- 		$disciplina = \App\Disciplina::find($request->id);
+ 		$disciplina = \SimuladoENADE\Disciplina::find($request->id);
  		$disciplina->delete();
  		return redirect("/listar/disciplina");
  		
  	}
 
     public function filtro_curso(Request $request){
-        $disciplinas = \App\Disciplina::where('curso_id', '=', $request->curso_id)->get();
+        $disciplinas = \SimuladoENADE\Disciplina::where('curso_id', '=', $request->curso_id)->get();
 
         return json_encode($disciplinas);
     }

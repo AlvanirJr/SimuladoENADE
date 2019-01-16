@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace SimuladoENADE\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

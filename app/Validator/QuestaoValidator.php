@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Questao;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Questao;
 
 class QuestaoValidator
 {

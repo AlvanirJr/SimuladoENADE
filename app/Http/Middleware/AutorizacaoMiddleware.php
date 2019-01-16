@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware\MiddlewareModels;
+namespace SimuladoENADE\Http\Middleware\MiddlewareModels;
 
 use Closure;
 

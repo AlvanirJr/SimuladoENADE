@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,10 +8,10 @@ class Resposta extends Model
 {
     //
     public function aluno(){
-    	return $this->hasOne('App\Aluno');
+    	return $this->hasOne('SimuladoENADE\Aluno');
     }
     public function questao(){
-    	return $this->hasOne('App\Questao');
+    	return $this->hasOne('SimuladoENADE\Questao');
     }
 
     protected $fillable = ['questao_id','aluno_id','alternativa_questao'];

@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Turma;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Turma;
 class TurmaValidator
 {
 

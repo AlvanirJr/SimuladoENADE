@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SimuladoENADE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Validator\CicloValidator;
-use App\Validator\ValidationException;
+use SimuladoENADE\Validator\CicloValidator;
+use SimuladoENADE\Validator\ValidationException;
 
 
 class Ciclocontroller extends Controller
@@ -14,7 +14,7 @@ class Ciclocontroller extends Controller
     	try{
         	CicloValidator::Validate($request->all());
 
-        	$ciclo = new \App\Ciclo();
+        	$ciclo = new \SimuladoENADE\Ciclo();
         	$ciclo->fill($request->all());
         	$ciclo->save();
         	return redirect("listar/ciclo");
@@ -28,18 +28,18 @@ class Ciclocontroller extends Controller
     	return view('/CicloView/cadastrarCiclo');
 	}
 	public function listar(){
-		$ciclos = \App\Ciclo::all();
+		$ciclos = \SimuladoENADE\Ciclo::all();
 		return view('/CicloView/listaCiclo', ['ciclos' => $ciclos]);
 	}
 	public function editar(Request $request){
-		$ciclos = \App\Ciclo::find($request->id);
+		$ciclos = \SimuladoENADE\Ciclo::find($request->id);
 		return view('/CicloView/editarCiclo',['ciclo' =>$ciclos]);
 	}
 	public function atualizar(Request $request){
 		try{
         	CicloValidator::Validate($request->all());
 
-			$ciclo = \App\Ciclo::find($request->id);
+			$ciclo = \SimuladoENADE\Ciclo::find($request->id);
         	$ciclo->fill($request->all());
         	$ciclo->update();
         	return redirect("listar/ciclo");
@@ -50,7 +50,7 @@ class Ciclocontroller extends Controller
 	}
 
 	public function remover(Request $request){
-		$ciclo = \App\Ciclo::find($request->id);
+		$ciclo = \SimuladoENADE\Ciclo::find($request->id);
 		$ciclo->delete();
 		return redirect("listar\ciclo");
 	}

@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SimuladoENADE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Validator\AlunoValidator;
+use SimuladoENADE\Validator\AlunoValidator;
 use Illuminate\Support\Facades\Hash;
-use App\Validator\ValidationException;
+use SimuladoENADE\Validator\ValidationException;
 
 class AlunoController extends Controller
 {
 	public function adicionar(Request $request){
 		try{
+
+            $curso_id = \Auth::user()->curso_id;
         	AlunoValidator::Validate($request->all());
 
-        	$aluno = new \App\Aluno();
+        	$aluno = new \SimuladoENADE\Aluno();
         	$aluno->fill($request->all());
+            $aluno->curso_id = $curso_id;
         	$aluno->password = Hash::make($request->password);
         	$aluno->save();
         	return redirect("listar/aluno");
@@ -26,19 +29,19 @@ class AlunoController extends Controller
 	}
 
 	public function cadastrar(){
-		$cursos = \App\Curso::all();
-		$alunos = \App\Aluno::all();
+		$cursos = \SimuladoENADE\Curso::all();
+		$alunos = \SimuladoENADE\Aluno::all();
 		return view('/AlunoView/cadastrarAluno',['cursos' => $cursos], ['alunos' => $alunos]);
 	}
 
 	public function listar (){
-		$alunos = \App\Aluno::all();
+		$alunos = \SimuladoENADE\Aluno::all();
 		return view('/AlunoView/listaAluno',['alunos'=> $alunos]);
 
 	}
 	public function editar(Request $request){
-		$aluno = \App\Aluno::find($request->id);
-		$curso = \App\Curso::all();
+		$aluno = \SimuladoENADE\Aluno::find($request->id);
+		$curso = \SimuladoENADE\Curso::all();
 		return view('/AlunoView/editarAluno', ['aluno' => $aluno], ['cursos' => $curso]);
 
 	}
@@ -46,7 +49,7 @@ class AlunoController extends Controller
 	public function atualizar(Request $request){
 		try{
         	AlunoValidator::Validate($request->all());
-        	$aluno = \App\Aluno::find($request->id);    
+        	$aluno = \SimuladoENADE\Aluno::find($request->id);    
         	$aluno->fill($request->all());
         	$aluno->update();
         	return redirect("listar/aluno");
@@ -57,7 +60,7 @@ class AlunoController extends Controller
 	}
 
 	    public function remover(Request $request){
-        $aluno = \App\Aluno::find($request->id);
+        $aluno = \SimuladoENADE\Aluno::find($request->id);
         $aluno->delete();
         return redirect('\listar\aluno');
     }

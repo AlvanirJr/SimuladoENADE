@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SimuladoENADE;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class Disciplina extends Model
 {
     //
     public function curso(){
-    	return $this->hasOne('App\Curso');
+    	return $this->hasOne('SimuladoENADE\Curso');
     }
     
     protected $fillable = ['nome', 'curso_id'];

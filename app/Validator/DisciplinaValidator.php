@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Disciplina;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Disciplina;
 
 class DisciplinaValidator
 {

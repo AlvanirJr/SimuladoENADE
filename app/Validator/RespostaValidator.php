@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Resposta;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Resposta;
 class RespostaValidator
 {
 

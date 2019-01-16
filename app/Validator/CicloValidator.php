@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Validator;
-use App\Ciclo;
+namespace SimuladoENADE\Validator;
+use SimuladoENADE\Ciclo;
 
 class CicloValidator
 {
