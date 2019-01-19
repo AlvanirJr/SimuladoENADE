@@ -18,13 +18,14 @@ class Usuariocontroller extends Controller
     public function adicionar(Request $request){
 
     	try{
-            #$curso_id = \Auth::user()->curso_id;
+            $curso_id = \Auth::user()->curso_id;
 
             UsuarioValidator::Validate($request->all());
 
             $usuario = new \SimuladoENADE\Usuario();
             $usuario->fill($request->all());
             $usuario->password = Hash::make($request->password);
+            $usuario->curso_id = $curso_id;
             $usuario->save();
             $user =  \Auth::user()->tipousuario_id;
           
@@ -42,7 +43,13 @@ class Usuariocontroller extends Controller
             }
         }
         catch(ValidationException $ex){
-            return redirect("/cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
+            if($user == 4){
+                return redirect("/cadastrar/usuario")->withErrors($ex->getValidator())->withInput();
+            }
+            elseif($user == 2){
+                return redirect("/cadastrar/professor")->withErrors($ex->getValidator())->withInput();
+            }
+            
         }
     }
 

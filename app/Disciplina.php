@@ -15,7 +15,7 @@ class Disciplina extends Model
     
     public static $rules = [
     	'nome' => 'required',
-    	'curso_id' => 'required'
+    	//'curso_id' => 'required'
     ];
 
     public static $messages = [

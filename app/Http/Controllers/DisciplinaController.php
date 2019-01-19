@@ -13,9 +13,11 @@ class DisciplinaController extends Controller
     public function adicionar(Request $request){
         
         try{
+            $curso_id = \Auth::user()->curso_id;
             DisciplinaValidator::Validate($request->all());
             $disciplina = new \SimuladoENADE\Disciplina();
             $disciplina->fill($request->all());
+            $disciplina->curso_id = $curso_id;
             $disciplina->save();
             return redirect("listar/disciplina");
         }

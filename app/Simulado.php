@@ -19,8 +19,8 @@ class Simulado extends Model
 
     public static $rules = [
     	'descricao_simulado' => 'required|min:5',
-        'usuario_id' => 'required',
-        'curso_id' => 'required'
+//        'usuario_id' => 'required',
+//        'curso_id' => 'required'
     ];
 
     public static $messages = [

@@ -51,15 +51,32 @@ class QuestaoController extends Controller
     	
         $user =  \Auth::user();
         
-        $disciplinas = \SimuladoENADE\Disciplina::where('curso_id', '=', $user->curso_id)->get();
+        //$disciplinas = \SimuladoENADE\Disciplina::where('curso_id', '=', $user->curso_id)->get();
         #dd($disciplinas);
-        $questao = \SimuladoENADE\Questao::where('disciplina_id','=',  $disciplinas );
+
+        $questao = \SimuladoENADE\Questao::whereIn('disciplina_id', function($query) use ($user){
+               $query->select('disciplina_id')->from('disciplinas')->where('disciplinas.curso_id','=',$user->curso_id);
+            })->get();
+
+
+
+
         if($user->tipousuario_id == 3){
             return view('/QuestaoView/listaQuestao', ['questaos' => $questao]);   
         }
         elseif ($user->tipousuario_id == 2) {
              return view('/QuestaoView/listaQuestaoCoordenador', ['questaos' => $questao]);   
          } 
+
+
+          /* $questaos = \DB::table('questao_simulados')
+           ->whereNotIn('questao_id', function($query) use ($usuario, $simulado){
+               $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario)->where('simulado_id', '=', $simulado->id);//filtrar pelo id do simulado também
+            })
+            ->where('simulado_id', '=', $request->id)
+            ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
+            ->select('*')
+            ->get()->toArray();*/
          
     	
     }

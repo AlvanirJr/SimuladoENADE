@@ -44,6 +44,7 @@ class SimuladoController extends Controller
 
     public function listar(){
         $user = \Auth::user()->curso_id;
+        //dd($user);
     	$simulados = \SimuladoENADE\Simulado::where('curso_id', '=', $user)->get();
     	return view('/SimuladoView/listaSimulado', ['simulados' => $simulados]);
     }
@@ -171,6 +172,7 @@ class SimuladoController extends Controller
         $resposta->questao_id = $request->questao_id;
         $resposta->alternativa_questao = $request->alternativa;
         $resposta->aluno_id = $usuario;
+        $resposta->simulado_id = $request->simulado_id;
         $resposta->save();
 
         return redirect('/questao/simulado/'.$request->simulado_id);
@@ -194,8 +196,8 @@ class SimuladoController extends Controller
         */
         
         $questaos = \DB::table('questao_simulados')
-           ->whereNotIn('questao_id', function($query) use ($usuario){
-               $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario);//filtrar pelo id do simulado também
+           ->whereNotIn('questao_id', function($query) use ($usuario, $simulado){
+               $query->select('questao_id')->from('respostas')->where('respostas.aluno_id','=',$usuario)->where('simulado_id', '=', $simulado->id);//filtrar pelo id do simulado também
             })
             ->where('simulado_id', '=', $request->id)
             ->join('questaos', 'questao_simulados.questao_id', '=', 'questaos.id')
@@ -223,7 +225,10 @@ class SimuladoController extends Controller
         $questaos = \DB::table('questao_simulados')
             ->join('respostas', 'respostas.questao_id','=','questao_simulados.questao_id')
             ->join('questaos', 'questaos.id','=','questao_simulados.questao_id')
-            ->where([['respostas.aluno_id', '=', $usuario], ['questao_simulados.simulado_id','=',$request->id]])
+            ->where([['respostas.aluno_id', '=', $usuario], 
+                     ['questao_simulados.simulado_id','=',$request->id],
+                     ['respostas.simulado_id','=',$request->id],
+                    ])
             ->get()->toArray();
       
         $resultado = 0;
