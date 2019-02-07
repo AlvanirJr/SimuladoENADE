@@ -26,4 +26,8 @@ class Curso extends Model
     public static $messages = [
     	'required' => 'O campo :attribute deve ser preenchido na forma correta' 
     ];
+
+    public function unidade() {
+        return $this->belongsTo("SimuladoENADE\UnidadeAcademica");
+    }
 }
