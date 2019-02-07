@@ -19,7 +19,7 @@
 				<td>{{$curso->id}}</td>
 				<td>{{$curso->curso_nome}}</td>
 				<td>{{$curso->ciclo_id}}</td>
-				<td>{{$curso->unidade_id}}</td>
+				<td>{{$curso->unidade->nome}}</td>
 				<td> 
 					<a href="/editar/curso/{{$curso->id}}">Editar</a> - 
 					<a href="/remover/curso/{{$curso->id}}">Remover</a>

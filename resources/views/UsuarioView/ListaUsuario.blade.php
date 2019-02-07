@@ -20,7 +20,7 @@
 				<td>{{$usuario->nome}}</td>
 				<td>{{$usuario->cpf}}</td>
 				<td>{{$usuario->email}}</td>
-				<td>{{$usuario->curso_nome}}</td>
+				<td>{{$usuario->curso->curso_nome}}</td>
 				
 	
 
